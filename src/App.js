@@ -1,9 +1,10 @@
-import './App.css';
+import "./App.css";
+import Authpage from "./Components/Auth/Authpage.jsx";
 
 function App() {
   return (
     <div className="App">
-      Find your project partner
+      <Authpage/>
     </div>
   );
 }
