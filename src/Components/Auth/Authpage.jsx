@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./AuthPage.css";
+import {FcGoogle} from "react-icons/fc"
+import {SiGithub,SiLinkedin} from "react-icons/si"
+
 
 export default function Authpage() {
 
@@ -23,13 +26,13 @@ export default function Authpage() {
             <h1>Create Account</h1>
             <div className="social-container">
               <a href=" " className="social">
-                <i className="fab fa-facebook-f"></i>
+              <SiGithub/>
               </a>
               <a href=" " className="social">
-                <i className="fab fa-google-plus-g"></i>
+               <FcGoogle/>
               </a>
               <a href=" " className="social">
-                <i className="fab fa-linkedin-in"></i>
+                <SiLinkedin/>
               </a>
             </div>
             <span>or use your email for registration</span>
@@ -44,13 +47,13 @@ export default function Authpage() {
             <h1>Sign in</h1>
             <div className="social-container">
               <a href=" " className="social">
-                <i className="fab fa-facebook-f"></i>
+              <SiGithub/>
               </a>
               <a href=" " className="social">
-                <i className="fab fa-google-plus-g"></i>
+               <FcGoogle/>
               </a>
               <a href=" " className="social">
-                <i className="fab fa-linkedin-in"></i>
+                <SiLinkedin/>
               </a>
             </div>
             <span>or use your account</span>

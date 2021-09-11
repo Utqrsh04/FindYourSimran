@@ -5,7 +5,7 @@ import Navbar from "./Components/navigation/navbar";
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
       <Authpage/>
     </div>
   );
