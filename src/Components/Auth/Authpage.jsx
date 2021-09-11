@@ -1,22 +1,35 @@
-import React from "react";
-import './AuthPage.css'
+import React, { useState } from "react";
+import "./AuthPage.css";
 
 export default function Authpage() {
+
+  const [SignUp, setSignUp] = useState(false);
+  const SignInClicked = () => {
+    setSignUp(!SignUp);
+  };
+  const SignUpClicked = () => {
+    setSignUp(!SignUp);
+  };
+
+  let classnames = " ";
+  if (SignUp) classnames = " right-panel-active ";
+
+
   return (
-    <div>
-      <div class="container" id="container">
-        <div class="form-container sign-up-container">
-          <form action="#">
+    <div className="heroImage">
+      <div className={" container " + classnames} id="container">
+        <div className="form-container sign-up-container">
+          <form action=" ">
             <h1>Create Account</h1>
-            <div class="social-container">
-              <a href="#" class="social">
-                <i class="fab fa-facebook-f"></i>
+            <div className="social-container">
+              <a href=" " className="social">
+                <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" class="social">
-                <i class="fab fa-google-plus-g"></i>
+              <a href=" " className="social">
+                <i className="fab fa-google-plus-g"></i>
               </a>
-              <a href="#" class="social">
-                <i class="fab fa-linkedin-in"></i>
+              <a href=" " className="social">
+                <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
             <span>or use your email for registration</span>
@@ -26,49 +39,56 @@ export default function Authpage() {
             <button>Sign Up</button>
           </form>
         </div>
-        <div class="form-container sign-in-container">
-          <form action="#">
+        <div className="form-container sign-in-container">
+          <form action=" ">
             <h1>Sign in</h1>
-            <div class="social-container">
-              <a href="#" class="social">
-                <i class="fab fa-facebook-f"></i>
+            <div className="social-container">
+              <a href=" " className="social">
+                <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" class="social">
-                <i class="fab fa-google-plus-g"></i>
+              <a href=" " className="social">
+                <i className="fab fa-google-plus-g"></i>
               </a>
-              <a href="#" class="social">
-                <i class="fab fa-linkedin-in"></i>
+              <a href=" " className="social">
+                <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
             <span>or use your account</span>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <a href="#">Forgot your password?</a>
+            <a href=" ">Forgot your password?</a>
             <button>Sign In</button>
           </form>
         </div>
-        <div class="overlay-container">
-          <div class="overlay">
-            <div class="overlay-panel overlay-left">
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
               <p>
                 To keep connected with us please login with your personal info
               </p>
-              <button class="ghost" id="signIn">
+              <button
+                className="ghost"
+                id="signIn"
+                onClick={() => SignInClicked()}
+              >
                 Sign In
               </button>
             </div>
-            <div class="overlay-panel overlay-right">
+            <div className="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>
               <p>Enter your personal details and start journey with us</p>
-              <button class="ghost" id="signUp">
+              <button
+                className="ghost"
+                id="signUp"
+                onClick={() => SignUpClicked()}
+              >
                 Sign Up
               </button>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 }
