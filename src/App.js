@@ -1,6 +1,6 @@
 import "./App.css";
-import Authpage from "./Components/Auth/Authpage.jsx";
-import Navbar from "./Components/navigation/navbar";
+import Authpage from "./Pages/Auth/Authpage.jsx";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
