@@ -1,6 +1,8 @@
+import Navbar from "../../Components/Navbar"
+
 const Dashboard = () => {
   return (  
-    <div>This is a Dashboard</div>
+    <Navbar/>
   );
 }
  
