@@ -4,12 +4,13 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { ImCross } from 'react-icons/im'
 import { FaBell } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import SearchBar from './Searchbar'
 
 const navigation = [
-  { name: 'Dashboard', href: 'https://www.google.com', current: true },
+  { name: 'Home', href: '/dashboard', current: true },
   { name: 'Connections', href: '#', current: false },
   { name: 'Groups', href: '#', current: false },
-  { name: 'Latest Views', href: '#', current: false },
+  { name: 'Latest Views', href: '/login', current: false },
 ]
 
 function classNames(...classes) {
@@ -21,7 +22,7 @@ export default function Navbar() {
     <Disclosure as="nav" className="bg-gray-800 w-screen fixed top-0 left-0">
       {({ open }) => (
         <>
-          <div className="max-w-7xl  mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -36,13 +37,13 @@ export default function Navbar() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
+                  {/* <img
                     className="block lg:hidden h-8 w-auto"
                     src="https://boxy-svg.com/images/logos/logo-full.svg"
                     alt="Website"
-                  />
+                  /> */}
                   <img
-                    className="hidden lg:block h-8 w-auto"
+                    className="hidden md:block h-8 w-auto"
                     src="https://boxy-svg.com/images/logos/logo-full.svg"
                     alt="Website"
                   />
@@ -52,7 +53,7 @@ export default function Navbar() {
                     {navigation.map((item) => (
                       <Link 
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'
@@ -65,6 +66,7 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
+              <SearchBar/>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"

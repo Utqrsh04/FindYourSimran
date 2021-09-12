@@ -4,15 +4,8 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #f6f5f7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
-  margin: -20px 0 50px;
+.heroImage{
+  background-color: #2d106a
 }
 
 h1 {
@@ -88,12 +81,11 @@ input {
   width: 100%;
 }
 
-body {
-  background-image: url("../../rm222batch3-mind-03.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 95vh;
-}
+/* body {
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
+  /* height: 95vh; */
+/* }  */
 
 .container {
   background-color: #fff;

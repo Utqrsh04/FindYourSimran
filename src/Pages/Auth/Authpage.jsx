@@ -19,7 +19,7 @@ export default function Authpage() {
 
 
   return (
-    <div className="heroImage">
+    <div className="heroImage flex justify-center items-center h-screen">
       <div className={" container " + classnames} id="container">
         <div className="form-container sign-up-container">
           <form action=" ">
