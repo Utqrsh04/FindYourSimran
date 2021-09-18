@@ -1,12 +1,16 @@
 import "./App.css";
+import Particle from "./Components/Particles";
 import Authpage from "./Pages/Auth/Authpage.jsx";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom" 
-import Dashboard from "./Pages/AppContainer/Dashboard";
+// import { BrowserRouter as Router, Switch, Route} from "react-router-dom" 
+// import Dashboard from "./Pages/AppContainer/Dashboard";
+// import Login from "./Pages/Auth/Loginpage";
 
 function App() {
   return (
     <div className="App">
-    <Router>
+      <Particle/>
+      <Authpage/>
+    {/* <Router>
       <Switch>
         <Route exact path="/">
          <Authpage/>
@@ -18,7 +22,7 @@ function App() {
           <Dashboard/>
         </Route>
       </Switch>
-    </Router>
+    </Router> */}
       
     </div>
   );
