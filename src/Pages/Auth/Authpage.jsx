@@ -17,9 +17,9 @@ export default function Authpage() {
   let classnames = " ";
   if (SignUp) classnames = " right-panel-active ";
 
-
+ 
   return (
-    <div className="heroImage flex justify-center items-center h-screen">
+    <div className="max-w-min mx-auto relative bg-none -top-96">
       <div className={" container " + classnames} id="container">
         <div className="form-container sign-up-container">
           <form action=" ">
