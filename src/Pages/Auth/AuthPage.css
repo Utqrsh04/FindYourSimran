@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 * {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 .heroImage{
-  /* background-color: #2d106a */
+  background-color: #2d106a
 }
 
 h1 {
@@ -83,7 +83,7 @@ input {
 
 
 .container {
-  /* background-color: #fff; */
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
@@ -160,7 +160,7 @@ input {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
-  /* color: #ffffff; */
+  color: #ffffff;
   position: relative;
   left: -100%;
   height: 100%;
@@ -222,7 +222,7 @@ input {
 
 footer {
   background-color: #222;
-  /* color: #fff; */
+  color: #fff;
   font-size: 14px;
   bottom: 0;
   position: fixed;
