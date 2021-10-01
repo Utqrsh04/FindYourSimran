@@ -1,5 +1,6 @@
 import Card from "../../Components/Card";
 import Navbar from "../../Components/Navbar";
+import AnotherNav from "../../Components/AnotherNav";
 import photo from '../../assets/darkbluebg.jpg';
 import photo1 from '../../assets/neonwave.jpg';
 import photo2 from '../../assets/images.jpg';
@@ -26,7 +27,8 @@ const Dashboard = () => {
 
   return (  
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
+      <AnotherNav />
       <div className="flex flex-col">
         {
           details.map((detail)=>(

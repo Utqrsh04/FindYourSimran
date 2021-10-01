@@ -19,9 +19,10 @@ export default function Authpage() {
   const [signInClass, setSignInClass] = useState("bg-blue-600");
   const [signUpClass, setSignUpClass] = useState("bg-red-400");
   const OnsignUp = () => {
-    setSignInClass(" bg-red-400 ");
-    setSignUpClass(" bg-blue-400 ");
-    Sethide(true)
+    setSignInClass(" bg-red-400");
+    setSignUpClass(" bg-blue-400");
+    Sethide(true);
+    console.log(hide);
   };
 
   const OnsignIn = () => {
