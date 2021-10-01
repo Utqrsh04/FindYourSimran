@@ -5,7 +5,10 @@ module.exports = {
     extend: {
       backgroundImage : (theme) => ( {
         // "bg-hero" : "url('/src/assets/confetti-doodles.svg)"
-      })
+      }),
+      colors:{
+        lightBlue:"#0091EA",
+      }
     },
   },
   variants: {
