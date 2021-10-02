@@ -65,10 +65,40 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 50px;
+  padding: 0 35px;
   height: 100%;
   text-align: center;
 }
+
+/* For Small Screen */
+@media only screen and (max-width: 600px) {
+  .form-container > form {
+    padding: 0px 18px;
+  }
+
+  .btn {
+    padding: 10px 22px;
+    font-size: 12px;
+  }
+
+  .inp{
+    font-size: 12px;
+  }
+
+  .links{
+    font-size: 12px;
+  }
+
+  .para{
+    font-size: 12px;
+  }
+
+  .social{
+    height: 30px;
+    width: 30px;
+  }
+}
+
 
 .inp {
   background-color: #eee;
@@ -77,6 +107,7 @@
   margin: 8px 0;
   width: 100%;
 }
+
 
 .container {
   background-color: #fff;
@@ -142,7 +173,7 @@
   height: 100%;
   overflow: hidden;
   transition: transform 0.6s ease-in-out;
-  z-index: 100;
+  z-index: 10;
 }
 
 .container.right-panel-active .overlay-container {
@@ -220,5 +251,4 @@
 input:checked ~ .dot {
   transform: translateX(100%);
   /* background-color: ; */
-    
 }
