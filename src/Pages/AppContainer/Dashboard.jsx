@@ -3,6 +3,8 @@ import Navbar from "../../Components/Navbar";
 import photo from "../../assets/darkbluebg.jpg";
 import photo1 from "../../assets/neonwave.jpg";
 import photo2 from "../../assets/images.jpg";
+import Loader from "../../Components/Loader/Loader";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const details = [
@@ -23,6 +25,9 @@ const Dashboard = () => {
     },
   ];
 
+  useEffect(() => {
+    <Loader/>
+  }, [])
   return (
     <>
       <div className="">
