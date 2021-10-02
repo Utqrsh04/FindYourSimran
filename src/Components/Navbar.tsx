@@ -1,10 +1,14 @@
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SearchBar from "./Searchbar";
+
+interface NavbarPropsType {
+
+}
 
 const navigation = [
   { name: "Home", href: "/dashboard", current: true },
@@ -13,13 +17,16 @@ const navigation = [
   { name: "Latest Views", href: "/login", current: false },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function AnotherNav() {
+const Navbar :FC<NavbarPropsType> = () => {
   return (
-    <Disclosure as="nav" className="shadow-lg bg-lightBlue fixed z-20 top-0 right-0 left-0">
+    <Disclosure
+      as="nav"
+      className="shadow-lg bg-lightBlue fixed z-20 top-0 right-0 left-0"
+    >
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -68,7 +75,7 @@ export default function AnotherNav() {
                         {item.name}
                       </Link>
                     ))}
-                    <SearchBar/>
+                    <SearchBar />
                   </div>
                 </div>
               </div>
@@ -173,4 +180,6 @@ export default function AnotherNav() {
       )}
     </Disclosure>
   );
-}
+};
+
+export default Navbar;

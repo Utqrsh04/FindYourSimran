@@ -1,16 +1,19 @@
-import { Fragment, useEffect, useState } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useHistory } from "react-router";
 import Checked from '../../assets/checked.gif'
 
+interface ToastTypeProps {
+  show : boolean,
+}
 
-export default function Example(props) {
+const Toast : FC<ToastTypeProps> = ({show})  => {
   const history = useHistory();
-  const [open, setOpen] = useState(props.show);
+  const [open, setOpen] = useState(show);
 
   useEffect(() => {
-    setOpen(props.show);
-  }, [props.show]);
+    setOpen(show);
+  }, [show]);
 
   const handleClick = () => {
     setOpen(false);
@@ -93,3 +96,5 @@ export default function Example(props) {
     </Transition.Root>
   );
 }
+
+export default Toast;
