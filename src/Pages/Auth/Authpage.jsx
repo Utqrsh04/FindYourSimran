@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import "./AuthPage.css";
 import { useHistory } from "react-router";
+import Toast from "../../Components/Toast/Toast";
 
 export default function Authpage() {
   const [show, setShow] = useState(false);
@@ -14,7 +15,6 @@ export default function Authpage() {
 
   let classnames = " ";
   if (show) classnames = " right-panel-active ";
-
 
   const history = useHistory();
   const ForSignIn = useFormik({
@@ -26,10 +26,12 @@ export default function Authpage() {
     }),
     onSubmit: (data) => {
       console.log(data);
-      sessionStorage.setItem("loggedIn","true")
+      sessionStorage.setItem("loggedIn", "true");
       history.push("/dashboard");
     },
   });
+
+  const [showToast, setShowToast] = useState(false)
 
   const ForSignUp = useFormik({
     initialValues: { name: "", email: "", password: "" },
@@ -48,13 +50,18 @@ export default function Authpage() {
     }),
     onSubmit: (data) => {
       console.log(data);
-      // history.push("");
+      setShowToast(true);
     },
-  });
+  }); 
 
   return (
     <div className=" bgImage flex justify-center items-center h-screen">
-      <div className={" md:block container " + classnames} id="container">
+       <Toast show={showToast} />
+
+      <div
+        className={" mx-4 md:mx-8 md:m-0 container " + classnames}
+        id="container"
+      >
         <div className="form-container sign-up-container">
           <form
             onSubmit={ForSignUp.handleSubmit}
@@ -62,13 +69,13 @@ export default function Authpage() {
           >
             <h1 className="heading">Create Account</h1>
             <div className="social-container">
-              <a href=" " className="social">
+              <a href="/" className="social">
                 <SiGithub />
               </a>
-              <a href=" " className="social">
+              <a href="/" className="social">
                 <FcGoogle />
               </a>
-              <a href=" " className="social">
+              <a href="/" className="social">
                 <SiLinkedin />
               </a>
             </div>
@@ -130,13 +137,13 @@ export default function Authpage() {
             <h1 className="heading">Sign in</h1>
             {/* Icons */}
             <div className="social-container">
-              <a href=" " className="social links">
+              <a href="/" className="social links">
                 <SiGithub />
               </a>
-              <a href=" " className="social">
+              <a href="/" className="social">
                 <FcGoogle />
               </a>
-              <a href=" " className="social">
+              <a href="/" className="social">
                 <SiLinkedin />
               </a>
             </div>
@@ -197,7 +204,7 @@ export default function Authpage() {
               </button>
             </div>
             <div className="overlay-panel overlay-right">
-              <h1 className="heading">Hello, Friend!</h1>
+              <h1 className="heading">Hello, Developer!</h1>
               <p className="para">
                 Enter your personal details and start journey with us
               </p>

@@ -1,76 +1,95 @@
-import React, { useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { useHistory } from "react-router";
+import Checked from '../../assets/checked.gif'
 
-const Toast = (props) => {
-    
-  const [show, setShow] = useState(props.Show);
 
-  
-  const handleClose = () => {
-    setShow(false);
-  };
+export default function Example(props) {
+  const history = useHistory();
+  const [open, setOpen] = useState(props.show);
+
+  useEffect(() => {
+    setOpen(props.show);
+  }, [props.show]);
+
+  const handleClick = () => {
+    setOpen(false);
+    history.push("/");
+  }
+
   return (
-    <>
-      {show === true && (
-        <div className="bg-white rounded-lg inline-flex fixed top-5 z-50">
-          <div
-            className={` w-64 border-t-8 rounded-lg flex h-20   ${
-              props.success == true ? " border-green-400 " : " border-red-600 "
-            } `}
+    <Transition.Root show={open}>
+      <Dialog
+        as="div"
+        className="fixed z-50 inset-0 overflow-y-auto"
+        onClose={() => {}}
+      >
+        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
-            {props.success && (
-              <>
-                <div className="w-1/3 pt-6 flex justify-center ">
-                  <svg
-                    className=""
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
-                  </svg>
+            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          {/* This element is to trick the browser into centering the modal contents. */}
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
+            &#8203;
+          </span>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            enterTo="opacity-100 translate-y-0 sm:scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          >
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+              <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div className="sm:flex sm:items-start">
+                  <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <img src={Checked} alt="" className="w-10 h-10" />
+
+                  </div>
+                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-lg leading-6 font-medium text-gray-900"
+                    >
+                      Account Created
+
+                    </Dialog.Title>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500">
+                        Congratulations Your Account has been created . Please
+                        Login to Continue
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="w-full flex  items-center  ">
-                  <h3 className="font-bold text-black">{props.message}</h3>
-                </div>
-              </>
-            )}
-            {props.success == false && (
-              <>
-                <div className="w-1/3 pt-6 flex justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z" />
-                  </svg>
-                </div>
-                <div className="w-full flex  items-center ">
-                  <h3 className="font-bold text-black">{props.message}</h3>
-                </div>
-              </>
-            )}
-            <div className="pr-2 pt-2 ml-5 " onClick={handleClose}>
-              <svg
-                className=""
-                width="24"
-                height="24"
-                xmlns="http://www.w3.org/2000/svg"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              >
-                <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm0 10.293l5.293-5.293.707.707-5.293 5.293 5.293 5.293-.707.707-5.293-5.293-5.293 5.293-.707-.707 5.293-5.293-5.293-5.293.707-.707 5.293 5.293z" />
-              </svg>
+              </div>
+              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button
+                  type="button"
+                  className="mt-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                  onClick={handleClick}
+                >
+                  Login Now
+                </button>
+              </div>
             </div>
-          </div>
-
-         
+          </Transition.Child>
         </div>
-      )}
-    </>
+      </Dialog>
+    </Transition.Root>
   );
-};
-
-export default Toast;
+}

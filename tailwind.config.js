@@ -1,18 +1,18 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage : (theme) => ( {
-        // "bg-hero" : "url('/src/assets/confetti-doodles.svg)"
+      backgroundImage: (theme) => ({
+        "gif-tick": "url('/src/assets/checked.gif')",
       }),
-      colors:{
-        lightBlue:"#0091EA",
-      }
+      colors: {
+        lightBlue: "#0091EA",
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
