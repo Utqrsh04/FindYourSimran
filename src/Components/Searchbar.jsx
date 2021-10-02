@@ -11,7 +11,7 @@ const SearchBar = () => {
 
   return (
     <div className="">
-      <div className="flex mx-auto relative items-center border-2 px-2 pr-4 rounded-full bg-black opacity-90">
+      <div className="flex mx-auto relative items-center border-2 px-2 pr-4 rounded-full bg-black opacity-90 lg:ml-40">
         <input
           className="bg-black rounded-full text-sm border-0 p-4 w-full h-7 outline-none text-white"
           type="text"
@@ -23,7 +23,7 @@ const SearchBar = () => {
           <IoClose
             id="clearBtn"
             onClick={() => setFilteredData("")}
-            className="absolute right-8 cursor-pointer text-white"
+            className="absolute right-8 cursor-pointer text-white text-xl sm:text-base"
           />
         )}
         <IoSearch  className="text-gray-400"/>
