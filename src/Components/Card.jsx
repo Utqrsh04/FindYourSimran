@@ -1,6 +1,6 @@
 const Card = ({ img, userName, datePosted }) => {
   return (
-    <div className="p-10 mx-auto top-16 relative ">
+    <div className=" pt-0-0 mx-auto top-0 relative pb-2">
       <div className=" w-full lg:max-w-full lg:flex mx-auto">
         <img
           className="h-48 lg:h-auto lg:w-96 w-full flex bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
