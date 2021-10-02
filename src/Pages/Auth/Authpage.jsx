@@ -15,21 +15,6 @@ export default function Authpage() {
   let classnames = " ";
   if (show) classnames = " right-panel-active ";
 
-  const [hide, Sethide] = useState(false);
-  const [signInClass, setSignInClass] = useState("bg-blue-600");
-  const [signUpClass, setSignUpClass] = useState("bg-red-400");
-
-  const OnsignUp = () => {
-    setSignInClass(" bg-red-400");
-    setSignUpClass(" bg-blue-400");
-    Sethide(true);
-    console.log(hide);
-  };
-
-  const OnsignIn = () => {
-    setSignInClass(" bg-blue-400 ");
-    setSignUpClass(" bg-red-400 ");
-  };
 
   const history = useHistory();
   const ForSignIn = useFormik({
