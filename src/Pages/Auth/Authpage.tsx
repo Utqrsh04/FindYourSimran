@@ -7,7 +7,7 @@ import "./AuthPage.css";
 import { useHistory } from "react-router";
 import Toast from "../../Components/Toast/Toast";
 
-export default function Authpage() {
+const Authpage = () =>{
   const [show, setShow] = useState(false);
   const SignInClicked = () => setShow(!show);
 
@@ -87,7 +87,7 @@ export default function Authpage() {
                 placeholder="Name"
                 id="name"
                 value={ForSignUp.values.name}
-                errors={ForSignUp.errors.name}
+                // errors={ForSignUp.errors.name}
                 onChange={ForSignUp.handleChange}
                 required
               />
@@ -102,7 +102,7 @@ export default function Authpage() {
                 placeholder="Email"
                 id="email"
                 value={ForSignUp.values.email}
-                errors={ForSignUp.errors.email}
+                // errors={ForSignUp.errors.email}
                 onChange={ForSignUp.handleChange}
                 required
               />
@@ -117,7 +117,7 @@ export default function Authpage() {
                 placeholder="Password"
                 id="password"
                 value={ForSignUp.values.password}
-                errors={ForSignUp.errors.password}
+                // errors={ForSignUp.errors.password}
                 onChange={ForSignUp.handleChange}
                 required
               />
@@ -156,7 +156,7 @@ export default function Authpage() {
                 placeholder="Email"
                 id="email"
                 value={ForSignIn.values.email}
-                errors={ForSignIn.errors.email}
+                // errors={ForSignIn.errors.email}
                 onChange={ForSignIn.handleChange}
                 required
               />
@@ -171,8 +171,9 @@ export default function Authpage() {
                 placeholder="Password"
                 id="password"
                 value={ForSignIn.values.password}
-                errors={ForSignIn.errors.password}
+                // errors={ForSignIn.errors.password}
                 onChange={ForSignIn.handleChange}
+                
               />
               <h1 className="text-red-500 mb-5 text-left font-semibold text-xs">
                 {ForSignIn.errors.password ? ForSignIn.errors.password : " "}
@@ -222,3 +223,5 @@ export default function Authpage() {
     </div>
   );
 }
+
+export default Authpage;

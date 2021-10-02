@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <div className="bgImage">
       <div className="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center">
@@ -33,3 +33,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+export default NotFound;

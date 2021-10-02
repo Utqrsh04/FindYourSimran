@@ -1,14 +1,14 @@
-import Authpage from "./Pages/Auth/Authpage.jsx";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import Dashboard from "./Pages/AppContainer/Dashboard";
-import NotFound from "./Pages/AppContainer/NotFound.jsx";
-import Loader from "./Components/Loader/Loader.jsx";
 import { useEffect, useState } from "react";
+import Loader from "./Components/Loader/Loader";
+import Dashboard from './Pages/AppContainer/Dashboard'
+import NotFound from './Pages/AppContainer/NotFound'
+import Authpage from './Pages/Auth/Authpage';
 
 function App() {
   const [showLoader, setShowLoader] = useState(true);

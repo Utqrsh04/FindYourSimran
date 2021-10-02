@@ -1,4 +1,12 @@
-const Card = ({ img, userName, datePosted }) => {
+import { FC } from "react";
+
+interface CardTypeProps {
+  img: any;
+  userName: string;
+  datePosted: string;
+}
+
+const Card: FC<CardTypeProps> = ({ img, userName, datePosted }) => {
   return (
     <div className=" pt-0-0 mx-auto top-0 relative pb-2">
       <div className=" w-full lg:max-w-full lg:flex mx-auto">
