@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import "./AuthPage.css";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import "./AuthPage.css";
+import { useHistory } from "react-router";
 
 export default function Authpage() {
   const [show, setShow] = useState(false);
-  const SignInClicked = () => {
-    setShow(!show);
-  };
-  const SignUpClicked = () => {
-    setShow(!show);
-  };
+  const SignInClicked = () => setShow(!show);
+
+  const SignUpClicked = () => setShow(!show);
 
   let classnames = " ";
   if (show) classnames = " right-panel-active ";
@@ -18,26 +18,62 @@ export default function Authpage() {
   const [hide, Sethide] = useState(false);
   const [signInClass, setSignInClass] = useState("bg-blue-600");
   const [signUpClass, setSignUpClass] = useState("bg-red-400");
+
   const OnsignUp = () => {
     setSignInClass(" bg-red-400 ");
     setSignUpClass(" bg-blue-400 ");
-    Sethide(true)
+    Sethide(true);
   };
 
   const OnsignIn = () => {
     setSignInClass(" bg-blue-400 ");
     setSignUpClass(" bg-red-400 ");
   };
-  console.log("Sign in :", signInClass, " Sign up :", signUpClass);
+
+  const history = useHistory();
+  const ForSignIn = useFormik({
+    initialValues: { email: "", password: "" },
+    validationSchema: yup.object().shape({
+      email: yup.string().required("email is required").email(),
+
+      password: yup.string().required("password is required").max(20).min(8),
+    }),
+    onSubmit: (data) => {
+      console.log(data);
+      sessionStorage.setItem("loggedIn","true")
+      history.push("/dashboard");
+    },
+  });
+
+  const ForSignUp = useFormik({
+    initialValues: { name: "", email: "", password: "" },
+    validationSchema: yup.object().shape({
+      name: yup
+        .string()
+        .required("Name is required")
+        .matches(
+          /^[aA-zZ\s]+$/,
+          "Numbers or special characters are not allowed."
+        ),
+
+      email: yup.string().required("email is required").email(),
+
+      password: yup.string().required("password is required").max(20).min(8),
+    }),
+    onSubmit: (data) => {
+      console.log(data);
+      // history.push("");
+    },
+  });
 
   return (
     <div className=" bgImage flex justify-center items-center h-screen">
-      <div
-        className={" hidden  md:block container " + classnames}
-        id="container"
-      >
+      <div className={" md:block container " + classnames} id="container">
         <div className="form-container sign-up-container">
-          <form action=" ">
+          <form
+            onSubmit={ForSignUp.handleSubmit}
+            onReset={ForSignUp.handleReset}
+          >
             <h1 className="heading">Create Account</h1>
             <div className="social-container">
               <a href=" " className="social">
@@ -51,15 +87,62 @@ export default function Authpage() {
               </a>
             </div>
             <span className="span">or use your email for registration</span>
-            <input className="inp" type="text" placeholder="Name" />
-            <input className="inp" type="email" placeholder="Email" />
-            <input className="inp" type="password" placeholder="Password" />
+            <div className=" w-full">
+              <input
+                className="inp"
+                type="text"
+                placeholder="Name"
+                id="name"
+                value={ForSignUp.values.name}
+                errors={ForSignUp.errors.name}
+                onChange={ForSignUp.handleChange}
+                required
+              />
+              <h1 className="text-red-500 mb-3 text-left font-semibold text-xs">
+                {ForSignUp.errors.name ? ForSignUp.errors.name : ""}
+              </h1>
+            </div>
+            <div className=" w-full">
+              <input
+                className="inp"
+                type="email"
+                placeholder="Email"
+                id="email"
+                value={ForSignUp.values.email}
+                errors={ForSignUp.errors.email}
+                onChange={ForSignUp.handleChange}
+                required
+              />
+              <h1 className="text-red-500 mb-3 text-left font-semibold text-xs">
+                {ForSignUp.errors.email ? ForSignUp.errors.email : ""}
+              </h1>
+            </div>
+            <div className=" w-full">
+              <input
+                className="inp"
+                type="password"
+                placeholder="Password"
+                id="password"
+                value={ForSignUp.values.password}
+                errors={ForSignUp.errors.password}
+                onChange={ForSignUp.handleChange}
+                required
+              />
+              <h1 className="text-red-500 mb-3 text-left font-semibold text-xs">
+                {ForSignUp.errors.password ? ForSignUp.errors.password : " "}
+              </h1>
+            </div>
             <button className="btn">Sign Up</button>
           </form>
         </div>
+
         <div className="form-container sign-in-container">
-          <form action=" ">
+          <form
+            onSubmit={ForSignIn.handleSubmit}
+            onReset={ForSignIn.handleReset}
+          >
             <h1 className="heading">Sign in</h1>
+            {/* Icons */}
             <div className="social-container">
               <a href=" " className="social links">
                 <SiGithub />
@@ -71,15 +154,47 @@ export default function Authpage() {
                 <SiLinkedin />
               </a>
             </div>
+
             <span className="span">or use your account</span>
-            <input className="inp" type="email" placeholder="Email" />
-            <input className="inp" type="password" placeholder="Password" />
+            <div className=" w-full">
+              <input
+                className="inp"
+                type="email"
+                placeholder="Email"
+                id="email"
+                value={ForSignIn.values.email}
+                errors={ForSignIn.errors.email}
+                onChange={ForSignIn.handleChange}
+                required
+              />
+              <h1 className="text-red-500 mb-5 text-left font-semibold text-xs">
+                {ForSignIn.errors.email ? ForSignIn.errors.email : " "}
+              </h1>
+            </div>
+            <div className="w-full">
+              <input
+                className="inp"
+                type="password"
+                placeholder="Password"
+                id="password"
+                value={ForSignIn.values.password}
+                errors={ForSignIn.errors.password}
+                onChange={ForSignIn.handleChange}
+              />
+              <h1 className="text-red-500 mb-5 text-left font-semibold text-xs">
+                {ForSignIn.errors.password ? ForSignIn.errors.password : " "}
+              </h1>
+            </div>
+
             <a href=" " className="links">
               Forgot your password?
             </a>
-            <button className="btn">Sign In</button>
+            <button className="btn" type="submit">
+              Sign In
+            </button>
           </form>
         </div>
+
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
@@ -108,125 +223,6 @@ export default function Authpage() {
                 Sign Up
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* for sm/md screens */}
-      <div className="h-screen w-full block md:hidden">
-        <div className="bg-white mx-auto mt-20 w-5/6 h-5/6 rounded-xl">
-          {/* Toggle btns */}
-          <div className="flex items-center justify-center w-full pt-5">
-            <div className="flex bg-red-400 px-1 py-1 rounded-full transition-colors  ease-in-out">
-              <div
-                onClick={OnsignIn}
-                className={`text-white h-10 w-20 rounded-full font-bold text-sm pr-2 flex justify-center align-middle pt-2.5 ${signInClass} `}
-              >
-                Sign In
-              </div>
-              <div
-                onClick={OnsignUp}
-                className={`text-white h-10 w-20 rounded-full font-bold text-sm pr-2 flex justify-center align-middle pt-2.5 ${signUpClass} `}
-              >
-                Sign Up
-              </div>
-            </div>
-          </div>
-
-          {/* Sign In */}
-          <div className="flex flex-col justify-center items-center mt-6 ">
-            <h1 className="font-bold text-xl text-center heading">Sign In</h1>
-            <div className=" space-x-5 mt-10 mb-5 flex justify-center mx-auto ">
-              <a href=" " className="social links text-xl">
-                <SiGithub />
-              </a>
-              <a href=" " className="social links text-xl">
-                <FcGoogle />
-              </a>
-              <a href=" " className="social links text-xl">
-                <SiLinkedin />
-              </a>
-            </div>
-            <h1 className="text-sm font-medium heading">Or use your account</h1>
-          </div>
-
-          <div className="mx-8 mt-12 space-y-5">
-            <div>
-              <input
-                className="inp"
-                type="email"
-                name=""
-                id="email"
-                placeholder="Email"
-              />
-            </div>
-
-            <div>
-              <input
-                className="inp"
-                type="password"
-                name=""
-                id="password"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-          <h1 className="text-sm font-medium text-center mt-5 heading">
-            Forgot your Passsword
-          </h1>
-          <div className="flex justify-center mt-8">
-            <button className="btn">Sign In</button>
-          </div>
-
-          {/* Sign Up */}
-          <div className=" flex flex-col justify-center items-center mt-6 " >
-            <h1 className="font-bold text-lg text-center heading">Sign Up</h1>
-            <div className=" space-x-5 mt-5 mb-5 flex justify-center mx-auto ">
-              <a href=" " className="social links text-xl">
-                <SiGithub />
-              </a>
-              <a href=" " className="social links text-xl">
-                <FcGoogle />
-              </a>
-              <a href=" " className="social links text-xl">
-                <SiLinkedin />
-              </a>
-            </div>
-            <h1 className="text-sm font-medium heading">Or use your account</h1>
-          </div>
-
-          <div className="mx-8 mt-7 space-y-5">
-            <div>
-              <input
-                className="inp"
-                type="email"
-                name=""
-                id="email"
-                placeholder="Email"
-              />
-            </div>
-            <div>
-              <input
-                className="inp"
-                type="text"
-                name=""
-                id="name"
-                placeholder="Fullname"
-              />
-            </div>
-
-            <div>
-              <input
-                className="inp"
-                type="password"
-                name=""
-                id="password"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-          <div className="flex justify-center mt-8">
-            <button className="btn">Sign Up</button>
           </div>
         </div>
       </div>
