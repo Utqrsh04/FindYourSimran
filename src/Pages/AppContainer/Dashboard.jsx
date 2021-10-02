@@ -3,8 +3,6 @@ import Navbar from "../../Components/Navbar";
 import photo from "../../assets/darkbluebg.jpg";
 import photo1 from "../../assets/neonwave.jpg";
 import photo2 from "../../assets/images.jpg";
-import { useEffect } from "react";
-import Loader from "../../Components/Loader/Loader";
 
 const Dashboard = () => {
   const details = [
