@@ -30,15 +30,38 @@ const Dashboard = () => {
   }, [])
   return (
     <>
-      <Navbar />
-      <div className="flex flex-col">
-        {details.map((detail) => (
-          <Card
-            userName={detail.userName}
-            datePosted={detail.datePosted}
-            img={detail.img}
-          />
-        ))}
+      <div className="">
+        <Navbar />
+        <div className=" flex flex-row mt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
+          <div className="w-1/6 border-black border-2 rounded-md shadow-2xl h-64 hidden lg:block ">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+              doloremque Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Quaerat rerum doloremque dolore. Vero quam fugiat aliquam
+              aperiam animi unde alias ipsa veritatis, labore, dolorem possimus
+              voluptatum ea explicabo exercitationem modi!
+            </p>
+          </div>
+          <div className="lg:w-2/5 rounded-md">
+            {details.map((detail, index) => (
+              <Card
+                key={index}
+                userName={detail.userName}
+                datePosted={detail.datePosted}
+                img={detail.img}
+              />
+            ))}
+          </div>
+          <div className="w-1/6 border-black border-2 rounded-md h-64 hidden lg:block">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
+              doloremque Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Quaerat rerum doloremque dolore. Vero quam fugiat aliquam
+              aperiam animi unde alias ipsa veritatis, labore, dolorem possimus
+              voluptatum ea explicabo exercitationem modi!
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );
