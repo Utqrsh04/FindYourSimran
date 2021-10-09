@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet";
 import { FC, memo } from "react";
 
 const Trends: FC = () => {
