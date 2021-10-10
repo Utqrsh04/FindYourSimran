@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { useFormik } from "formik";
@@ -6,8 +6,9 @@ import * as yup from "yup";
 import "./AuthPage.css";
 import { useHistory } from "react-router";
 import Toast from "../../Components/Toast/Toast";
+import app from "../../firebase";
 
-const Authpage = () =>{
+const Authpage = () => {
   const [show, setShow] = useState(false);
   const SignInClicked = () => setShow(!show);
 
@@ -24,14 +25,32 @@ const Authpage = () =>{
 
       password: yup.string().required("password is required").max(20).min(8),
     }),
-    onSubmit: (data) => {
-      console.log(data);
-      sessionStorage.setItem("loggedIn", "true");
-      history.push("/dashboard");
-    },
+    onSubmit: () => {},
   });
 
-  const [showToast, setShowToast] = useState(false)
+  const handleLogin = useCallback(
+    async (event: any) => {
+      event.preventDefault();
+      const { email, password } = event.target.elements;
+      console.log("login ", email.value, password.value);
+      try {
+        await app
+          .auth()
+          .signInWithEmailAndPassword(
+            email.value,
+            password.value
+          );
+        console.log("logged In");
+
+        // history.push("/");
+      } catch (error) {
+        alert(error);
+      }
+    },
+    [history]
+  );
+
+  const [showToast, setShowToast] = useState(false);
 
   const ForSignUp = useFormik({
     initialValues: { name: "", email: "", password: "" },
@@ -52,11 +71,11 @@ const Authpage = () =>{
       console.log(data);
       setShowToast(true);
     },
-  }); 
+  });
 
   return (
     <div className=" bgImage flex justify-center items-center h-screen">
-       <Toast show={showToast} />
+      <Toast type="Error" show={showToast} message={"Account Created"} />
 
       <div
         className={" mx-4 md:mx-8 md:m-0 container " + classnames}
@@ -130,10 +149,7 @@ const Authpage = () =>{
         </div>
 
         <div className="form-container sign-in-container">
-          <form
-            onSubmit={ForSignIn.handleSubmit}
-            onReset={ForSignIn.handleReset}
-          >
+          <form onSubmit={handleLogin} onReset={ForSignIn.handleReset}>
             <h1 className="heading">Sign in</h1>
             {/* Icons */}
             <div className="social-container">
@@ -173,7 +189,6 @@ const Authpage = () =>{
                 value={ForSignIn.values.password}
                 // errors={ForSignIn.errors.password}
                 onChange={ForSignIn.handleChange}
-                
               />
               <h1 className="text-red-500 mb-5 text-left font-semibold text-xs">
                 {ForSignIn.errors.password ? ForSignIn.errors.password : " "}
@@ -222,6 +237,6 @@ const Authpage = () =>{
       </div>
     </div>
   );
-}
+};
 
 export default Authpage;

@@ -8,11 +8,12 @@ import { useEffect } from "react";
 import Loader from "./Components/Loader/Loader";
 import Dashboard from "./Pages/AppContainer/Dashboard";
 import NotFound from "./Pages/AppContainer/NotFound";
-import Authpage from "./Pages/Auth/Authpage";
+import LoginPage from "./Pages/Auth/LoginPage/LoginPage";
+import SignupPage from "./Pages/Auth/SignUpPage/SignupPage";
 
 function App() {
   useEffect(() => {
-    <Loader/>
+    <Loader />;
   }, []);
 
   return (
@@ -23,9 +24,12 @@ function App() {
             <Redirect to="/login" />
           </Route>
           <Route exact path="/login">
-            <Authpage />
+            <LoginPage />
           </Route>
-          <Route exact path={["/dashboard" , "/trends" ]}>
+          <Route exact path="/signup">
+            <SignupPage />
+          </Route>
+          <Route exact path={["/dashboard", "/trends"]}>
             <Dashboard />
           </Route>
           <Route path="/notFound" exact>
