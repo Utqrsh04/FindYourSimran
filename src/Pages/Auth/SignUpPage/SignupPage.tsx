@@ -73,6 +73,7 @@ const SignupPage = () => {
           </p>
           <form
             onSubmit={handleSignUp}
+            onReset={ForSignUp.handleReset}
             className="w-full md:px-8 xl:px-10 mt-8 space-y-3"
           >
             <div className="social-container">
