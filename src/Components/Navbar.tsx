@@ -5,27 +5,27 @@ import { ImCross } from "react-icons/im";
 import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SearchBar from "./Searchbar";
+import midPng from "../assets/Group 4.png";
+import logo from "../assets/logo-reverse-black.svg";
 
-interface NavbarPropsType {
-
-}
+interface NavbarPropsType {}
 
 const navigation = [
   { name: "Home", href: "/dashboard", current: true },
   { name: "Connections", href: "#", current: false },
-  { name: "Groups", href: "#", current: false },
-  { name: "Latest Views", href: "/login", current: false },
+  { name: "Events", href: "#", current: false },
+  { name: "Tech Trends", href: "#", current: false },
 ];
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Navbar :FC<NavbarPropsType> = () => {
+const Navbar: FC<NavbarPropsType> = () => {
   return (
     <Disclosure
       as="nav"
-      className="shadow-lg bg-lightBlue fixed z-20 top-0 right-0 left-0"
+      className="shadow-lg  bg-gradient-to-tr to-blue-800 from-purple-500 fixed z-20 top-0 right-0 left-0"
     >
       {({ open }) => (
         <>
@@ -48,18 +48,18 @@ const Navbar :FC<NavbarPropsType> = () => {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                    className="block lg:hidden h-12 w-auto"
+                    src={midPng}
                     alt="Workflow"
                   />
                   <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                    className="hidden lg:block w-28 "
+                    src={logo}
                     alt="Workflow"
                   />
                 </div>
-                <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4 items-center">
+                <div className="hidden sm:flex items-center sm:ml-6">
+                  <div className="flex space-x-4 justify-center items-center">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
