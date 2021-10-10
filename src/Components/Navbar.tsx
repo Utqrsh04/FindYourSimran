@@ -13,8 +13,8 @@ interface NavbarPropsType {}
 const navigation = [
   { name: "Home", href: "/dashboard", current: true },
   { name: "Connections", href: "#", current: false },
-  { name: "Events", href: "#", current: false },
-  { name: "Tech Trends", href: "#", current: false },
+  { name: "Groups", href: "/login", current: false },
+  { name: "Trends", href: "/trends", current: false },
 ];
 
 function classNames(...classes: any) {
