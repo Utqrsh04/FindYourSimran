@@ -25,6 +25,51 @@ const Dashboard = () => {
       img: photo2,
       datePosted: "15 October",
     },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
   ];
 
   useEffect(() => {
