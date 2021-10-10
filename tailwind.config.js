@@ -9,9 +9,6 @@ module.exports = {
       colors: {
         lightBlue: "#0091EA",
       },
-      height:{
-        "100": '388px',
-      }
     },
   },
   variants: {
