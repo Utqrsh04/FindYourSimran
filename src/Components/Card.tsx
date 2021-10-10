@@ -10,11 +10,6 @@ const Card: FC<CardTypeProps> = ({ img, userName, datePosted }) => {
   return (
     <div className=" pt-0-0 mx-auto top-0 relative pb-2">
       <div className=" w-full lg:max-w-full lg:flex mx-auto">
-        <img
-          className="h-48 lg:h-auto lg:w-96 w-full flex bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-          src={img}
-          alt=""
-        />
         <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div className="mb-8">
             <p className="text-sm text-gray-600 flex items-center">

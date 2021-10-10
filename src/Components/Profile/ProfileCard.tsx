@@ -3,8 +3,8 @@ import bgimage from "../../assets/neonwave.jpg";
 
 const ProfileCard = () => {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="bg-blue-700 w-full h-24"></div>
+    <div className="flex flex-col justify-center items-center bg-gray-800 pb-4 rounded-lg">
+      <div className="bg-blue-700 w-full h-24 rounded-t-lg"></div>
       <img
         src={bgimage}
         alt="Profile"

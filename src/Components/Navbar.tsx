@@ -13,7 +13,7 @@ interface NavbarPropsType {}
 const navigation = [
   { name: "Home", href: "/dashboard", current: true },
   { name: "Connections", href: "#", current: false },
-  { name: "Groups", href: "/login", current: false },
+  { name: "Events", href: "/login", current: false },
   { name: "Trends", href: "/trends", current: false },
 ];
 
@@ -64,11 +64,11 @@ const Navbar: FC<NavbarPropsType> = () => {
                       <Link
                         key={item.name}
                         to={item.href}
-                        className={classNames(
+                        className= {classNames(
                           item.current
                             ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                            : "text-white hover:bg-gray-700 hover:text-white",
+                          "px-3 py-2 rounded-md text-base font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
