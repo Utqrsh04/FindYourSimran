@@ -1,14 +1,16 @@
 import { FC, Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import Checked from '../../assets/checked.gif'
 
 interface ToastTypeProps {
+  type : "Error" | "Success",
   show : boolean,
+  message : string,
 }
 
-const Toast : FC<ToastTypeProps> = ({show})  => {
-  const history = useHistory();
+const Toast : FC<ToastTypeProps> = ({show , message , type})  => {
+  // const history = useHistory();
   const [open, setOpen] = useState(show);
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const Toast : FC<ToastTypeProps> = ({show})  => {
 
   const handleClick = () => {
     setOpen(false);
-    history.push("/");
+    // history.push("/");
   }
 
   return (
@@ -64,17 +66,28 @@ const Toast : FC<ToastTypeProps> = ({show})  => {
 
                   </div>
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    {type === "Error" ?
                     <Dialog.Title
-                      as="h3"
-                      className="text-lg leading-6 font-medium text-gray-900"
+                    as="h3"
+                    className="text-lg leading-6 font-medium text-red-800"
                     >
-                      Account Created
+                      Error
 
                     </Dialog.Title>
+                    :
+                    <Dialog.Title
+                    as="h3"
+                    className="text-lg leading-6 font-medium text-green-900"
+                    >
+                      Success
+
+                    </Dialog.Title>
+                      
+                  }
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Congratulations Your Account has been created . Please
-                        Login to Continue
+                       
+                         {message}
                       </p>
                     </div>
                   </div>
@@ -86,7 +99,7 @@ const Toast : FC<ToastTypeProps> = ({show})  => {
                   className="mt-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={handleClick}
                 >
-                  Login Now
+                  Okay
                 </button>
               </div>
             </div>
