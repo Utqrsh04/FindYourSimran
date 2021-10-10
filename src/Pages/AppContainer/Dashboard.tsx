@@ -75,31 +75,6 @@ const Dashboard = () => {
   useEffect(() => {
     <Loader />;
   }, []);
-<<<<<<< HEAD
-
-  return (
-    <div className="bg-gray-100">
-      <Navbar />
-      <div className="flex flex-row mt-16 pt-5 w-full justify-center px-2 lg:space-x-10 lg:px-0">
-        <div className="bg-white w-1/6 rounded-lg shadow-2xl max-h-96 hidden lg:block">
-          <ProfileCard />
-        </div>
-        <div className="lg:w-2/5 rounded-md ">
-          {details.map((detail, index) => (
-            <Card
-              key={index}
-              userName={detail.userName}
-              datePosted={detail.datePosted}
-              img={detail.img}
-            />
-          ))}
-        </div>
-        <div className="w-1/5 shadow-2xl rounded-lg h-100 border-2 border-gray-200 hidden xl:block">
-          <NewsCard />
-        </div>
-      </div>
-    </div>
-=======
   return (
     <Switch>
       <div className="">
@@ -141,7 +116,6 @@ const Dashboard = () => {
         </Route>
       </div>
     </Switch>
->>>>>>> main
   );
 };
 
