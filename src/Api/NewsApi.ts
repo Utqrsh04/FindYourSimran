@@ -1,10 +1,15 @@
 export const getNews = () =>{
-    return fetch(
-        "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=0004179c4e1d46a88ba2cd52f2bf9efa&pageSize=5",
-        {
-            method:"GET",
-        }
-    ).then(res => res.json())
-    .then( (response) =>  response)
-    .catch(error => console.log(error))
+    return fetch("https://bing-news-search1.p.rapidapi.com/news?count=2&offset=5&category=ScienceAndTechnology&mkt=en-IN&setLang=en&safeSearch=Off&textFormat=Raw", {
+	"method": "GET",
+	"headers": {
+		"x-bingapis-sdk": "true",
+		"x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
+		"x-rapidapi-key": "fe35280735msh2652c6f5a1945efp164cfcjsn2e7cb68ac396"
+	}
+})
+.then(res => res.json())
+.then((res) => res)
+.catch(err => {
+	console.error(err);
+});
 }
