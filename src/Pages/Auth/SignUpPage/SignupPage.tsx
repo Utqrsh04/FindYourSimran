@@ -1,6 +1,5 @@
-import React, { useCallback, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import  { useCallback, useState } from "react";
+import { SiGithub} from "react-icons/si";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import app from "../../../firebase";
@@ -8,6 +7,8 @@ import "./SignupPage.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Toast from "../../../Components/Toast/Toast";
+import Input from "../../../Components/Input";
+import { FaGoogle } from "react-icons/fa";
 
 const SignupPage = () => {
   const history = useHistory();
@@ -15,7 +16,7 @@ const SignupPage = () => {
   const [showToast, setShowToast] = useState(false);
   const [error, setError] = useState<any>("");
 
-  const ForSignUp = useFormik({
+  const { errors, touched, handleReset, getFieldProps, isValid } = useFormik({
     initialValues: { name: "", email: "", password: "" },
     validationSchema: yup.object().shape({
       name: yup
@@ -59,95 +60,92 @@ const SignupPage = () => {
 
   return (
     <div className=" bgImage flex justify-center items-center h-screen">
-      <Toast type="Success" show={showToast} message={error} />
-      <div className="md:mx-12 lg:mx-24 xl:mx-40  flex h-4/5 w-full">
-        <div className="bg-blue-200 w-1/2 p-5 rounded-l-xl text-center flex-col justify-center ">
-          <h1 className="text-2xl pt-5 text-gray-800  font-bold">
-            Create account to continue
+      <Toast type="Error" show={showToast} message={error} />
+      <div className="md:mx-12 lg:mx-32 xl:mx-52  flex h-4/5 w-full ">
+        <div className="side-container justify-center items-center md:flex hidden  h-full md:w-1/2 p-5">
+          <div className="text-9xl font-bold">FYD</div>
+        </div>
+
+        <div className="bg-white md:w-1/2 p-5 w-full mx-6 sm:mx-20 md:mx-0 text-center flex-col justify-center ">
+          <h1 className="text-3xl font-mono text-gray-800  font-bold">
+            Sign Up
+            <p className="text-sm font-bold pt-2">
+              Already Have an Account?{" "}
+              <Link className="text-blue-800 font-mono" to="/login">
+                Login Now
+              </Link>
+            </p>
           </h1>
-          <p className="text-sm font-bold">
-            Already have an account?{" "}
-            <Link className="text-red-600" to="/login">
-              Login now
-            </Link>
-          </p>
+
           <form
             onSubmit={handleSignUp}
-            onReset={ForSignUp.handleReset}
-            className="w-full md:px-8 xl:px-10 mt-8 space-y-3"
+            onReset={handleReset}
+            className="w-full md:px-8 xl:px-10 space-y-6"
           >
-            <div className="social-container">
-              <a href="/" className="social">
-                <SiGithub />
-              </a>
-              <a href="/" className="social">
-                <FcGoogle />
-              </a>
-              <a href="/" className="social">
-                <SiLinkedin />
-              </a>
-            </div>
-            <div className="flex flex-col text-left ">
-              <label
-                htmlFor="name"
-                className="text-gray-700 ml-1  font-bold text-xl"
-              >
-                Name
-              </label>
-              <input
+            <div className="w-full pt-4 ">
+            <Input
                 id="name"
-                type="name"
-                name="name"
-                placeholder="Name"
-                required
-                className="px-4 py-2 rounded-lg border border-gray-500 text-black placeholder-gray-600 focus:outline-none "
+                placeholder="Full Name"
+                touched={touched.name}
+                error={errors.name}
+                {...getFieldProps("name")}
               />
-            </div>
-            <div className="flex flex-col space-y-2 text-left ">
-              <label
-                htmlFor="email"
-                className="text-gray-700 ml-1  font-bold text-xl"
-              >
-                Email
-              </label>
-              <input
+
+              <Input
                 id="email"
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                className="px-4 py-2 rounded-lg border border-gray-500 text-black placeholder-gray-600 focus:outline-none "
+                placeholder="Email Address"
+                touched={touched.email}
+                error={errors.email}
+                {...getFieldProps("email")}
               />
-            </div>
-            <div className="flex flex-col space-y-2 text-left ">
-              <label
-                htmlFor="password"
-                className="text-gray-700 ml-1 font-bold text-xl"
-              >
-                Password
-              </label>
-              <input
+
+              <Input
                 id="password"
-                type="password"
-                name="password"
                 placeholder="Password"
-                required
-                className="px-4 py-2 rounded-lg border border-gray-500 text-black placeholder-gray-600 focus:outline-none "
+                touched={touched.password}
+                error={errors.password}
+                type="Password"
+                {...getFieldProps("password")}
               />
             </div>
-            <div className="pt-5">
+            
+
+            <div className="">
               <button
                 type="submit"
-                className="bg-black text-white px-7 rounded-xl py-2"
+                className={`bg-purple-500 rounded-3xl px-7 w-full py-2 font-mono font-bold text-white  ${
+                  !isValid && "cursor-not-allowed"
+                } `}
+                disabled={!isValid}
               >
                 Sign Up
               </button>
             </div>
-          </form>
-        </div>
+            <h1 className="text-base font-mono font-semibold">
+              or Connect with Social Media
+            </h1>
 
-        <div className="bg-gray-400 rounded-r-xl w-1/2 h-full p-5">
-          <div></div>
+            <div className="space-y-3 font-mono ">
+              <div className="bg-red-400 flex rounded-3xl text-white px-7 md:px-4 lg:px-7 w-full py-2 cursor-pointer">
+                <FaGoogle className="w-7 h-7" />
+                <div className="w-full flex items-center justify-center">
+                  Sign Up with Google
+                </div>
+              </div>
+              {/* <div className="bg-blue-500 flex rounded-3xl text-white px-7 md:px-4 lg:px-7 w-full py-2 cursor-pointer">
+                <SiLinkedin className="w-7 h-7" />
+                <div className="w-full flex items-center justify-center">
+                  Sign Up with LinkedIn
+                </div>
+              </div> */}
+              <div className="bg-gray-900 flex  rounded-3xl text-white px-7 md:px-4 lg:px-7 w-full py-2 cursor-pointer">
+                <SiGithub className="w-7 h-7" />
+                <div className="w-full flex items-center justify-center">
+                  Sign Up with Github
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ module.exports = {
       }),
       colors: {
         lightBlue: "#0091EA",
+        brightBlue: "#1539c8",
       },
     },
   },

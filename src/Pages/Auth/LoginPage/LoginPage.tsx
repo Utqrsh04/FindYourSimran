@@ -1,24 +1,24 @@
 import { useFormik } from "formik";
-import React, { useCallback, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import { useCallback, useState } from "react";
+import { SiGithub } from "react-icons/si";
+import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import * as yup from "yup";
 import app from "../../../firebase";
-
 import "./LoginPage.css";
 import Toast from "../../../Components/Toast/Toast";
+import Input from "../../../Components/Input";
 
 const LoginPage = () => {
   const history = useHistory();
 
-  const SignIn = useFormik({
+  const { errors, touched, handleReset, getFieldProps, isValid } = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: yup.object().shape({
-      email: yup.string().required("email is required").email(),
+      email: yup.string().required("Email is required").email(),
 
-      password: yup.string().required("password is required").max(20).min(8),
+      password: yup.string().required("Password is required").max(20).min(8),
     }),
     onSubmit: () => {},
   });
@@ -43,8 +43,6 @@ const LoginPage = () => {
         console.log(error);
         setError(error.message);
         setShowToast(true);
-
-        // alert(error);
       }
     },
     [history]
@@ -53,80 +51,82 @@ const LoginPage = () => {
   return (
     <div className=" bgImage flex justify-center items-center h-screen">
       <Toast type="Error" show={showToast} message={error} />
-      <div className="md:mx-12 lg:mx-24 xl:mx-40  flex h-4/5 w-full">
-        <div className="bg-blue-200 w-1/2 p-5 rounded-l-xl text-center flex-col justify-center ">
-          <h1 className="text-2xl pt-5 text-gray-800  font-bold">
-            Login to Continue
+      <div className="md:mx-12 lg:mx-32 xl:mx-52  flex h-4/5 w-full ">
+        <div className="side-container justify-center items-center md:flex hidden  h-full md:w-1/2 p-5">
+          <div className="text-9xl font-bold">FYD</div>
+        </div>
+
+        <div className="bg-white md:w-1/2 p-5 w-full mx-6 sm:mx-20 md:mx-0 text-center flex-col justify-center ">
+          <h1 className="text-3xl font-mono text-gray-800  font-bold">
+            Sign In
+            <p className="text-sm font-bold pt-2">
+              New here?{" "}
+              <Link className="text-blue-800 font-mono" to="/signup">
+                Create an account
+              </Link>
+            </p>
           </h1>
-          <p className="text-sm font-bold">
-            New here?{" "}
-            <Link className="text-red-600" to="/signup">
-              Create an account{" "}
-            </Link>
-          </p>
 
           <form
             onSubmit={handleLogin}
-            onReset={SignIn.handleReset}
-            className="w-full md:px-8 xl:px-10 mt-10 space-y-6"
+            onReset={handleReset}
+            className="w-full md:px-8 xl:px-10 space-y-6"
           >
-            <div className="social-container">
-              <a href="/" className="social">
-                <SiGithub />
-              </a>
-              <a href="/" className="social">
-                <FcGoogle />
-              </a>
-              <a href="/" className="social">
-                <SiLinkedin />
-              </a>
-            </div>
-            <div className="flex flex-col space-y-2 text-left ">
-              <label
-                htmlFor="email"
-                className="text-gray-700 ml-1  font-bold text-xl"
-              >
-                Email
-              </label>
-              <input
+            <div className="w-full pt-4 ">
+              <Input
                 id="email"
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                className="px-4 py-2 rounded-lg border border-gray-500 text-black placeholder-gray-600 focus:outline-none "
+                placeholder="Email Address"
+                touched={touched.email}
+                error={errors.email}
+                {...getFieldProps("email")}
               />
-            </div>
-            <div className="flex flex-col space-y-2 text-left ">
-              <label
-                htmlFor="password"
-                className="text-gray-700 ml-1 font-bold text-xl"
-              >
-                Password
-              </label>
-              <input
+
+              <Input
                 id="password"
-                type="password"
-                name="password"
                 placeholder="Password"
-                required
-                className="px-4 py-2 rounded-lg border border-gray-500 text-black placeholder-gray-600 focus:outline-none "
+                touched={touched.password}
+                error={errors.password}
+                type="Password"
+                {...getFieldProps("password")}
               />
             </div>
-            <h1 className="text-sm pt-5 font-semibold">Forgot Password ?</h1>
+
             <div className="">
               <button
                 type="submit"
-                className="bg-black text-white px-7 rounded-xl py-2"
+                className={`bg-purple-500 rounded-3xl px-7 w-full py-2 font-mono font-bold text-white  ${
+                  !isValid && "cursor-not-allowed"
+                } `}
+                disabled={!isValid}
               >
                 Sign In
               </button>
             </div>
-          </form>
-        </div>
+            <h1 className="text-base font-mono font-semibold pt-5">
+              or Connect with Social Media
+            </h1>
 
-        <div className="bg-gray-400 rounded-r-xl h-full w-1/2 p-5">
-          <div>Logo here</div>
+            <div className="space-y-3 font-mono ">
+              <div className="bg-red-400 flex rounded-3xl text-white px-7 md:px-4 lg:px-7 w-full py-2 cursor-pointer">
+                <FaGoogle className="w-7 h-7" />
+                <div className="w-full flex items-center justify-center">
+                  Sign In with Google
+                </div>
+              </div>
+              {/* <div className="bg-blue-500 flex rounded-3xl text-white px-7 md:px-4 lg:px-7 w-full py-2 cursor-pointer">
+                <SiLinkedin className="w-7 h-7" />
+                <div className="w-full flex items-center justify-center">
+                  Sign In with LinkedIn
+                </div>
+              </div> */}
+              <div className="bg-gray-900 flex  rounded-3xl text-white px-7 md:px-4 lg:px-7 w-full py-2 cursor-pointer">
+                <SiGithub className="w-7 h-7" />
+                <div className="w-full flex items-center justify-center">
+                  Sign In with Github
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
