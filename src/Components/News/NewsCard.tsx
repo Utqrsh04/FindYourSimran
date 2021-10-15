@@ -15,7 +15,7 @@ const NewsCard = () => {
   //console.log("Data ", data && data[0].image.thumbnail.contentUrl);
 
   return (
-    <div className=" bg-gray-800 pb-5 rounded-lg items-start">
+    <div className=" bg-darkshade pb-5 rounded-lg items-start">
       <h1 className="text-xl ml-4  pt-4 pb-3 font-bold">What's Happening</h1>
       {data &&
         data.map((each: any, index: any) => (
