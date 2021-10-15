@@ -9,6 +9,7 @@ import { Switch, Route } from "react-router";
 import Trends from "./Trends";
 import ProfileCard from "../../Components/Profile/ProfileCard";
 import NewsCard from "../../Components/News/NewsCard";
+import Events from "./Events";
 
 const Dashboard = () => {
   const details = [
@@ -78,6 +79,9 @@ const Dashboard = () => {
         </Route>
         <Route exact path="/trends">
           <Trends />
+        </Route>
+        <Route exact path="/events">
+          <Events />
         </Route>
       </div>
     </Switch>

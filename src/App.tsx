@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/signup">
             <SignupPage />
           </Route>
-          <Route exact path={["/dashboard", "/trends"]}>
+          <Route exact path={["/dashboard", "/trends", "/events"]}>
             <Dashboard />
           </Route>
           <Route path="/notFound" exact>
