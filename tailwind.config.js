@@ -7,7 +7,8 @@ module.exports = {
         "gif-tick": "url('/src/assets/checked.gif')",
       }),
       colors: {
-        lightBlue: "#0091EA",
+        navbar: "#1b232e",
+        darkshade:"#222d3d"
       },
     },
   },
