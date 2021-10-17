@@ -9,8 +9,8 @@ import { Switch, Route } from "react-router";
 import Trends from "./Trends";
 import ProfileCard from "../../Components/Profile/ProfileCard";
 import NewsCard from "../../Components/News/NewsCard";
-import Events from "./Events";
 import ProfilePage from "./ProfilePage";
+import Contests from "./Contests";
 
 const Dashboard = () => {
   const details = [
@@ -81,11 +81,11 @@ const Dashboard = () => {
         <Route exact path="/trends">
           <Trends />
         </Route>
-        <Route exact path="/events">
-          <Events />
-          </Route>
+        <Route exact path="/contests">
+          <Contests />
+        </Route>
         <Route exact path="/profile">
-          <ProfilePage/>
+          <ProfilePage />
         </Route>
       </div>
     </Switch>
