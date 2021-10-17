@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
-import { useHistory } from "react-router";
 import { getAllContest } from "../../api/getContest";
-import CustomDropdown from "../../Components/CustomDropdown";
 import "./Contests.css";
 
 const Contests = () => {
@@ -18,7 +16,6 @@ const Contests = () => {
     contest.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const history = useHistory();
   return (
     <div className="pt-16 min-h-screen bg-gray-300">
       <div className="w-full py-7 min-h-full flex flex-col items-center space-y-5 justify-center ">
@@ -44,7 +41,7 @@ const Contests = () => {
               </button>
             </div>
           </div>
-          <CustomDropdown />
+          {/* <CustomDropdown /> */}
         </div>
 
         {/* <div className="bg-purple-400 p-5 text-left">
@@ -88,6 +85,7 @@ const Contests = () => {
                   <a
                     href={contest.url}
                     target="_blank"
+                    rel="noreferrer"
                     className="flex items-center hover:text-yellow-800"
                   >
                     {contest.site} <FiExternalLink className="ml-1" />
