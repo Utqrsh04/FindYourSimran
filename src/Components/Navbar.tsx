@@ -13,7 +13,7 @@ interface NavbarPropsType {}
 const navigation = [
   { name: "Home", href: "/dashboard", current: true },
   { name: "Connections", href: "#", current: false },
-  { name: "Events", href: "/login", current: false },
+  { name: "Contests", href: "/contests", current: false },
   { name: "Trends", href: "/trends", current: false },
 ];
 
@@ -25,7 +25,7 @@ const Navbar: FC<NavbarPropsType> = () => {
   return (
     <Disclosure
       as="nav"
-      className="shadow-lg  bg-gradient-to-tr to-blue-800 from-purple-500 fixed z-20 top-0 right-0 left-0"
+      className="shadow-lg bg-navbar fixed z-20 top-0 right-0 left-0"
     >
       {({ open }) => (
         <>
@@ -113,7 +113,7 @@ const Navbar: FC<NavbarPropsType> = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to=""
+                            to="/profile"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
