@@ -1,15 +1,16 @@
 import { FC, Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 // import { useHistory } from "react-router";
-import Checked from '../../assets/checked.gif'
+import Checked from "../../assets/checked.gif";
+import Warning from "../../assets/warning.gif";
 
 interface ToastTypeProps {
-  type : "Error" | "Success",
-  show : boolean,
-  message : string,
+  type: "Error" | "Success";
+  show: boolean;
+  message: string;
 }
 
-const Toast : FC<ToastTypeProps> = ({show , message , type})  => {
+const Toast: FC<ToastTypeProps> = ({ show, message, type }) => {
   // const history = useHistory();
   const [open, setOpen] = useState(show);
 
@@ -20,7 +21,7 @@ const Toast : FC<ToastTypeProps> = ({show , message , type})  => {
   const handleClick = () => {
     setOpen(false);
     // history.push("/");
-  }
+  };
 
   return (
     <Transition.Root show={open}>
@@ -61,33 +62,27 @@ const Toast : FC<ToastTypeProps> = ({show , message , type})  => {
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
-                  <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                  <img src={Checked} alt="" className="w-10 h-10" />
-
-                  </div>
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    {type === "Error" ?
-                    <Dialog.Title
-                    as="h3"
-                    className="text-lg leading-6 font-medium text-red-800"
-                    >
-                      Error
-
-                    </Dialog.Title>
-                    :
-                    <Dialog.Title
-                    as="h3"
-                    className="text-lg leading-6 font-medium text-green-900"
-                    >
-                      Success
-
-                    </Dialog.Title>
-                      
-                  }
+                    {type === "Error" ? (
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg flex items-center leading-6 font-medium text-red-800"
+                      >
+                        <img src={Warning} alt="" className="w-10 h-10" />
+                        Error
+                      </Dialog.Title>
+                    ) : (
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg flex items-center leading-6 font-medium text-green-900"
+                      >
+                        <img src={Checked} alt="" className="w-10 h-10" />
+                        Success
+                      </Dialog.Title>
+                    )}
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                       
-                         {message}
+                      <p className="text-sm font-semibold text-gray-500">
+                        {message}
                       </p>
                     </div>
                   </div>
@@ -96,10 +91,10 @@ const Toast : FC<ToastTypeProps> = ({show , message , type})  => {
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="mt-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="mt-2 w-full inline-flex justify-center rounded-md border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-200 focus:outline-none  sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={handleClick}
                 >
-                  Okay
+                  Close
                 </button>
               </div>
             </div>
@@ -108,6 +103,6 @@ const Toast : FC<ToastTypeProps> = ({show , message , type})  => {
       </Dialog>
     </Transition.Root>
   );
-}
+};
 
 export default Toast;
