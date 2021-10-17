@@ -28,39 +28,39 @@ const CustomDropdown = () => {
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <h1
+                  // href="/dashboard"
                   className={
                     "bg-gray-100 text-gray-900 block px-4 py-2 text-sm"
                   }
                 >
                   Account settings
-                </a>
+                </h1>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <h1
+                  // href="/dashboard"
                   className={"bg-gray-100 text-gray-900block px-4 py-2 text-sm"}
                 >
                   Support
-                </a>
+                </h1>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <h1
+                  // href="/dashboard"
                   className={
                     "bg-gray-100 text-gray-900 block px-4 py-2 text-sm"
                   }
                 >
                   License
-                </a>
+                </h1>
               )}
             </Menu.Item>
-            <form method="POST" action="#">
+            <form method="POST">
               <Menu.Item>
                 {({ active }) => (
                   <button
