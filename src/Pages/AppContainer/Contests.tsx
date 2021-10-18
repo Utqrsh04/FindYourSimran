@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
-import { getAllContest } from "../../api/getContest";
+import getAllContest from "../../api/getContest";
 import "./Contests.css";
 
 const Contests = () => {
