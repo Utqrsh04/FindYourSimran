@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
-import getAllContest from "../../api/getContest";
 import "./Contests.css";
 
 const Contests = () => {
@@ -19,7 +18,6 @@ const Contests = () => {
   return (
     <div className="pt-16 min-h-screen bg-gray-300">
       <div className="w-full py-7 min-h-full flex flex-col items-center space-y-5 justify-center ">
-        
         <div className="w-96 sticky top-20 flex justify-around space-x-4 items-center ">
           <div className=" flex mx-auto">
             <div className="flex ">
@@ -92,7 +90,7 @@ const Contests = () => {
                   </a>
                 </div>{" "}
                 <div className="col col-3" data-label="Duration">
-                  { (contest.duration)/3600}hrs
+                  {contest.duration / 3600}hrs
                 </div>
                 <div className="col col-4" data-label="Start Time">
                   {contest.start_time}
@@ -107,3 +105,15 @@ const Contests = () => {
 };
 
 export default Contests;
+
+export const getAllContest = () => {
+  console.log("Get All Contest");
+
+  return fetch("https://kontests.net/api/v1/all", {
+    method: "GET",
+    headers: {},
+  })
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((err) => console.log(err));
+};
