@@ -1,8 +1,8 @@
-import  { useCallback, useState } from "react";
-import { SiGithub} from "react-icons/si";
+import { useCallback, useState } from "react";
+import { SiGithub } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import app from "../../../firebase";
+import { auth } from "../../../firebase";
 import "./SignupPage.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -43,16 +43,13 @@ const SignupPage = () => {
       const { email, password, name } = event.target.elements;
       console.log("Sign up ", name.value, email.value, password.value);
       try {
-        await app
-          .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
+        await auth.createUserWithEmailAndPassword(email.value, password.value);
         console.log("User Created ");
-        history.push("/login");
       } catch (error: any) {
         console.log(error);
         setError(error.message);
         setShowToast(true);
-        alert(error);
+        // alert(error);
       }
     },
     [history]
@@ -83,7 +80,7 @@ const SignupPage = () => {
             className="w-full md:px-8 xl:px-10 space-y-6"
           >
             <div className="w-full pt-4 ">
-            <Input
+              <Input
                 id="name"
                 placeholder="Full Name"
                 touched={touched.name}
@@ -108,7 +105,6 @@ const SignupPage = () => {
                 {...getFieldProps("password")}
               />
             </div>
-            
 
             <div className="">
               <button
