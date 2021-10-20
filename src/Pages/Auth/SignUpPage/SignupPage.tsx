@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { SiGithub } from "react-icons/si";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
 import { auth } from "../../../firebase";
 import "./SignupPage.css";
 import { useFormik } from "formik";
@@ -11,8 +10,6 @@ import Input from "../../../Components/Input";
 import { FaGoogle } from "react-icons/fa";
 
 const SignupPage = () => {
-  const history = useHistory();
-
   const [showToast, setShowToast] = useState(false);
   const [error, setError] = useState<any>("");
 
@@ -37,23 +34,20 @@ const SignupPage = () => {
     },
   });
 
-  const handleSignUp = useCallback(
-    async (event) => {
-      event.preventDefault();
-      const { email, password, name } = event.target.elements;
-      console.log("Sign up ", name.value, email.value, password.value);
-      try {
-        await auth.createUserWithEmailAndPassword(email.value, password.value);
-        console.log("User Created ");
-      } catch (error: any) {
-        console.log(error);
-        setError(error.message);
-        setShowToast(true);
-        // alert(error);
-      }
-    },
-    [history]
-  );
+  const handleSignUp = useCallback(async (event) => {
+    event.preventDefault();
+    const { email, password, name } = event.target.elements;
+    console.log("Sign up ", name.value, email.value, password.value);
+    try {
+      await auth.createUserWithEmailAndPassword(email.value, password.value);
+      console.log("User Created ");
+    } catch (error: any) {
+      console.log(error);
+      setError(error.message);
+      setShowToast(true);
+      // alert(error);
+    }
+  }, []);
 
   return (
     <div className=" bgImage flex justify-center items-center h-screen">

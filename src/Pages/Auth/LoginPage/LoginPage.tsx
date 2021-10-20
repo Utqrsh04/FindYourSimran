@@ -3,7 +3,6 @@ import { useCallback, useState } from "react";
 import { SiGithub } from "react-icons/si";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
 import * as yup from "yup";
 import { auth } from "../../../firebase";
 import "./LoginPage.css";
@@ -11,7 +10,6 @@ import Toast from "../../../Components/Toast/Toast";
 import Input from "../../../Components/Input";
 
 const LoginPage = () => {
-  const history = useHistory();
 
   const { errors, touched, handleReset, getFieldProps, isValid } = useFormik({
     initialValues: { email: "", password: "" },
@@ -42,7 +40,7 @@ const LoginPage = () => {
         setShowToast(true);
       }
     },
-    [history]
+    []
   );
 
   return (
