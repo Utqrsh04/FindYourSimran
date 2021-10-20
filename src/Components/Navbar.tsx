@@ -7,13 +7,14 @@ import { Link } from "react-router-dom";
 import SearchBar from "./Searchbar";
 import midPng from "../assets/Group 4.png";
 import logo from "../assets/logo-reverse-black.svg";
+import { auth } from "../firebase";
 
 interface NavbarPropsType {}
 
 const navigation = [
   { name: "Home", href: "/dashboard", current: true },
   { name: "Connections", href: "#", current: false },
-  { name: "Events", href: "/login", current: false },
+  { name: "Contests", href: "/contests", current: false },
   { name: "Trends", href: "/trends", current: false },
 ];
 
@@ -22,6 +23,12 @@ function classNames(...classes: any) {
 }
 
 const Navbar: FC<NavbarPropsType> = () => {
+
+  const logout = async () => {
+    await auth.signOut();
+    
+  };
+
   return (
     <Disclosure
       as="nav"
@@ -140,6 +147,7 @@ const Navbar: FC<NavbarPropsType> = () => {
                         {({ active }) => (
                           <Link
                             to=""
+                            onClick={logout}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"

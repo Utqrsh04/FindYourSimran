@@ -11,6 +11,7 @@ import ProfileCard from "../../Components/Profile/ProfileCard";
 import NewsCard from "../../Components/News/NewsCard";
 import ProfilePage from "./ProfilePage";
 import EditProfile from "./EditProfile";
+import Contests from "./Contests";
 
 const Dashboard = () => {
   const details = [
@@ -117,8 +118,11 @@ const Dashboard = () => {
         <Route exact path="/trends">
           <Trends />
         </Route>
+        <Route exact path="/contests">
+          <Contests />
+        </Route>
         <Route exact path="/profile">
-          <ProfilePage/>
+          <ProfilePage />
         </Route>
         <Route exact path="/settings">
           <EditProfile/>

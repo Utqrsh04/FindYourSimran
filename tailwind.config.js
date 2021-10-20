@@ -8,7 +8,8 @@ module.exports = {
       }),
       colors: {
         navbar: "#1b232e",
-        darkshade:"#222d3d"
+        darkshade:"#222d3d",
+        brightBlue: "#1539c8",
       },
     },
   },
