@@ -4,34 +4,44 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { useEffect } from "react";
-import Loader from "./Components/Loader/Loader";
+import { useEffect, useState } from "react";
 import Dashboard from "./Pages/AppContainer/Dashboard";
 import NotFound from "./Pages/AppContainer/NotFound";
-import LoginPage from "./Pages/Auth/LoginPage/LoginPage";
-import SignupPage from "./Pages/Auth/SignUpPage/SignupPage";
+import { auth } from "./firebase";
+import Authpage from "./Pages/Auth/Authpage";
 
 function App() {
+  const [user, setUser] = useState<any>("");
+
   useEffect(() => {
-    <Loader />;
-  }, []);
+    const unsub = auth.onAuthStateChanged((user) => setUser(user));
+
+    console.log("UID ", user && user.uid);
+    // it will run when component unmounts like componentDidUnmount()
+    return () => {
+      unsub();
+    };
+  });
 
   return (
     <div>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Redirect to="/login" />
+          <Route path="/" exact>
+            {user ? <Redirect to="/dashboard" /> : <Redirect to="/login" />}
           </Route>
-          <Route exact path="/login">
-            <LoginPage />
+
+          <Route path={["/login", "/signup"]} exact>
+            {user ? <Redirect to="/dashboard" /> : <Authpage />}
           </Route>
-          <Route exact path="/signup">
-            <SignupPage />
+
+          <Route
+            exact
+            path={["/dashboard", "/trends", "/profile", "/contests"]}
+          >
+            {user ? <Dashboard /> : <Redirect to="/login" />}
           </Route>
-          <Route exact path={["/dashboard", "/trends","/profile", "/contests"]}>
-            <Dashboard />
-          </Route>
+
           <Route path="/notFound" exact>
             <NotFound />
           </Route>

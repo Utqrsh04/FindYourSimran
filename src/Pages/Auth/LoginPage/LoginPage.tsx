@@ -3,15 +3,13 @@ import { useCallback, useState } from "react";
 import { SiGithub } from "react-icons/si";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
 import * as yup from "yup";
-import app from "../../../firebase";
+import { auth } from "../../../firebase";
 import "./LoginPage.css";
 import Toast from "../../../Components/Toast/Toast";
 import Input from "../../../Components/Input";
 
 const LoginPage = () => {
-  const history = useHistory();
 
   const { errors, touched, handleReset, getFieldProps, isValid } = useFormik({
     initialValues: { email: "", password: "" },
@@ -34,18 +32,15 @@ const LoginPage = () => {
       const { email, password } = event.target.elements;
       console.log("User ", email.value, password.value);
       try {
-        await app
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
+        await auth.signInWithEmailAndPassword(email.value, password.value);
         console.log("logged In");
-        history.push("/dashboard");
       } catch (error: any) {
         console.log(error);
         setError(error.message);
         setShowToast(true);
       }
     },
-    [history]
+    []
   );
 
   return (

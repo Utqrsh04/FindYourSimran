@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
-import { getNews } from "../../api/NewsApi";
+import { getNews } from "../../Api/GetNews";
 
 const NewsCard = () => {
   useEffect(() => {
