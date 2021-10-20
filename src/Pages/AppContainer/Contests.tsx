@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
-import getAllContest from "../../Api/GetContest";
 import "./Contests.css";
 
 const Contests = () => {
@@ -107,14 +106,14 @@ const Contests = () => {
 
 export default Contests;
 
-// export const getAllContest = () => {
-//   console.log("Get All Contest");
+export const getAllContest = () => {
+  console.log("Get All Contest");
 
-//   return fetch("https://kontests.net/api/v1/all", {
-//     method: "GET",
-//     headers: {},
-//   })
-//     .then((res) => res.json())
-//     .then((res) => res)
-//     .catch((err) => console.log(err));
-// };
+  return fetch("https://kontests.net/api/v1/all", {
+    method: "GET",
+    headers: {},
+  })
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((err) => console.log(err));
+};
