@@ -10,9 +10,45 @@ import Trends from "./Trends";
 import ProfileCard from "../../Components/Profile/ProfileCard";
 import NewsCard from "../../Components/News/NewsCard";
 import ProfilePage from "./ProfilePage";
+import EditProfile from "./EditProfile";
 
 const Dashboard = () => {
   const details = [
+    {
+      userName: "Anurodh Dubey",
+      img: photo,
+      datePosted: "27 August",
+    },
+    {
+      userName: "Utkarsh Kumar",
+      img: photo1,
+      datePosted: "18 June",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
+    {
+      userName: "Ashutosh Tripathi",
+      img: photo2,
+      datePosted: "15 October",
+    },
     {
       userName: "Anurodh Dubey",
       img: photo,
@@ -59,7 +95,7 @@ const Dashboard = () => {
         <Navbar />
         <Route exact path="/dashboard">
           <div className=" flex flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
-            <div className="w-1/6 rounded-md shadow-2xl max-h-96 hidden lg:block text-white">
+            <div className="sticky top-20 w-1/6 rounded-md shadow-2xl max-h-96 hidden lg:block text-white">
               <ProfileCard />
             </div>
             <div className="lg:w-2/5 rounded-md">
@@ -72,8 +108,9 @@ const Dashboard = () => {
                 />
               ))}
             </div>
-            <div className="w-1/5 shadow-2xl h-2/4 rounded-md hidden lg:block text-white">
+            <div className="sticky top-20 w-1/5 shadow-2xl h-2/3 rounded-md hidden lg:block text-white">
               <NewsCard />
+          
             </div>
           </div>
         </Route>
@@ -82,6 +119,9 @@ const Dashboard = () => {
         </Route>
         <Route exact path="/profile">
           <ProfilePage/>
+        </Route>
+        <Route exact path="/settings">
+          <EditProfile/>
         </Route>
       </div>
     </Switch>

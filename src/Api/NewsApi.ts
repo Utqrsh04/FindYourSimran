@@ -1,5 +1,5 @@
 export const getNews = () =>{
-    return fetch("https://bing-news-search1.p.rapidapi.com/news?count=2&offset=5&category=ScienceAndTechnology&mkt=en-IN&setLang=en&safeSearch=Off&textFormat=Raw", {
+    return fetch("https://bing-news-search1.p.rapidapi.com/news?&offset=5&category=ScienceAndTechnology&mkt=en-IN&setLang=en&safeSearch=Off&textFormat=Raw", {
 	"method": "GET",
 	"headers": {
 		"x-bingapis-sdk": "true",

@@ -10,7 +10,7 @@ const ProfileCard = () => {
         alt="Profile"
         className="flex w-20 h-20 rounded-full -mt-11"
       />
-      <p className="text-xl font-bold">Anurodh Dubey</p>
+      <p className="text-xl font-bold">Lorem Ipsum</p>
       <p>Software Developer</p>
       <div className="flex flex-row space-x-6 mt-2 ">
         <div className="flex flex-col justify-center items-center">
