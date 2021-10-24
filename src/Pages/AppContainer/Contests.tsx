@@ -75,7 +75,7 @@ const Contests = () => {
               <p className="text-center">No Contests Found</p>
             )}
             {filterContests.map((contest: any, index: number) => (
-              <li className="table-row font-semibold text-center " key={index}>
+              <li className="table-row font-semibold  " key={index}>
                 <div className="col col-1" data-label="Name">
                   {contest.name}
                 </div>
@@ -90,7 +90,7 @@ const Contests = () => {
                   </a>
                 </div>{" "}
                 <div className="col col-3" data-label="Duration">
-                  {contest.duration / 3600}hrs
+                  {contest.duration }
                 </div>
                 <div className="col col-4" data-label="Start Time">
                   {contest.start_time}

@@ -95,7 +95,7 @@ const Dashboard = () => {
       <div className="">
         <Navbar />
         <Route exact path="/dashboard">
-          <div className=" flex flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
+          <div className=" flex bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
             <div className="sticky top-20 w-1/6 rounded-md shadow-2xl max-h-96 hidden lg:block text-white">
               <ProfileCard />
             </div>
