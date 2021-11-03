@@ -9,9 +9,9 @@ const Trends: FC = () => {
     <>
       <div
         id="trends"
-        className="flex justify-center items-center text-black bg-red-300 h-96"
+        className="flex justify-center text-2xl items-center text-black bg-red-100 h-screen"
       >
-        This is Some text
+        Page in maintainence ⛏️, will be live soon.
       </div>
     </>
   );
