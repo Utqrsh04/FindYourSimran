@@ -9,7 +9,7 @@ const Contests = () => {
   useEffect(() => {
     getAllContest().then((res) => setAllContest(res));
   }, []);
-  console.log(allContest);
+  // console.log(allContest);
 
   const filterContests = allContest.filter(
     (contest: any) =>
@@ -26,7 +26,7 @@ const Contests = () => {
       style: {
         fontSize: "14px",
         fontWeight: 500,
-        backgroundColor: "#8ce1e7",
+        backgroundColor: "#3ACDE9",
       },
       wrap: true,
       // center: true,
@@ -39,31 +39,18 @@ const Contests = () => {
           href={row.url}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center hover:text-white font-medium text-sm "
+          className="flex items-center hover:text-yellow-700 font-medium text-sm "
         >
           {row.site}
           <FiExternalLink className="ml-0.5" />
         </a>
       ),
       style: {
-        backgroundColor: "#80a4f0",
+        backgroundColor: "#E5E7E9 ",
       },
       center: true,
       minWidth: "100px",
       maxWidth: "200px",
-    },
-    
-    {
-      name: "Duration",
-      selector: (row: any) => row.duration,
-      sortable: true,
-      style: {
-        // backgroundColor: "#cfcccc",
-      },
-      minWidth: "90px",
-      maxWidth: "200px",
-      center: true,
-      hide : "sm"
     },
     {
       name: "Date",
@@ -73,16 +60,29 @@ const Contests = () => {
       maxWidth: "135px",
       center: true,
       style: {
-        backgroundColor: "#80a4f0",
+        // backgroundColor: "#AED6F1 ",
       },
     },
+    {
+      name: "Duration",
+      selector: (row: any) => row.duration,
+      sortable: true,
+      style: {
+        backgroundColor: "#E5E7E9 ",
+      },
+      minWidth: "90px",
+      maxWidth: "200px",
+      center: true,
+      hide : "sm"
+    },
+    
     {
       name: "Start Time",
       selector: (row: any) => row.start_time.split("T")[1],
       wrap: true,
-      // style: {
-      //   backgroundColor: "#80a4f0",
-      // },
+      style: {
+        // backgroundColor: "#E5E7E9 ",
+      },
       center: true,
       minWidth: "80px",
       maxWidth: "150px",
@@ -124,7 +124,7 @@ const Contests = () => {
 export default Contests;
 
 export const getAllContest = () => {
-  console.log("Get All Contest");
+  // console.log("Get All Contest");
 
   return fetch("https://kontests.net/api/v1/all", {
     method: "GET",

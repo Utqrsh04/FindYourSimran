@@ -26,31 +26,6 @@ const Dashboard = () => {
       datePosted: "18 June",
     },
     {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
       userName: "Anurodh Dubey",
       img: photo,
       datePosted: "27 August",
