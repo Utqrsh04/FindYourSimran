@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
+import { CustomTable } from "../../Components/CustomTable/CustomTable";
 import "./Contests.css";
 
 const Contests = () => {
@@ -8,97 +9,113 @@ const Contests = () => {
   useEffect(() => {
     getAllContest().then((res) => setAllContest(res));
   }, []);
+  // console.log(allContest);
 
-  console.log(allContest);
-
-  const filterContests = allContest.filter((contest: any) =>
-    contest.name.toLowerCase().includes(search.toLowerCase())
+  const filterContests = allContest.filter(
+    (contest: any) =>
+      contest.name.toLowerCase().includes(search.toLowerCase()) ||
+      contest.site.toLowerCase().includes(search.toLowerCase())
   );
 
+  // Structure of columns for custom data table
+  const columns = [
+    {
+      name: "Name",
+      selector: (row: any) => row.name,
+      sortable: true,
+      style: {
+        fontSize: "14px",
+        fontWeight: 500,
+        backgroundColor: "#3ACDE9",
+      },
+      wrap: true,
+      // center: true,
+    },
+    {
+      name: "Site",
+
+      selector: (row: any) => (
+        <a
+          href={row.url}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center hover:text-yellow-700 font-medium text-sm "
+        >
+          {row.site}
+          <FiExternalLink className="ml-0.5" />
+        </a>
+      ),
+      style: {
+        backgroundColor: "#E5E7E9 ",
+      },
+      center: true,
+      minWidth: "100px",
+      maxWidth: "200px",
+    },
+    {
+      name: "Date",
+      selector: (row: any) => row.start_time.split("T")[0],
+      sortable: true,
+      minWidth: "90px",
+      maxWidth: "135px",
+      center: true,
+      style: {
+        // backgroundColor: "#AED6F1 ",
+      },
+    },
+    {
+      name: "Duration",
+      selector: (row: any) => row.duration,
+      sortable: true,
+      style: {
+        backgroundColor: "#E5E7E9 ",
+      },
+      minWidth: "90px",
+      maxWidth: "200px",
+      center: true,
+      hide : "sm"
+    },
+    
+    {
+      name: "Start Time",
+      selector: (row: any) => row.start_time.split("T")[1],
+      wrap: true,
+      style: {
+        // backgroundColor: "#E5E7E9 ",
+      },
+      center: true,
+      minWidth: "80px",
+      maxWidth: "150px",
+      hide : "sm"
+    },
+  ];
+
   return (
-    <div className="pt-16 min-h-screen bg-gray-300">
-      <div className="w-full py-7 min-h-full flex flex-col items-center space-y-5 justify-center ">
-        <div className="w-96 sticky top-20 flex justify-around space-x-4 items-center ">
-          <div className=" flex mx-auto">
-            <div className="flex ">
-              <input
-                type="text"
-                className="px-3 py-2 w-60 placeholder-gray-400 text-black rounded-l-3xl outline-none focus:outline-none"
-                placeholder="Try Codeforces or HackerEarth"
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <button className="flex items-center rounded-r-3xl bg-black justify-center px-4 border-r">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-          {/* <CustomDropdown /> */}
-        </div>
-
-        {/* <div className="bg-purple-400 p-5 text-left">
-          {filterContests &&
-            filterContests.map((contest: any, index: number) => (
-              <div
-                key={index}
-                className="flex justify-start space-x-3 font-bold font-mono  bg-blue-300 p-3 m-3"
+    <div className="pt-16 bg-blue-100 min-h-screen md:px-10 lg:px-16 xl:px-20 space-y-7">
+      <div className="sticky z-40 top-20 flex justify-around space-x-4 items-center ">
+        <div className=" flex mx-auto">
+          <div className="flex ">
+            <input
+              type="text"
+              className="px-3 py-2 w-60 border border-black text-black rounded-l-sm outline-none focus:outline-none placeholder-gray-800"
+              placeholder="Search here ⌨️..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button className="flex items-center rounded-r-sm bg-black justify-center px-4 border-r">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
               >
-                <h1>{contest.name}</h1>{" "}
-                <a
-                  href={contest.url}
-                  target="_blank"
-                  className="flex items-center hover:text-yellow-800"
-                >
-                  {contest.site} <FiExternalLink className="ml-1" />
-                </a>
-              </div>
-            ))}
-        </div> */}
-
-        <div className="container">
-          {/* <h2 className="heading">Contests </h2> */}
-          <ul className="responsive-table bg-white p-5">
-            <li className="table-header">
-              <div className="col col-1 font-extrabold">Name</div>
-              <div className="col col-2 font-extrabold ">Site</div>
-              <div className="col col-3 font-extrabold ">Duration</div>
-              <div className="col col-4 font-extrabold">Start Time</div>
-            </li>
-
-            {filterContests.length === 0 && (
-              <p className="text-center">No Contests Found</p>
-            )}
-            {filterContests.map((contest: any, index: number) => (
-              <li className="table-row font-semibold  " key={index}>
-                <div className="col col-1" data-label="Name">
-                  {contest.name}
-                </div>
-                <div className="col col-2" data-label="Site">
-                  <a
-                    href={contest.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center hover:text-yellow-800"
-                  >
-                    {contest.site} <FiExternalLink className="ml-1" />
-                  </a>
-                </div>{" "}
-                <div className="col col-3" data-label="Duration">
-                  {contest.duration }
-                </div>
-                <div className="col col-4" data-label="Start Time">
-                  {contest.start_time}
-                </div>
-              </li>
-            ))}
-          </ul>
+                <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
+      </div>
+      <div className="shadow-2xl ">
+        <CustomTable columns={columns} data={filterContests} />
       </div>
     </div>
   );
@@ -107,7 +124,7 @@ const Contests = () => {
 export default Contests;
 
 export const getAllContest = () => {
-  console.log("Get All Contest");
+  // console.log("Get All Contest");
 
   return fetch("https://kontests.net/api/v1/all", {
     method: "GET",

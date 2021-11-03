@@ -26,7 +26,8 @@ const Navbar: FC<NavbarPropsType> = () => {
 
   const logout = async () => {
     await auth.signOut();
-    
+    localStorage.removeItem("loggedIn");
+    window.location.href = "/login";
   };
 
   return (
