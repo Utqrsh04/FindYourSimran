@@ -10,7 +10,7 @@ const ProfileCard = () => {
         alt="Profile"
         className="flex w-20 h-20 rounded-full -mt-11"
       />
-      <p className="text-xl font-bold">Lorem Ipsum</p>
+      <p className="text-xl font-bold">Username</p>
       <p>Software Developer</p>
       <div className="flex flex-row space-x-6 mt-2 ">
         <div className="flex flex-col justify-center items-center">
@@ -24,13 +24,13 @@ const ProfileCard = () => {
       </div>
       <p className="text-center text-sm pt-3 px-3 font-mono">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, quasi
-        inventore?{" "}
+        inventore ?
       </p>
       <button
         type="button"
-        className="font-mono text-sm border-2 bg-gradient-to-tr from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-500 hover:border-black hover:border-2 mt-3 px-3.5 py-1.5 rounded-full"
+        className="font-mono text-sm border-2 bg-gradient-to-tr from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-500 hover:border-black hover:border-2 mt-5 px-3.5 py-1.5 rounded-full"
       >
-        View profile
+        View Profile
       </button>
     </div>
   );

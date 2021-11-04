@@ -3,14 +3,15 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { getNews } from "../../Api/GetNews";
 
 const NewsCard = () => {
+  const [data, setdata] = useState<any>();
+
   useEffect(() => {
     getNews().then((res) => {
       //console.log(res.value);
       setdata(res.value);
     });
-  }, []);
+  },[]);
 
-  const [data, setdata] = useState<any>();
 
   //console.log("Data ", data && data[0].image.thumbnail.contentUrl);
 
