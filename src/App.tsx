@@ -37,7 +37,7 @@ function App() {
 
           <Route
             exact
-            path={["/dashboard", "/trends", "/profile", "/contests"]}
+            path={["/dashboard", "/trends", "/profile","/settings","/contests"]}
           >
             {user ? <Dashboard /> : <Redirect to="/login" />}
           </Route>

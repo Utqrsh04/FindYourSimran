@@ -13,6 +13,7 @@ import ProfilePage from "./ProfilePage";
 import EditProfile from "./EditProfile";
 import Contests from "./Contests";
 
+
 const Dashboard = () => {
   const details = [
     {
