@@ -28,7 +28,7 @@ const Password = () => {
         <div className="text-sm font-light">
           Make Sure the password is 8 characters long and it contains number and
           special characters.{" "}
-          <a className="text-blue-600" href="#">
+          <a className="text-blue-600" href=" ">
             Learn more
           </a>
         </div>
@@ -36,7 +36,7 @@ const Password = () => {
           <button className="px-3 py-1.5 rounded-md bg-gray-200 border-2 border-gray-300">
             Update Password
           </button>
-          <a className="text-blue-600" href="#">
+          <a className="text-blue-600" href=" ">
             Forgot Password?
           </a>
         </div>

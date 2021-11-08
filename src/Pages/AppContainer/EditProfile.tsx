@@ -4,7 +4,7 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 import { IoMdLock } from "react-icons/io";
-import Personalinfo from "../../Components/Edit/Personalinfo";
+// import Personalinfo from "../../Components/Edit/Personalinfo";
 import Password from "../../Components/Edit/Password";
 
 const EditProfile = () => {
