@@ -1,3 +1,7 @@
+// import stats  from "../../assets/stats.gif";
+import { ImStatsBars } from "react-icons/im";
+import { MdMessage } from "react-icons/md";
+
 const ProfilePage = () => {
   return (
     <div className="mx-auto my-5 p-5 pt-20">
@@ -44,71 +48,8 @@ const ProfilePage = () => {
         <div className="w-full md:w-9/12 mx-2 h-64">
           {/* <!-- Profile tab -->
             <!-- About Section --> */}
-          <div className="bg-white p-3 shadow-xl border-2 rounded-sm">
-            <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 border-b-2">
-              <span className="text-gray-700">
-                <svg
-                  className="h-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-              </span>
-              <span className="tracking-wide">About</span>
-            </div>
-            <div className="text-gray-700">
-              <div className="grid md:grid-cols-2 text-sm">
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">First Name</div>
-                  <div className="px-4 py-2">Lorum</div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">Last Name</div>
-                  <div className="px-4 py-2">Ipsum</div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">Gender</div>
-                  <div className="px-4 py-2">Male</div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">Contact No.</div>
-                  <div className="px-4 py-2">+11 998001001</div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">Current Address</div>
-                  <div className="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">
-                    Permanant Address
-                  </div>
-                  <div className="px-4 py-2">
-                    Arlington Heights, IL, Illinois
-                  </div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">Email.</div>
-                  <div className="px-4 py-2">
-                    <a className="text-blue-800" href="mailto:jane@example.com">
-                      trial@example.com
-                    </a>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">Birthday</div>
-                  <div className="px-4 py-2">Feb 06, 1998</div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between mx-5">
+          <div className="shadow-lg border-2 p-2 mb-4">
+          <div className="flex flex-row justify-between mx-5">
               <div className="flex flex-row items-center space-x-3">
                 <div className="flex text-lg font-normal">Connect with:</div>
                 <div className="flex flex-row space-x-1">
@@ -193,7 +134,69 @@ const ProfilePage = () => {
                 </div>
               </div>
               <div className="">
-                <button className="bg-gray-300 px-5 py-1">Message</button>
+                <button className="bg-gray-300 px-5 py-1 flex items-center space-x-2 rounded">
+                  <span>
+                    <MdMessage/>
+                  </span>
+                  <span>Send Message</span> 
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white p-3 shadow-xl border-2 rounded-sm">
+            <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 border-b-2">
+              <span className="text-gray-700">
+                <svg
+                  className="h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+              </span>
+              <span className="tracking-wide">About</span>
+            </div>
+            <div className="text-gray-700">
+              <div className="grid md:grid-cols-2 text-sm">
+                <div className="grid grid-cols-2">
+                  <div className="px-4 py-2 font-semibold">Full Name</div>
+                  <div className="px-4 py-2">Lorum Ipsum</div>
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="px-4 py-2 font-semibold">Gender</div>
+                  <div className="px-4 py-2">Male</div>
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="px-4 py-2 font-semibold">Contact No.</div>
+                  <div className="px-4 py-2">+11 998001001</div>
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="px-4 py-2 font-semibold">
+                    Address
+                  </div>
+                  <div className="px-4 py-2">
+                    Arlington Heights, IL, Illinois
+                  </div>
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="px-4 py-2 font-semibold">Email.</div>
+                  <div className="px-4 py-2">
+                    <a className="text-blue-800" href="mailto:jane@example.com">
+                      trial@example.com
+                    </a>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="px-4 py-2 font-semibold">Birthday</div>
+                  <div className="px-4 py-2">Feb 06, 1998</div>
+                </div>
               </div>
             </div>
           </div>
@@ -303,6 +306,22 @@ const ProfilePage = () => {
               </div>
             </div>
             {/* <!-- End of Experience and education grid --> */}
+          </div>
+          <div className="mt-4"></div>
+          <div className="bg-white p-3 shadow-lg border-2 rounded-sm">
+            <div className="grid grid-cols-2">
+              <div>
+                <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3 border-b-2 ">
+                  <span className="text-gray-700">
+                  <ImStatsBars className="text-lg"/>
+                    {/* <img src={stats} width="24" height="24" alt="stats" /> */}
+                  </span>
+                  <span className="tracking-wide">Git Stats</span>
+                </div>
+                <div className="">Will be added soon</div>
+              </div>
+            </div>
+            {/* <!-- End of git stats grid --> */}
           </div>
           {/* <!-- End of profile tab --> */}
         </div>
