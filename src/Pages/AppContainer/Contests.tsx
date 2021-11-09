@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { CustomTable } from "../../Components/CustomTable/CustomTable";
-import "./Contests.css";
 
 const Contests = () => {
   const [allContest, setAllContest] = useState<any>([]);
@@ -92,7 +91,7 @@ const Contests = () => {
 
   return (
     <div className="pt-16 bg-blue-100 min-h-screen md:px-10 lg:px-16 xl:px-20 space-y-7">
-      <div className="sticky z-40 top-20 flex justify-around space-x-4 items-center ">
+      <div className="sticky top-20 flex justify-around space-x-4 items-center ">
         <div className=" flex mx-auto">
           <div className="flex ">
             <input

@@ -12,6 +12,7 @@ import NewsCard from "../../Components/News/NewsCard";
 import ProfilePage from "./ProfilePage";
 import EditProfile from "./EditProfile";
 import Contests from "./Contests";
+import OctoProfile from "./OctoProfile";
 
 const Dashboard = () => {
   const details = [
@@ -101,6 +102,9 @@ const Dashboard = () => {
         </Route>
         <Route exact path="/settings">
           <EditProfile/>
+        </Route>
+        <Route exact path="/octoProfile">
+          <OctoProfile/>
         </Route>
       </div>
     </Switch>
