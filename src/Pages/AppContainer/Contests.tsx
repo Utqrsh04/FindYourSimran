@@ -77,7 +77,7 @@ const Contests = () => {
     
     {
       name: "Start Time",
-      selector: (row: any) => row.start_time.split("T")[1],
+      selector: (row: any) => row.start_time.split("T")[1].slice(0,5),
       wrap: true,
       style: {
         // backgroundColor: "#E5E7E9 ",
