@@ -96,7 +96,7 @@ const Contests = () => {
           <div className="flex ">
             <input
               type="text"
-              className="px-3 py-2 w-60 border border-black text-black rounded-l-sm outline-none focus:outline-none placeholder-gray-800"
+              className="px-3 py-2 w-60 border font-Sora border-black text-black rounded-l-sm outline-none focus:outline-none placeholder-gray-800"
               placeholder="Search here ⌨️..."
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -113,7 +113,7 @@ const Contests = () => {
           </div>
         </div>
       </div>
-      <div className="shadow-2xl ">
+      <div className="shadow-2xl font-Sora">
         <CustomTable columns={columns} data={filterContests} />
       </div>
     </div>

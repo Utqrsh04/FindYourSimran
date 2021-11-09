@@ -12,19 +12,20 @@ import Contests from "./Contests";
 
 const Dashboard = () => {
   const details = [
-    {
-      userName: "Anurodh Dubey",
-      img: "https://avatars.githubusercontent.com/u/61279576?v=4",
-      datePosted: "5 November",
-      role: ["Frontend Developer", "Reactjs Developer"],
-      desc: "I need a UI-UX designed for my upcoming project who can make good looking UI.",
-    },
+    
     {
       userName: "Utkarsh",
       img: "https://avatars.githubusercontent.com/u/55407062?v=4",
       datePosted: "1 November",
       role: ["UI-UX Designer"],
-      desc: "I need a UI-UX designed for my upcoming project who can make good looking UI.",
+      desc: "I need a UI-UX designed for my upcoming project who can make good looking professional UI and UX.",
+    },
+    {
+      userName: "Anurodh Dubey",
+      img: "https://avatars.githubusercontent.com/u/61279576?v=4",
+      datePosted: "5 November",
+      role: ["Frontend Developer", "Reactjs Developer"],
+      desc: "I need a reactjs developer who can build efficient frontend for my website.",
     },
     {
       userName: "Rahul",
@@ -50,7 +51,7 @@ const Dashboard = () => {
       <div className="">
         <Navbar />
         <Route exact path="/dashboard">
-          <div className=" flex bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
+          <div className=" flex font-Sora bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
             <div className="sticky top-20 w-1/6 rounded-md shadow-2xl max-h-96 hidden lg:block text-white">
               <ProfileCard />
             </div>

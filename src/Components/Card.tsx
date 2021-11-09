@@ -42,7 +42,7 @@ const Card: FC<CardTypeProps> = ({
                 </span>
               ))}
             </div>
-            <div className="text-gray-700 text-sm font-semibold">{desc}</div>
+            <div className="text-gray-700 text-sm font-semibold font-Sora">{desc}</div>
           </div>
           <div className="flex justify-between">
             <div className="flex w-full text-sm items-center">
