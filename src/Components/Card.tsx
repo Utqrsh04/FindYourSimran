@@ -32,7 +32,7 @@ const Card: FC<CardTypeProps> = ({
                 <span
                   key={index}
                   className={
-                    "text-sm font-semibold inline-block py-1 px-2 uppercase rounded text-black mr-1 " +
+                    "text-sm mt-1 font-semibold inline-block py-1 px-2 uppercase rounded text-black mr-1 " +
                     "bg-" +
                     colors[getRandomNumber()] +
                     "-200"
