@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Octokit } from "@octokit/core";
+import { useEffect, useState } from "react";
 
 const OctoProfile = () => {
   const [octoData, setOctoData] = useState<any>("");
