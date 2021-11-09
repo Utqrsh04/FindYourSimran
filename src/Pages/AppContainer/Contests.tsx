@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { CustomTable } from "../../Components/CustomTable/CustomTable";
-import "./Contests.css";
 
 const Contests = () => {
   const [allContest, setAllContest] = useState<any>([]);
@@ -78,7 +77,7 @@ const Contests = () => {
     
     {
       name: "Start Time",
-      selector: (row: any) => row.start_time.split("T")[1],
+      selector: (row: any) => row.start_time.split("T")[1].slice(0,5),
       wrap: true,
       style: {
         // backgroundColor: "#E5E7E9 ",
@@ -92,12 +91,12 @@ const Contests = () => {
 
   return (
     <div className="pt-16 bg-blue-100 min-h-screen md:px-10 lg:px-16 xl:px-20 space-y-7">
-      <div className="sticky z-40 top-20 flex justify-around space-x-4 items-center ">
+      <div className="sticky top-20 flex justify-around space-x-4 items-center ">
         <div className=" flex mx-auto">
           <div className="flex ">
             <input
               type="text"
-              className="px-3 py-2 w-60 border border-black text-black rounded-l-sm outline-none focus:outline-none placeholder-gray-800"
+              className="px-3 py-2 w-60 border font-Sora border-black text-black rounded-l-sm outline-none focus:outline-none placeholder-gray-800"
               placeholder="Search here ⌨️..."
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -114,7 +113,7 @@ const Contests = () => {
           </div>
         </div>
       </div>
-      <div className="shadow-2xl ">
+      <div className="shadow-2xl font-Sora">
         <CustomTable columns={columns} data={filterContests} />
       </div>
     </div>

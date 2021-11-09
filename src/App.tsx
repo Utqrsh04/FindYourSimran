@@ -17,17 +17,17 @@ function App() {
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => setUser(user));
 
-    console.log("UID ",user &&  user.uid);
+    // console.log("UID ", user && user.uid);
     user && localStorage.setItem("loggedIn", "yes");
     // it will run when component unmounts like componentDidUnmount()
     return () => {
       unsub();
     };
   });
-  console.log(user);
+  // console.log(user);
   const loggedIn = localStorage.getItem("loggedIn");
-  if (loggedIn === "yes" && !user ) return <Loader />;
-  
+  if (loggedIn === "yes" && !user) return <Loader />;
+
   return (
     <div>
       <Router>
@@ -42,7 +42,14 @@ function App() {
 
           <Route
             exact
-            path={["/dashboard", "/trends", "/profile","/settings","/contests"]}
+            path={[
+              "/dashboard",
+              "/trends",
+              "/profile",
+              "/contests",
+              "/settings",
+              "/octoProfile",
+            ]}
           >
             {user ? <Dashboard /> : <Redirect to="/login" />}
           </Route>
