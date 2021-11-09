@@ -1,12 +1,12 @@
 import { FC, InputHTMLAttributes } from "react";
-import { FaAd } from "react-icons/fa";
 
 interface InputFieldProp extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   placeholder: string;
   error?: string;
   touched?: boolean;
-  type?: "default" | "Password";
+  type?: string;
+  className: string;
 }
 
 const InputField: FC<InputFieldProp> = ({
@@ -15,36 +15,19 @@ const InputField: FC<InputFieldProp> = ({
   error,
   touched,
   type,
+  className,
 }) => {
-  if (type === "default") {
-    return (
-      <div className="flex flex-col">
-        <label htmlFor="hello">
-          <FaAd />
-        </label>
-        <input
-          id="hello"
-          className="w-60 focus:outline-none border-2 rounded-none hover:border-green-400 "
-          type="text"
-          placeholder={placeholder}
-        />
-      </div>
-    );
-  } else {
-    return (
-      <div className="flex flex-col">
-        <label htmlFor="hello">
-          <FaAd />
-        </label>
-        <input
-          id="hello"
-          className="w-36 focus:outline-none border-2 rounded-full hover:border-red-700 "
-          type="text"
-          placeholder={placeholder}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="flex flex-col mt-5">
+      <label className="text-base font-semibold" htmlFor={id}>{id}</label>
+      <input
+        id={id}
+        className={className}
+        type={type}
+        placeholder={placeholder}
+      />
+    </div>
+  );
 };
 
 export default InputField;

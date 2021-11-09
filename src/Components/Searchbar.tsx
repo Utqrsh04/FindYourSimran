@@ -26,7 +26,7 @@ const SearchBar = () => {
             className="absolute right-8 cursor-pointer text-white text-xl sm:text-base"
           />
         )}
-        <IoSearch  className="text-gray-400"/>
+        <IoSearch className="text-gray-400"/>
       </div>
     </div>
   );

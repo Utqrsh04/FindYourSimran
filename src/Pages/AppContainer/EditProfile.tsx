@@ -4,13 +4,14 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 import { IoMdLock } from "react-icons/io";
-import Personalinfo from "../../Components/Edit/Personalinfo";
+// import Personalinfo from "../../Components/Edit/Personalinfo";
+import Password from "../../Components/Edit/Password";
 
 const EditProfile = () => {
   return (
-    <div className="flex flex-col md:flex-row top-20 h-screen bg-gray-300 justify-center space-x-10 w-full">
-      <div className=" w-1/5 ">
-        <div className="sticky top-20 my-8 ml-8 bg-white rounded-md">
+    <div className="flex flex-col md:flex-row top-20 h-screen justify-center space-x-10 w-full">
+      <div className=" w-64">
+        <div className="sticky top-20 my-8 ml-8 bg-white rounded-md border-2">
           <h1 className="p-5 border-b-2 border-gray-400 text-xl font-semibold">
             Edit Profile
           </h1>
@@ -44,7 +45,8 @@ const EditProfile = () => {
 
       {/* 2nd column */}
       <div className="w-3/5 mt-20">
-        <Personalinfo />
+        {/* <Personalinfo /> */}
+        <Password />
       </div>
     </div>
   );
