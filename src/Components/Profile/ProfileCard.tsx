@@ -1,12 +1,11 @@
 import React from "react";
-import bgimage from "../../assets/neonwave.jpg";
 
 const ProfileCard = () => {
   return (
     <div className="flex flex-col justify-center items-center hover:bg-gray-700 bg-darkshade pb-10 rounded-lg">
       <div className="bg-blue-700 w-full h-24 rounded-t-lg "></div>
       <img
-        src={bgimage}
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwZkSEm6tkwEyPiz1kmz9BMlcBsbjl8q__XQ&usqp=CAU"
         alt="Profile"
         className="flex w-20 h-20 rounded-full -mt-11"
       />
