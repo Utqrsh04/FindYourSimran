@@ -36,7 +36,7 @@ const Dashboard = () => {
     },
     {
       userName: "Ashutosh",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwZkSEm6tkwEyPiz1kmz9BMlcBsbjl8q__XQ&usqp=CAU",
+      img: "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png",
       datePosted: "25 October",
       role: ["Backend Developer "],
       desc: "I need a Backend Developer for my current project who can make and manage databases and create endpoints for the frontend .",
