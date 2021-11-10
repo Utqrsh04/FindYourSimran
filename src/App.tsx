@@ -30,6 +30,12 @@ function App() {
 
   return (
     <div>
+      <div className="text-xs font-medium z-50 fixed bottom-1 left-1 w-36 py-1 px-2 rounded-sm text-black bg-red-200 mr-1">
+        <p className="text-gray-900 leading-none">&copy; Made by ⚡</p>
+        <a href="https://github.com/anurodh437" target="_blank" rel="noreferrer" className="hover:text-gray-700 text-red-900 hover:underline pr-1">Anurodh</a>
+        and
+        <a href="https://github.com/utqrsh04" target="_blank" rel="noreferrer" className="pl-1 text-red-900 hover:underline hover:text-gray-700">Utkarsh</a>
+      </div>
       <Router>
         <Switch>
           <Route path="/" exact>

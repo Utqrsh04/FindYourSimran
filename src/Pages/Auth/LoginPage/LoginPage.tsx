@@ -45,6 +45,7 @@ const LoginPage = () => {
       else setError(error.message);
       setShowToast(true);
     }
+    // Firebase: A network AuthError (such as timeout, interrupted connection or unreachable host) has occurred. (auth/network-request-failed).
   }, []);
 
   return (

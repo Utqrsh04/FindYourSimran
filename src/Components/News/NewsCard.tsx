@@ -8,7 +8,7 @@ const NewsCard = () => {
   useEffect(() => {
     getNews().then((res) => {
       // console.log(res.value);
-      setdata(res.value);
+      res && setdata(res.value);
     });
   },[]);
 
