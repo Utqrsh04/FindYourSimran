@@ -36,16 +36,22 @@ const SignupPage = () => {
 
   const handleSignUp = useCallback(async (event) => {
     event.preventDefault();
+    setError("");
+    setShowToast(false);
     const { email, password, name } = event.target.elements;
-    console.log("Sign up ", name.value, email.value, password.value);
+    console.log(name.value);
     try {
       await auth.createUserWithEmailAndPassword(email.value, password.value);
-      console.log("User Created ");
+      // console.log("User Created ");
     } catch (error: any) {
-      console.log(error);
-      setError(error.message);
+      // console.log(error.code);
+      if (error.code === "auth/email-already-in-use")
+        setError(
+          "The email address is already in use by another account."
+        );
+      else setError(error.message);
       setShowToast(true);
-      // alert(error);
+
     }
   }, []);
 
@@ -53,9 +59,9 @@ const SignupPage = () => {
     <div className=" bgImage flex justify-center items-center h-screen">
       <Toast type="Error" show={showToast} message={error} />
       <div className="md:mx-12 lg:mx-32 xl:mx-52  flex h-4/5 w-full ">
-        <div className="side-container justify-center items-center md:flex hidden  h-full md:w-1/2 p-5">
-          <div className="text-9xl font-Sora font-bold">
-            <svg
+        <div className="side-container justify-center items-center md:flex hidden h-full rounded-l-xl md:w-1/2 p-5">
+          <div className="text-5xl font-bold text-center text-white font-Sora">
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
               width="495.285714285714"
@@ -90,11 +96,15 @@ const SignupPage = () => {
                   <path d="M3.26 5.84 l0 14.16 l-1.32 0 l0 -14.16 l1.32 0 z M19.064 5.84 l8.62 12.4 l0.04 0 l0 -12.4 l1.32 0 l0 14.16 l-1.7 0 l-8.62 -12.4 l-0.04 0 l0 12.4 l-1.32 0 l0 -14.16 l1.7 0 z M44.848 5.84 l8.62 12.4 l0.04 0 l0 -12.4 l1.32 0 l0 14.16 l-1.7 0 l-8.62 -12.4 l-0.04 0 l0 12.4 l-1.32 0 l0 -14.16 l1.7 0 z M69.332 12.92 q0 2.7 1.66 4.45 t4.34 1.79 q2.7 0 4.34 -1.77 t1.66 -4.47 q0 -2.74 -1.64 -4.47 t-4.38 -1.77 q-2.68 0 -4.32 1.76 t-1.66 4.48 z M75.332 5.48 q2.16 0 3.82 0.95 t2.57 2.66 t0.93 3.83 q0 3.26 -2.06 5.33 t-5.26 2.11 q-3.22 0 -5.24 -2.09 t-2.08 -5.35 q0.02 -3.26 2.04 -5.32 t5.28 -2.12 z M95.25599999999999 5.84 l4.56 12.42 l4.6 -12.42 l1.4 0 l-5.38 14.16 l-1.32 0 l-5.28 -14.16 l1.42 0 z M119.57999999999998 15.04 l6.5 0 l-3.2 -7.76 z M123.61999999999999 5.84 l5.96 14.16 l-1.48 0 l-1.54 -3.76 l-7.5 0 l-1.6 3.76 l-1.38 0 l6.18 -14.16 l1.36 0 z M151.144 5.84 l0 1.2 l-4.84 0 l0 12.96 l-1.32 0 l0 -12.96 l-4.84 0 l0 -1.2 l11 0 z M164.868 5.84 l0 14.16 l-1.32 0 l0 -14.16 l1.32 0 z M178.39200000000002 5.84 l4.56 12.42 l4.6 -12.42 l1.4 0 l-5.38 14.16 l-1.32 0 l-5.28 -14.16 l1.42 0 z M209.716 5.84 l0 1.2 l-7.34 0 l0 5.04 l6.88 0 l0 1.2 l-6.88 0 l0 5.52 l7.66 0 l0 1.2 l-8.98 0 l0 -14.16 l8.66 0 z M242.52400000000003 18.8 q3.04 0 4.8 -1.54 t1.78 -4.24 q0 -2.88 -1.75 -4.42 t-4.89 -1.56 l-2.76 0 l0 11.76 l2.82 0 z M242.80400000000003 5.84 q3.56 0 5.57 1.92 t2.05 5.26 q0 1.96 -0.89 3.55 t-2.56 2.51 t-4.09 0.92 l-4.5 0 l0 -14.16 l4.42 0 z M272.26800000000003 5.84 l0 1.2 l-7.34 0 l0 5.04 l6.88 0 l0 1.2 l-6.88 0 l0 5.52 l7.66 0 l0 1.2 l-8.98 0 l0 -14.16 l8.66 0 z M285.112 5.84 l4.56 12.42 l4.6 -12.42 l1.4 0 l-5.38 14.16 l-1.32 0 l-5.28 -14.16 l1.42 0 z M316.43600000000004 5.84 l0 1.2 l-7.34 0 l0 5.04 l6.88 0 l0 1.2 l-6.88 0 l0 5.52 l7.66 0 l0 1.2 l-8.98 0 l0 -14.16 l8.66 0 z M331.18 5.84 l0 12.96 l6.6 0 l0 1.2 l-7.92 0 l0 -14.16 l1.32 0 z M350.484 12.92 q0 2.7 1.66 4.45 t4.34 1.79 q2.7 0 4.34 -1.77 t1.66 -4.47 q0 -2.74 -1.64 -4.47 t-4.38 -1.77 q-2.68 0 -4.32 1.76 t-1.66 4.48 z M356.484 5.48 q2.16 0 3.82 0.95 t2.57 2.66 t0.93 3.83 q0 3.26 -2.06 5.33 t-5.26 2.11 q-3.22 0 -5.24 -2.09 t-2.08 -5.35 q0.02 -3.26 2.04 -5.32 t5.28 -2.12 z M381.368 12.08 q1.28 0 2.1 -0.63 t0.84 -1.87 q0 -1.16 -0.82 -1.85 t-2.18 -0.69 l-3 0 l0 5.04 l3.06 0 z M381.028 5.84 q2.16 0 3.36 0.96 t1.24 2.78 q0 1.7 -1.16 2.69 t-3.02 1.01 l-3.14 0 l0 6.72 l-1.32 0 l0 -14.16 l4.04 0 z M407.35200000000003 5.84 l0 1.2 l-7.34 0 l0 5.04 l6.88 0 l0 1.2 l-6.88 0 l0 5.52 l7.66 0 l0 1.2 l-8.98 0 l0 -14.16 l8.66 0 z M424.99600000000004 12.08 q1.54 0 2.38 -0.69 t0.84 -1.83 t-0.82 -1.82 t-2.44 -0.7 l-2.86 0 l0 5.04 l2.9 0 z M424.596 5.84 q4.9 0 4.94 3.72 q0 3.14 -3.62 3.64 l4.12 6.8 l-1.5 0 l-3.98 -6.72 l-2.46 0 l0 6.72 l-1.32 0 l0 -14.16 l3.82 0 z M462.664 12.08 q1.28 0 2.1 -0.63 t0.84 -1.87 q0 -1.16 -0.82 -1.85 t-2.18 -0.69 l-3 0 l0 5.04 l3.06 0 z M462.324 5.84 q2.16 0 3.36 0.96 t1.24 2.78 q0 1.7 -1.16 2.69 t-3.02 1.01 l-3.14 0 l0 6.72 l-1.32 0 l0 -14.16 l4.04 0 z M481.308 5.84 l0 12.96 l6.6 0 l0 1.2 l-7.92 0 l0 -14.16 l1.32 0 z M501.872 15.04 l6.5 0 l-3.2 -7.76 z M505.912 5.84 l5.96 14.16 l-1.48 0 l-1.54 -3.76 l-7.5 0 l-1.6 3.76 l-1.38 0 l6.18 -14.16 l1.36 0 z M533.436 5.84 l0 1.2 l-4.84 0 l0 12.96 l-1.32 0 l0 -12.96 l-4.84 0 l0 -1.2 l11 0 z M554.3199999999999 5.84 l0 1.2 l-7.16 0 l0 5.04 l6.66 0 l0 1.2 l-6.66 0 l0 6.72 l-1.32 0 l0 -14.16 l8.48 0 z M567.5840000000001 12.92 q0 2.7 1.66 4.45 t4.34 1.79 q2.7 0 4.34 -1.77 t1.66 -4.47 q0 -2.74 -1.64 -4.47 t-4.38 -1.77 q-2.68 0 -4.32 1.76 t-1.66 4.48 z M573.5840000000001 5.48 q2.16 0 3.82 0.95 t2.57 2.66 t0.93 3.83 q0 3.26 -2.06 5.33 t-5.26 2.11 q-3.22 0 -5.24 -2.09 t-2.08 -5.35 q0.02 -3.26 2.04 -5.32 t5.28 -2.12 z M598.308 12.08 q1.54 0 2.38 -0.69 t0.84 -1.83 t-0.82 -1.82 t-2.44 -0.7 l-2.86 0 l0 5.04 l2.9 0 z M597.908 5.84 q4.9 0 4.94 3.72 q0 3.14 -3.62 3.64 l4.12 6.8 l-1.5 0 l-3.98 -6.72 l-2.46 0 l0 6.72 l-1.32 0 l0 -14.16 l3.82 0 z M618.012 5.84 l5.16 11.88 l5.16 -11.88 l1.88 0 l0 14.16 l-1.32 0 l0 -12.48 l-0.04 0 l-5.4 12.48 l-0.58 0 l-5.48 -12.48 l-0.04 0 l0 12.48 l-1.32 0 l0 -14.16 l1.98 0 z"></path>
                 </g>
               </g>
-            </svg>
+            </svg> */}
+            Hello, Friend!
+            <p className="text-base pt-5 text-blue-200">
+              Enter your personal details and start a journey with us.
+            </p>
           </div>
         </div>
 
-        <div className="bg-white md:w-1/2 p-5 w-full mx-6 sm:mx-20 md:mx-0 text-center flex-col justify-center ">
+        <div className="bg-white md:w-1/2 p-5 w-full rounded-r-xl mx-6 sm:mx-20 md:mx-0 text-center flex-col justify-center ">
           <h1 className="text-4xl font-Sora text-gray-800  font-extrabold">
             Sign Up
             <p className="text-sm font-bold pt-2">
