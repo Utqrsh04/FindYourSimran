@@ -6,7 +6,7 @@ const Contests = () => {
   const [allContest, setAllContest] = useState<any>([]);
   const [search, setSearch] = useState("");
   useEffect(() => {
-    getAllContest().then((res) => res && setAllContest(res));
+    getAllContest().then((res) => setAllContest(res));
   }, []);
   // console.log(allContest);
 
@@ -91,7 +91,7 @@ const Contests = () => {
 
   return (
     <div className="pt-16 bg-blue-100 min-h-screen md:px-10 lg:px-16 xl:px-20 space-y-7">
-      <div className="sticky top-20 flex justify-around space-x-4 items-center ">
+      {/* <div className="sticky top-20 flex justify-around space-x-4 items-center ">
         <div className=" flex mx-auto">
           <div className="flex ">
             <input
@@ -112,8 +112,27 @@ const Contests = () => {
             </button>
           </div>
         </div>
-      </div>
-      <div className="shadow-2xl font-Sora">
+        
+      </div> */}
+      <div className="flex ml-2 md:ml-0 mt-3 ">
+            <input
+              type="text"
+              className="px-3 py-2 w-60 border font-Sora border-black text-black rounded-l-sm outline-none focus:outline-none placeholder-gray-800"
+              placeholder="Search here ⌨️..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button className="flex items-center rounded-r-sm bg-black justify-center px-4 border-r">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path>
+              </svg>
+            </button>
+          </div>
+      <div className="shadow-2xl mx-2 md:mx-0 font-Sora">
         <CustomTable columns={columns} data={filterContests} />
       </div>
     </div>
