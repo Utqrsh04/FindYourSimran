@@ -28,13 +28,21 @@ const LoginPage = () => {
     setError("");
     setShowToast(false);
     const { email, password } = event.target.elements;
-    console.log("User ", email.value, password.value);
+    // console.log("User ", email.value, password.value);
     try {
       await auth.signInWithEmailAndPassword(email.value, password.value);
-      console.log("logged In");
+      // console.log("logged In");
     } catch (error: any) {
-      console.log(error);
-      setError(error.message);
+      // console.log(error.code);
+      if (error.code === "auth/wrong-password")
+        setError(
+          "The password is invalid or the user does not have a password.❌"
+        );
+      else if (error.code === "auth/user-not-found")
+        setError(
+          "There is no user record corresponding to this email address. The user may have been deleted."
+        );
+      else setError(error.message);
       setShowToast(true);
     }
   }, []);
@@ -42,9 +50,10 @@ const LoginPage = () => {
   return (
     <div className=" bgImage flex justify-center items-center h-screen">
       <Toast type="Error" show={showToast} message={error} />
-      <div className="md:mx-12 lg:mx-32 xl:mx-52  flex h-4/5 w-full ">
-        <div className="side-container justify-center items-center md:flex hidden  h-full md:w-1/2 p-5">
-          <div className="text-9xl font-bold font-Sora">
+      <div className="md:mx-12 lg:mx-32 xl:mx-52 flex h-4/5 w-full ">
+        <div className="side-container justify-center items-center rounded-l-xl md:flex hidden  h-full md:w-1/2 p-5">
+          <div className="text-5xl font-bold text-center text-white font-Sora">
+            {/*            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
@@ -85,10 +94,15 @@ const LoginPage = () => {
                 </g>
               </g>
             </svg>
+           */}
+            Welcome Back!
+            <p className="text-base pt-5 text-blue-200">
+              To keep connected with us please login with your credentials.
+            </p>
           </div>
         </div>
 
-        <div className="bg-white md:w-1/2 p-5 w-full mx-6 sm:mx-20 md:mx-0 text-center flex-col justify-center ">
+        <div className="bg-white md:w-1/2 p-5 w-full mx-6 rounded-r-xl sm:mx-20 md:mx-0 text-center flex-col justify-center ">
           <h1 className="text-4xl font-Sora text-gray-800  font-extrabold">
             Sign In
             <p className="text-sm font-bold pt-2">
