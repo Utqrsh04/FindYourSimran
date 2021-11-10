@@ -9,10 +9,17 @@ import { Redirect, Route } from "react-router";
 import Password from "../../Components/EditProfile/Changepassword";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { auth } from "../../firebase";
 
 const EditProfile = () => {
   const [active, setActive] = useState("personal");
   //console.log(active);
+
+  const logout = async () => {
+    await auth.signOut();
+    localStorage.removeItem("loggedIn");
+    window.location.href = "/login";
+  };
 
   return (
     <div className="flex flex-col md:flex-row mt-40 sm:mt-0 top-20 h-screen justify-center space-x-10 w-full">
@@ -51,12 +58,16 @@ const EditProfile = () => {
               <div className="font-semibold text-base">Login and Password</div>
             </Link>
 
-            <a href=" " className="flex flex-row items-center space-x-1 p-4">
+            <Link to=" " className="flex flex-row items-center space-x-1 p-4">
               <IoCardSharp className="text-2xl text-green-500" />
               <div className="font-semibold text-base">Membership Settings</div>
-            </a>
+            </Link>
 
-            <a href=" " className="flex flex-row items-center space-x-1 p-4">
+            <a
+              href=" "
+              onClick={logout}
+              className="flex flex-row items-center space-x-1 p-4"
+            >
               <IoLogOutOutline className="text-2xl text-yellow-600" />
               <div className="font-semibold text-base">Logout</div>
             </a>
