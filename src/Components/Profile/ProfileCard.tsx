@@ -1,4 +1,3 @@
-import React from "react";
 import bgimage from "../../assets/neonwave.jpg";
 
 const ProfileCard = () => {

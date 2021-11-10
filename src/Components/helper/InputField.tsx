@@ -7,6 +7,7 @@ interface InputFieldProp extends InputHTMLAttributes<HTMLInputElement> {
   touched?: boolean;
   type?: string;
   className: string;
+  label?: boolean;
 }
 
 const InputField: FC<InputFieldProp> = ({
@@ -15,11 +16,16 @@ const InputField: FC<InputFieldProp> = ({
   error,
   touched,
   type,
+  label,
   className,
 }) => {
   return (
     <div className="flex flex-col mt-5">
-      <label className="text-base font-semibold" htmlFor={id}>{id}</label>
+      {label && (
+        <label className="text-base font-semibold" htmlFor={id}>
+          {id}
+        </label>
+      )}
       <input
         id={id}
         className={className}
@@ -28,6 +34,10 @@ const InputField: FC<InputFieldProp> = ({
       />
     </div>
   );
+};
+
+InputField.defaultProps = {
+  label: false,
 };
 
 export default InputField;

@@ -1,11 +1,11 @@
-// import stats  from "../../assets/stats.gif";
+import stats from "../../assets/stats.gif";
 import { ImStatsBars } from "react-icons/im";
 import { MdMessage } from "react-icons/md";
 
 const ProfilePage = () => {
   return (
-    <div className="mx-auto my-5 p-5 pt-20">
-      <div className="md:flex no-wrap md:-mx-2 ">
+    <div className="mx-auto p-5 pt-20">
+      <div className="md:flex no-wrap md:-mx-2">
         {/* <!-- Left Side --> */}
         <div className="w-full md:w-3/12 md:mx-2">
           {/* <!-- Profile Card --> */}
@@ -45,11 +45,11 @@ const ProfilePage = () => {
           </div>
         </div>
         {/* <!-- Right Side --> */}
-        <div className="w-full md:w-9/12 mx-2 h-64">
+        <div className="w-full md:w-9/12 mx-2">
           {/* <!-- Profile tab -->
             <!-- About Section --> */}
           <div className="shadow-lg border-2 p-2 mb-4">
-          <div className="flex flex-row justify-between mx-5">
+            <div className="flex flex-row justify-between mx-5">
               <div className="flex flex-row items-center space-x-3">
                 <div className="flex text-lg font-normal">Connect with:</div>
                 <div className="flex flex-row space-x-1">
@@ -136,9 +136,9 @@ const ProfilePage = () => {
               <div className="">
                 <button className="bg-gray-300 px-5 py-1 flex items-center space-x-2 rounded">
                   <span>
-                    <MdMessage/>
+                    <MdMessage />
                   </span>
-                  <span>Send Message</span> 
+                  <span>Send Message</span>
                 </button>
               </div>
             </div>
@@ -178,9 +178,7 @@ const ProfilePage = () => {
                   <div className="px-4 py-2">+11 998001001</div>
                 </div>
                 <div className="grid grid-cols-2">
-                  <div className="px-4 py-2 font-semibold">
-                    Address
-                  </div>
+                  <div className="px-4 py-2 font-semibold">Address</div>
                   <div className="px-4 py-2">
                     Arlington Heights, IL, Illinois
                   </div>
@@ -309,17 +307,21 @@ const ProfilePage = () => {
           </div>
           <div className="mt-4"></div>
           <div className="bg-white p-3 shadow-lg border-2 rounded-sm">
-            <div className="grid grid-cols-2">
-              <div>
-                <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3 border-b-2 ">
-                  <span className="text-gray-700">
-                  <ImStatsBars className="text-lg"/>
-                    {/* <img src={stats} width="24" height="24" alt="stats" /> */}
-                  </span>
-                  <span className="tracking-wide">Git Stats</span>
-                </div>
-                <div className="">Will be added soon</div>
+            <div className="grid grid-cols-1">
+              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3 border-b-2 ">
+                <span className="text-gray-700">
+                  <ImStatsBars className="text-lg" />
+                  {/* <img src={stats} width="24" height="24" alt="stats" /> */}
+                </span>
+                <span className="tracking-wide">Git Stats</span>
               </div>
+              <div className="text-center">Will be added soon...</div>
+              <img
+                className=""
+                width={300}
+                src={stats}
+                alt="stats"
+              />
             </div>
             {/* <!-- End of git stats grid --> */}
           </div>
