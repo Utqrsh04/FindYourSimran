@@ -6,11 +6,11 @@ const Contests = () => {
   const [allContest, setAllContest] = useState<any>([]);
   const [search, setSearch] = useState("");
   useEffect(() => {
-    getAllContest().then((res) => setAllContest(res));
+    getAllContest().then((res) => res && setAllContest(res));
   }, []);
   // console.log(allContest);
 
-  const filterContests = allContest.filter(
+  const filterContests =  allContest.filter(
     (contest: any) =>
       contest.name.toLowerCase().includes(search.toLowerCase()) ||
       contest.site.toLowerCase().includes(search.toLowerCase())
