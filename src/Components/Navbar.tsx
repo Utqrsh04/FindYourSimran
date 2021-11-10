@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
@@ -23,6 +23,14 @@ function classNames(...classes: any) {
 }
 
 const Navbar: FC<NavbarPropsType> = () => {
+  const [active, setActive] = useState("home");
+
+  const linkClicked = (name: string) => {
+    if (name === "connection") setActive("connection");
+    else if (name === "contest") setActive("contest");
+    else if (name === "trend") setActive("trend");
+    else setActive("home");
+  };
 
   const logout = async () => {
     await auth.signOut();
@@ -68,21 +76,55 @@ const Navbar: FC<NavbarPropsType> = () => {
                 </div>
                 <div className="hidden sm:flex items-center sm:ml-6">
                   <div className="flex space-x-4 justify-center items-center">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className= {classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-white hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-base font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                    <Link
+                      to="/dashboard"
+                      onClick={() => linkClicked("home")}
+                      className={classNames(
+                        active === "home"
+                          ? "bg-purple-900 text-white"
+                          : "text-white hover:bg-gray-700 hover:text-white",
+                        "px-3 py-2 rounded-md text-base font-medium"
+                      )}
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      to="/connections"
+                      onClick={() => linkClicked("connection")}
+                      className={classNames(
+                        active === "connection"
+                          ? "bg-purple-900 text-white"
+                          : "text-white hover:bg-gray-700 hover:text-white",
+                        "px-3 py-2 rounded-md text-base font-medium"
+                      )}
+                    >
+                      Connections
+                    </Link>
+
+                    <Link
+                      to="/contests"
+                      onClick={() => linkClicked("contest")}
+                      className={classNames(
+                        active === "contest"
+                          ? "bg-purple-900 text-white"
+                          : "text-white hover:bg-gray-700 hover:text-white",
+                        "px-3 py-2 rounded-md text-base font-medium"
+                      )}
+                    >
+                      Contests
+                    </Link>
+                    <Link
+                      to="/trends"
+                      onClick={() => linkClicked("trend")}
+                      className={classNames(
+                        active === "trend"
+                          ? "bg-purple-900 text-white"
+                          : "text-white hover:bg-gray-700 hover:text-white",
+                        "px-3 py-2 rounded-md text-base font-medium"
+                      )}
+                    >
+                      Trends
+                    </Link>
                     <SearchBar />
                   </div>
                 </div>
@@ -173,7 +215,7 @@ const Navbar: FC<NavbarPropsType> = () => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-gray-900 text-white"
+                      ? "bg-purple-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block px-3 py-2 rounded-md text-base font-medium"
                   )}

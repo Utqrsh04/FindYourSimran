@@ -59,6 +59,7 @@ const Dashboard = () => {
               </div>
               {/* center post portion */}
               <div className="lg:w-2/5 rounded-md">
+               
                 {/* create post */}
                 <div className="border-2 border-gray-200 bg-white rounded-sm mb-3 px-3 pt-2">
                   <div className="flex flex-col">
@@ -71,10 +72,10 @@ const Dashboard = () => {
                       <input
                         id="Post"
                         type="text"
-                        className="outline-none border-2 w-96 rounded-full h-12 pl-3 bg-gray-300"
-                        placeholder="Create a Post"
+                        className="outline-none placeholder-gray-600 border-2 w-full max-w-sm rounded-full h-10 sm:h-12 pl-3 bg-gray-300"
+                        placeholder="Create a Post 📝"
                       />
-                      <button className="bg-gray-400 px-5 py-2 text-xl rounded-full">
+                      <button className="bg-gray-400 px-3 sm:px-5 py-1 sm:py-2 text-lg sm:text-xl rounded-full">
                         Post
                       </button>
                     </div>
@@ -139,16 +140,6 @@ const Dashboard = () => {
                           className="hidden"
                         />
                       </div>
-                      {/* <div className="flex items-baseline">
-                      <img className="w-10 h-8" src="https://img.icons8.com/fluency/48/000000/image.png" alt="imageicon"/>
-                      <InputField
-                        label={true}
-                        id="Photo"
-                        placeholder="hello"
-                        type="file"
-                        className="hidden"
-                      />
-                    </div> */}
                     </div>
                   </div>
                 </div>

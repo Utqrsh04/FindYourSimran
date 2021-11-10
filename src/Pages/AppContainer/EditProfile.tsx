@@ -15,8 +15,8 @@ const EditProfile = () => {
   //console.log(active);
 
   return (
-    <div className="flex flex-col md:flex-row top-20 h-screen justify-center space-x-10 w-full">
-      <div className=" w-64">
+    <div className="flex flex-col md:flex-row mt-40 sm:mt-0 top-20 h-screen justify-center space-x-10 w-full">
+      <div className="w-64">
         <div className="sticky top-20 my-8 ml-8 bg-white rounded-md border-2">
           <h1 className="p-5 border-b-2 border-gray-400 text-xl font-semibold">
             Edit Profile

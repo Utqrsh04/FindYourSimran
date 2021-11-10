@@ -28,7 +28,7 @@ const Input: FC<InputPropType> = ({
       >
         {placeholder}
       </label>
-      <div className=" flex flex-row justify-between py-2 border-b-2 font-mono border-purple-700 text-sm  text-black placeholder-gray-600 focus:outline-none outline-none  ">
+      <div className=" flex flex-row justify-between py-2 border-b-2 font-Sora border-purple-700 text-sm  text-black placeholder-gray-600 focus:outline-none outline-none  ">
         <input
           type={typePass}
           id={id}
