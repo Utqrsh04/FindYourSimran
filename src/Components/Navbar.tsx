@@ -33,11 +33,11 @@ const Navbar: FC<NavbarPropsType> = () => {
   return (
     <Disclosure
       as="nav"
-      className="shadow-lg bg-navbar fixed z-20 top-0 right-0 left-0"
+      className="shadow-lg  bg-navbar fixed z-20 top-0 right-0 left-0"
     >
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="font-Sora max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -103,7 +103,7 @@ const Navbar: FC<NavbarPropsType> = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwZkSEm6tkwEyPiz1kmz9BMlcBsbjl8q__XQ&usqp=CAU"
                         alt=""
                       />
                     </Menu.Button>

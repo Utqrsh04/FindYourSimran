@@ -17,7 +17,7 @@ const NewsCard = () => {
 
   return (
     <div className=" bg-darkshade pb-5 rounded-lg items-start">
-      <h1 className="text-xl ml-4  pt-4 pb-3 font-bold font-mono">What's Happening</h1>
+      <h1 className="text-xl ml-4  pt-4 pb-3 font-bold font-Sora">What's Happening</h1>
 
       {data &&
         data.map((each: any, index: any) => (
@@ -27,7 +27,7 @@ const NewsCard = () => {
                 <p className="text-xs ml-2 mr-2">
                   <GoPrimitiveDot />
                 </p>
-                <p className="text-sm mr-3 font-mono" key={index}>
+                <p className="text-sm mr-3 font-Sora" key={index}>
                   {each.name}
                 </p>
               </div>

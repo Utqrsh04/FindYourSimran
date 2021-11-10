@@ -1,8 +1,5 @@
 import Card from "../../Components/Card";
 import Navbar from "../../Components/Navbar";
-import photo from "../../assets/darkbluebg.jpg";
-import photo1 from "../../assets/neonwave.jpg";
-import photo2 from "../../assets/images.jpg";
 import Loader from "../../Components/Loader/Loader";
 import { useEffect } from "react";
 import { Switch, Route } from "react-router";
@@ -15,50 +12,34 @@ import Contests from "./Contests";
 
 const Dashboard = () => {
   const details = [
+    
     {
-      userName: "Anurodh Dubey",
-      img: photo,
-      datePosted: "27 August",
-    },
-    {
-      userName: "Utkarsh Kumar",
-      img: photo1,
-      datePosted: "18 June",
+      userName: "Utkarsh",
+      img: "https://avatars.githubusercontent.com/u/55407062?v=4",
+      datePosted: "1 November",
+      role: ["UI-UX Designer"],
+      desc: "I need a UI-UX designed for my upcoming project who can make good looking professional UI and UX.",
     },
     {
       userName: "Anurodh Dubey",
-      img: photo,
-      datePosted: "27 August",
+      img: "https://avatars.githubusercontent.com/u/61279576?v=4",
+      datePosted: "5 November",
+      role: ["Frontend Developer", "Reactjs Developer"],
+      desc: "I need a reactjs developer who can build efficient frontend for my website.",
     },
     {
-      userName: "Utkarsh Kumar",
-      img: photo1,
-      datePosted: "18 June",
+      userName: "Rahul",
+      img: "https://avatars.githubusercontent.com/u/26406279?v=4",
+      datePosted: "30 October",
+      role: ["Android Developer"],
+      desc: "I need a Android developer for my project who can help me in making native android apps.",
     },
     {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
-    },
-    {
-      userName: "Ashutosh Tripathi",
-      img: photo2,
-      datePosted: "15 October",
+      userName: "Ashutosh",
+      img: "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png",
+      datePosted: "25 October",
+      role: ["Backend Developer "],
+      desc: "I need a Backend Developer for my current project who can make and manage databases and create endpoints for the frontend .",
     },
   ];
 
@@ -72,6 +53,7 @@ const Dashboard = () => {
         <Route exact path="/dashboard">
           <div className=" flex bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
             {/* left profile portion */}
+          <div className=" flex font-Sora bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
             <div className="sticky top-20 w-1/6 rounded-md shadow-2xl max-h-96 hidden lg:block text-white">
               <ProfileCard />
             </div>
@@ -83,7 +65,7 @@ const Dashboard = () => {
                   <div className="flex flex-row space-x-4 items-center">
                     <img
                       className="rounded-full w-14 h-14"
-                      src={photo1}
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwZkSEm6tkwEyPiz1kmz9BMlcBsbjl8q__XQ&usqp=CAU"
                       alt="User"
                     />
                     <input
@@ -145,6 +127,8 @@ const Dashboard = () => {
                   userName={detail.userName}
                   datePosted={detail.datePosted}
                   img={detail.img}
+                  roles={detail.role}
+                  desc={detail.desc}
                 />
               ))}
             </div>
@@ -153,6 +137,7 @@ const Dashboard = () => {
               <NewsCard />
             </div>
           </div>
+        </div>
         </Route>
         <Route exact path="/trends">
           <Trends />
