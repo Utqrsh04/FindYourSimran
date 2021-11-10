@@ -7,18 +7,21 @@ const Password = () => {
       <div className="flex flex-col">
         <form action="">
           <InputField
+          label={true}
             id="Old Password"
             placeholder=""
             type="text"
             className="focus:shadow-3xl px-1 w-96 rounded border-2 outline-none"
           />
           <InputField
+            label={true}
             id="New Password"
             placeholder=""
             type="text"
             className="focus:shadow-3xl px-1 w-96 rounded border-2 outline-none"
           />
           <InputField
+            label={true}
             id="Confirm Password"
             placeholder=""
             type="text"

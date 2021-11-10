@@ -4,19 +4,21 @@ import EditImage from "./Editimage";
 const Personalinfo = () => {
   return (
     <div className="bg-transparent">
-      <h1 className="p-4 border-2 text-black font font-semibold text-lg">
+      <h1 className="border-b-2 text-black font font-semibold text-lg">
         Personal Information
       </h1>
-      <div className="px-4 py-1 border-2 flex flex-row space-x-52">
+      <div className="flex flex-row space-x-52">
         <div>
           <form action="">
             <InputField
+              label={true}
               id="Full Name"
               placeholder="Enter name...."
               type="text"
               className="focus:shadow-3xl px-1 w-80 rounded border-2 outline-none"
             />
             <InputField
+              label={true}
               id="Email"
               placeholder="Enter email id...."
               type="email"
@@ -35,18 +37,21 @@ const Personalinfo = () => {
               ></textarea>
             </div>
             <InputField
+              label={true}
               id="LinkedIn"
               placeholder="link to linkedin"
               type="text"
               className="focus:shadow-3xl px-1 rounded w-80 border-2 outline-none"
             />
             <InputField
+              label={true}
               id="Github"
               placeholder="link to github"
               type="text"
               className="focus:shadow-3xl px-1 rounded w-80 border-2 outline-none"
             />
             <InputField
+              label={true}
               id="Facebook"
               placeholder="link to Facebook"
               type="text"

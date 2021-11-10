@@ -13,7 +13,7 @@ interface NavbarPropsType {}
 
 const navigation = [
   { name: "Home", href: "/dashboard", current: true },
-  { name: "Connections", href: "#", current: false },
+  { name: "Connections", href: "/connections", current: false },
   { name: "Contests", href: "/contests", current: false },
   { name: "Trends", href: "/trends", current: false },
 ];
