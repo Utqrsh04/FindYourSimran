@@ -7,7 +7,7 @@ const Password = () => {
       <div className="flex flex-col">
         <form action="">
           <InputField
-          label={true}
+            label={true}
             id="Old Password"
             placeholder=""
             type="text"
@@ -44,8 +44,9 @@ const Password = () => {
           </a>
         </div>
         <div className="mt-10">
-          <h1 className="font-medium text-2xl border-b-2">Two Factor Authentication</h1>
-
+          <h1 className="font-medium text-2xl border-b-2">
+            Two Factor Authentication
+          </h1>
         </div>
       </div>
     </div>

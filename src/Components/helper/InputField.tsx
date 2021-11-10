@@ -22,7 +22,7 @@ const InputField: FC<InputFieldProp> = ({
   return (
     <div className="flex flex-col mt-5">
       {label && (
-        <label className="text-base font-semibold" htmlFor={id}>
+        <label className="text-base font-semibold w-max px-2 py-0.5 rounded mb-1 bg-gray-300" htmlFor={id}>
           {id}
         </label>
       )}
