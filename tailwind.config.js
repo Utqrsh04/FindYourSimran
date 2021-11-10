@@ -1,6 +1,3 @@
-
-
-
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
@@ -19,7 +16,7 @@ module.exports = {
         brightBlue: "#1539c8",
       },
       boxShadow:{
-        '3xl':'0px 0px 10px 5px rgba(48, 237, 28, 1)',
+        '3xl':'0px 0px 3px 3px rgba(18, 22, 246, 1)',
       }
     },
   },

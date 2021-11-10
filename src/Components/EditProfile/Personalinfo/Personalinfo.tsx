@@ -25,7 +25,7 @@ const Personalinfo = () => {
               className="focus:shadow-3xl px-1 w-80 rounded border-2 outline-none"
             />
             <div className="mt-5 flex flex-col">
-              <label className="font-semibold" htmlFor="bio">
+              <label className="font-semibold w-max px-2 py-0.5 rounded mb-1 bg-gray-300" htmlFor="bio">
                 Bio
               </label>
               <textarea
