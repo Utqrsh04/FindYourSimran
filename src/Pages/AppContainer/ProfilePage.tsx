@@ -14,7 +14,6 @@ const ProfilePage = () => {
               <img
                 className="h-auto w-full mx-auto"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwZkSEm6tkwEyPiz1kmz9BMlcBsbjl8q__XQ&usqp=CAU"
-
                 alt=""
               />
             </div>
@@ -25,7 +24,7 @@ const ProfilePage = () => {
               Software Developer
             </h3>
             <p className="text-sm font-semibold text-gray-500 hover:text-gray-600 leading-6">
-            Life would be much easier if I had the source code.
+              Life would be much easier if I had the source code.
             </p>
             <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
               <li className="flex items-center py-3">
@@ -67,8 +66,8 @@ const ProfilePage = () => {
                       y2="40.615"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop offset="0" stop-color="#2aa4f4" />
-                      <stop offset="1" stop-color="#007ad9" />
+                      <stop offset="0" stopColor="#2aa4f4" />
+                      <stop offset="1" stopColor="#007ad9" />
                     </linearGradient>
                     <path
                       fill="url(#Ld6sqrtcxMyckEl6xeDdMa)"
@@ -224,12 +223,8 @@ const ProfilePage = () => {
                 </div>
                 <ul className="list-inside space-y-2">
                   <li>
-                    <div className="text-teal-600">
-                      Owner at Meta.
-                    </div>
-                    <div className="text-gray-500 text-xs">
-                      Nov 2021 - Now
-                    </div>
+                    <div className="text-teal-600">Owner at Meta.</div>
+                    <div className="text-gray-500 text-xs">Nov 2021 - Now</div>
                   </li>
                   <li>
                     <div className="text-teal-600">
@@ -315,12 +310,7 @@ const ProfilePage = () => {
                 <span className="tracking-wide">Git Stats</span>
               </div>
               <div className="text-center">Will be added soon...</div>
-              <img
-                className=""
-                width={300}
-                src={stats}
-                alt="stats"
-              />
+              <img className="" width={300} src={stats} alt="stats" />
             </div>
             {/* <!-- End of git stats grid --> */}
           </div>

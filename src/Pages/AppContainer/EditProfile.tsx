@@ -9,16 +9,16 @@ import { Redirect, Route } from "react-router";
 import Password from "../../Components/EditProfile/Changepassword";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { auth } from "../../firebase";
+// import { auth } from "../../firebase";
 
 const EditProfile = () => {
   const [active, setActive] = useState("personal");
   //console.log(active);
 
   const logout = async () => {
-    await auth.signOut();
-    localStorage.removeItem("loggedIn");
-    window.location.href = "/login";
+    // await auth.signOut();
+    // localStorage.removeItem("loggedIn");
+    // window.location.href = "/login";
   };
 
   return (
