@@ -160,6 +160,7 @@ const LoginPage = () => {
                 disabled={!isValid}
               >
                 Sign In
+                {loading && "Wait"}
               </button>
             </div>
             <h1 className="text-base font-Sora font-semibold pt-5">

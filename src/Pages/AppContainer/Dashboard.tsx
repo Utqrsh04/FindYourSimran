@@ -1,7 +1,7 @@
 import Card from "../../Components/Card";
 import Navbar from "../../Components/Navbar";
 import Loader from "../../Components/Loader/Loader";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router";
 import Trends from "./Trends";
 import ProfileCard from "../../Components/Profile/ProfileCard";
@@ -10,8 +10,11 @@ import ProfilePage from "./ProfilePage";
 import EditProfile from "./EditProfile";
 import Contests from "./Contests";
 import Connections from "./Connections";
+import axios from "axios";
 
 const Dashboard = () => {
+  const [posts, setPosts] = useState<any>();
+
   const details = [
     {
       userName: "Utkarsh",
@@ -43,9 +46,30 @@ const Dashboard = () => {
     },
   ];
 
+  const fetchPosts = async () => {
+    try {
+      const user = JSON.parse(localStorage.getItem("userInfo")!);
+
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+
+      const { data } = await axios.get(`/api/post`, config);
+
+      setPosts(data.posts);
+    } catch (error: any) {
+      console.log("Error Ocuuered during Login");
+      console.log(error.response);
+    }
+  };
+
+  console.log("All Posts", posts);
+
   useEffect(() => {
     <Loader />;
+    fetchPosts();
   }, []);
+
   return (
     <Switch>
       <>
@@ -59,7 +83,6 @@ const Dashboard = () => {
               </div>
               {/* center post portion */}
               <div className="lg:w-2/5 rounded-md">
-               
                 {/* create post */}
                 <div className="border-2 border-gray-200 bg-white rounded-sm mb-3 px-3 pt-2">
                   <div className="flex flex-col">
@@ -144,16 +167,17 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                {details.map((detail, index) => (
-                  <Card
-                    key={index}
-                    userName={detail.userName}
-                    datePosted={detail.datePosted}
-                    img={detail.img}
-                    roles={detail.role}
-                    desc={detail.desc}
-                  />
-                ))}
+                {posts &&
+                  posts.map((post: any, index: any) => (
+                    <Card
+                      key={index}
+                      userName={post.postedBy.name}
+                      datePosted={post.updatedAt}
+                      img={post.postedBy.profilePic}
+                      // roles={post.roles}
+                      desc={post.content}
+                    />
+                  ))}
               </div>
               {/* right news portion */}
               <div className="top-20 w-1/5 shadow-2xl h-2/3 rounded-md hidden lg:block text-white mb-5">
