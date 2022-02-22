@@ -6,7 +6,7 @@ import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SearchBar from "./Searchbar";
 import midPng from "../assets/Group 4.png";
-import { auth } from "../firebase";
+// import { auth } from "../firebase";
 
 interface NavbarPropsType {}
 
@@ -32,8 +32,7 @@ const Navbar: FC<NavbarPropsType> = () => {
   };
 
   const logout = async () => {
-    await auth.signOut();
-    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userInfo");
     window.location.href = "/login";
   };
 
@@ -81,37 +80,37 @@ const Navbar: FC<NavbarPropsType> = () => {
                         <linearGradient id="SvgjsLinearGradient1073">
                           <stop
                             id="SvgjsStop1074"
-                            stop-color="#26275f"
+                            stopColor="#26275f"
                             offset="0"
                           ></stop>
                           <stop
                             id="SvgjsStop1075"
-                            stop-color="#813e96"
+                            stopColor="#813e96"
                             offset="0.14"
                           ></stop>
                           <stop
                             id="SvgjsStop1076"
-                            stop-color="#2e64af"
+                            stopColor="#2e64af"
                             offset="0.29"
                           ></stop>
                           <stop
                             id="SvgjsStop1077"
-                            stop-color="#3faa49"
+                            stopColor="#3faa49"
                             offset="0.5"
                           ></stop>
                           <stop
                             id="SvgjsStop1078"
-                            stop-color="#f2e64a"
+                            stopColor="#f2e64a"
                             offset="0.71"
                           ></stop>
                           <stop
                             id="SvgjsStop1079"
-                            stop-color="#f2903b"
+                            stopColor="#f2903b"
                             offset="0.86"
                           ></stop>
                           <stop
                             id="SvgjsStop1080"
-                            stop-color="#ed4533"
+                            stopColor="#ed4533"
                             offset="1"
                           ></stop>
                         </linearGradient>

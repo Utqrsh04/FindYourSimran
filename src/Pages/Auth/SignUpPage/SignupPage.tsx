@@ -1,13 +1,14 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { SiGithub } from "react-icons/si";
 import { Link } from "react-router-dom";
-import { auth } from "../../../firebase";
 import "./SignupPage.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Toast from "../../../Components/Toast/Toast";
 import Input from "../../../Components/Input";
 import { FaGoogle } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 const SignupPage = () => {
   const [showToast, setShowToast] = useState(false);
@@ -34,23 +35,54 @@ const SignupPage = () => {
     },
   });
 
-  const handleSignUp = useCallback(async (event) => {
+  const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
+
+  const handleSignUp = async (event: any) => {
     event.preventDefault();
-    setError("");
+    setLoading(true);
     setShowToast(false);
-    const { email, password, name } = event.target.elements;
-    console.log(name.value);
+    var { email, password, name } = event.target.elements;
+
+    if (!name || !password || !email) {
+      setError("Please fill all the fields");
+      return;
+    }
+    email = email.value;
+    name = name.value;
+    password = password.value;
+    console.log("User ", email, password, name);
+
+    // making api call
     try {
-      await auth.createUserWithEmailAndPassword(email.value, password.value);
-      // console.log("User Created ");
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      console.log("Making Api CALL");
+
+      const { data } = await axios.post(
+        "/api/user/signup",
+        { email, password, name },
+        config
+      );
+
+      console.log("Signup SucessFull", data);
+      setError("User Created 😀 , Login to Continue ");
+      setShowToast(true);
+      setLoading(false);
+
+      setTimeout(() => history.push("/login"), 2000);
     } catch (error: any) {
-      // console.log(error.code);
-      if (error.code === "auth/email-already-in-use")
-        setError("The email address is already in use by another account.");
-      else setError(error.message);
+      console.log("Error Ocuuered during Signup");
+      console.log(error.response);
+      setError(error.response.data.message);
+      setLoading(false);
       setShowToast(true);
     }
-  }, []);
+  };
 
   return (
     <div className=" bgImage flex justify-center items-center h-screen">

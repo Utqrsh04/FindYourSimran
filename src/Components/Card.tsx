@@ -4,13 +4,13 @@ interface CardTypeProps {
   img: any;
   userName: string;
   datePosted: string;
-  roles: string[];
+  // roles: string[];
   desc: string;
 }
 
 const Card: FC<CardTypeProps> = ({
   img,
-  roles,
+  // roles,
   desc,
   userName,
   datePosted,
@@ -28,7 +28,7 @@ const Card: FC<CardTypeProps> = ({
         <div className="border-r border-b border-l w-full border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between">
           <div className="mb-8 min-w-full">
             <div className="text-gray-900 font-bold  mb-2">
-              {roles.map((role, index) => (
+              {/* {roles.map((role, index) => (
                 <span
                   key={index}
                   className={
@@ -40,9 +40,11 @@ const Card: FC<CardTypeProps> = ({
                 >
                   {role}
                 </span>
-              ))}
+              ))} */}
             </div>
-            <div className="text-gray-700 text-sm font-semibold font-Sora">{desc}</div>
+            <div className="text-gray-700 text-sm font-semibold font-Sora">
+              {desc}
+            </div>
           </div>
           <div className="flex justify-between">
             <div className="flex w-full text-sm items-center">
@@ -57,7 +59,9 @@ const Card: FC<CardTypeProps> = ({
               </div>
             </div>
             <button className=" relative flex justify-evenly items-center z-10 bg-white border rounded-md p-1 opacity-75 hover:opacity-100 focus:outline-none focus:border-gray-500">
-              <span className="inline-block text-sm px-1 text-gray-600">Share</span>
+              <span className="inline-block text-sm px-1 text-gray-600">
+                Share
+              </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"

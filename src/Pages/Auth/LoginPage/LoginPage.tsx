@@ -1,13 +1,13 @@
 import { useFormik } from "formik";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { SiGithub } from "react-icons/si";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { auth } from "../../../firebase";
 import "./LoginPage.css";
 import Toast from "../../../Components/Toast/Toast";
 import Input from "../../../Components/Input";
+import axios from "axios";
 
 const LoginPage = () => {
   const { errors, touched, handleReset, getFieldProps, isValid } = useFormik({
@@ -22,31 +22,50 @@ const LoginPage = () => {
 
   const [showToast, setShowToast] = useState(false);
   const [error, setError] = useState<any>("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = useCallback(async (event: any) => {
+  const handleLogin = async (event: any) => {
     event.preventDefault();
-    setError("");
     setShowToast(false);
-    const { email, password } = event.target.elements;
-    // console.log("User ", email.value, password.value);
+    setLoading(true);
+
+    var { email, password } = event.target.elements;
+    email = email.value;
+    password = password.value;
+
+    console.log("User ", email, password);
+
+    // making api call
     try {
-      await auth.signInWithEmailAndPassword(email.value, password.value);
-      // console.log("logged In");
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      console.log("Making Api CALL");
+
+      const { data } = await axios.post(
+        "/api/user/login",
+        { email, password },
+        config
+      );
+
+      console.log("Login SucessFull");
+      console.log(data);
+
+      // saving data in localStorage
+      localStorage.setItem("userInfo", JSON.stringify(data.data));
+      setLoading(false);
+      window.location.href = "/dashboard";
     } catch (error: any) {
-      // console.log(error.code);
-      if (error.code === "auth/wrong-password")
-        setError(
-          "The password is invalid or the user does not have a password.❌"
-        );
-      else if (error.code === "auth/user-not-found")
-        setError(
-          "There is no user record corresponding to this email address. The user may have been deleted."
-        );
-      else setError(error.message);
+      console.log("Error Ocuuered during Login");
+
+      console.log(error.response);
+      setError(error.response.data.message);
+      setLoading(false);
       setShowToast(true);
     }
-    // Firebase: A network AuthError (such as timeout, interrupted connection or unreachable host) has occurred. (auth/network-request-failed).
-  }, []);
+  };
 
   return (
     <div className=" bgImage flex justify-center items-center h-screen">
@@ -141,6 +160,7 @@ const LoginPage = () => {
                 disabled={!isValid}
               >
                 Sign In
+                {loading && "Wait"}
               </button>
             </div>
             <h1 className="text-base font-Sora font-semibold pt-5">
