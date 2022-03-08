@@ -70,8 +70,8 @@ const Navbar: FC<NavbarPropsType> = () => {
                     className="hidden lg:block"
                     xmlns="http://www.w3.org/2000/svg"
                     version="1.1"
-                    width="235.798149705635"
-                    height="220.3195962994113"
+                    width="255.798149705635"
+                    height="70.3195962994113"
                     viewBox="0 0 3159.798149705635 580.3195962994113"
                   >
                     <rect fill="#040404" width="0" height="0" />
