@@ -11,7 +11,6 @@ import EditProfile from "./EditProfile";
 import Contests from "./Contests";
 import Connections from "./Connections";
 import axios from "axios";
-import MyModal from "../../Components/Modal/InputModal";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState<any>();
@@ -62,13 +61,6 @@ const Dashboard = () => {
       console.log("Error Ocuuered during Login");
       console.log(error.response);
     }
-  };
-
-  const [open, setopen] = useState(false);
-  const openClose = () => {
-    console.log("OPen Close");
-
-    setopen(true);
   };
 
   console.log("All Posts", posts);
