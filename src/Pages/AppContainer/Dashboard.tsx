@@ -26,7 +26,6 @@ const Dashboard = () => {
   const createPosts = async (e: any) => {
     setShowToast(false);
     let role = roles.trim().split(",");
-
     e.preventDefault();
     try {
       const user = JSON.parse(localStorage.getItem("userInfo")!);
@@ -51,6 +50,7 @@ const Dashboard = () => {
   };
 
   const fetchPosts = async () => {
+    setShowToast(false);
     try {
       const user = JSON.parse(localStorage.getItem("userInfo")!);
       const config = {

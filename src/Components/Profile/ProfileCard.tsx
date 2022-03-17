@@ -1,6 +1,8 @@
 import React from "react";
 
 const ProfileCard = () => {
+  const user = JSON.parse(localStorage.getItem("userInfo")!);
+
   return (
     <div className="flex flex-col justify-center items-center hover:bg-gray-700 bg-darkshade pb-10 rounded-lg">
       <div className="bg-blue-700 w-full h-24 rounded-t-lg "></div>
@@ -9,20 +11,24 @@ const ProfileCard = () => {
         alt="Profile"
         className="flex w-20 h-20 rounded-full -mt-11"
       />
-      <p className="text-xl font-semibold">Mark Bhaiya</p>
+      <p className="text-xl font-semibold">{user.name.split(" ")[0]}</p>
       <p>Software Developer</p>
       <div className="flex flex-row space-x-6 mt-2 ">
         <div className="flex flex-col justify-center items-center">
           <span>0</span>
-          <span className="font-medium text-sm text-gray-400 font-Sora">Posts</span>
+          <span className="font-medium text-sm text-gray-400 font-Sora">
+            Posts
+          </span>
         </div>
         <div className="flex flex-col justify-center items-center">
-          <span>0</span>
-          <span className="font-medium text-sm text-gray-400 font-Sora">Projects</span>
+          <span>99</span>
+          <span className="font-medium text-sm text-gray-400 font-Sora">
+            Projects
+          </span>
         </div>
       </div>
       <p className="text-center text-sm pt-3 px-3 font-Sora">
-      Life would be much easier if I had the source code.
+        Life would be much easier if I had the source code.
       </p>
       <button
         type="button"
