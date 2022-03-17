@@ -11,47 +11,21 @@ import EditProfile from "./EditProfile";
 import Contests from "./Contests";
 import Connections from "./Connections";
 import axios from "axios";
+import Toast from "../../Components/Toast/Toast";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState<any>();
 
-  const details = [
-    {
-      userName: "Utkarsh",
-      img: "https://avatars.githubusercontent.com/u/55407062?v=4",
-      datePosted: "1 November",
-      role: ["UI-UX Designer"],
-      desc: "I need a UI-UX designed for my upcoming project who can make good looking professional UI and UX.",
-    },
-    {
-      userName: "Anurodh Dubey",
-      img: "https://avatars.githubusercontent.com/u/61279576?v=4",
-      datePosted: "5 November",
-      role: ["Frontend Developer", "Reactjs Developer"],
-      desc: "I need a reactjs developer who can build efficient frontend for my website.",
-    },
-    {
-      userName: "Rahul",
-      img: "https://avatars.githubusercontent.com/u/26406279?v=4",
-      datePosted: "30 October",
-      role: ["Android Developer"],
-      desc: "I need a Android developer for my project who can help me in making native android apps.",
-    },
-    {
-      userName: "Ashutosh",
-      img: "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png",
-      datePosted: "25 October",
-      role: ["Backend Developer "],
-      desc: "I need a Backend Developer for my current project who can make and manage databases and create endpoints for the frontend .",
-    },
-  ];
-
   const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const [roles, setRoles] = useState<string>("");
 
+  const [showToast, setShowToast] = useState(false);
+  const [toastmessage, setToastmessage] = useState<string>("");
+
   const createPosts = async (e: any) => {
-    let role = roles.split(",");
+    setShowToast(false);
+    let role = roles.trim().split(",");
 
     e.preventDefault();
     try {
@@ -63,13 +37,16 @@ const Dashboard = () => {
 
       const { data } = await axios.post(
         `/api/post/create`,
-        { content, roles: role, image },
+        { content, roles: role },
         config
       );
+
+      setToastmessage(data.message);
     } catch (error: any) {
-      console.log("Error Ocuuered during Post Create");
+      // console.log("Error Ocuuered during Post Create");
       console.log(error.response);
     }
+    setShowToast(true);
     fetchPosts();
   };
 
@@ -89,7 +66,26 @@ const Dashboard = () => {
     }
   };
 
-  console.log("All Posts", posts);
+  const deletePosts = async (s: string) => {
+    setShowToast(false);
+    if (window.confirm("Are you sure ?")) {
+      try {
+        const user = JSON.parse(localStorage.getItem("userInfo")!);
+        const config = {
+          headers: { Authorization: `Bearer ${user.token}` },
+        };
+
+        const { data } = await axios.delete(`/api/post/${s}`, config);
+        console.log(data);
+        setToastmessage(data.message);
+      } catch (error: any) {
+        console.log(error.response);
+      }
+
+      setShowToast(true);
+      fetchPosts();
+    }
+  };
 
   useEffect(() => {
     <Loader />;
@@ -101,6 +97,7 @@ const Dashboard = () => {
       <>
         <Navbar />
         <Route exact path="/dashboard">
+          <Toast type="Success" show={showToast} message={toastmessage} />
           <div className=" flex bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
             {/* left profile portion */}
             <div className=" flex font-Sora bg-gray-500 flex-row6 w-full justify-center px-2 lg:space-x-10 lg:px-0">
@@ -275,6 +272,8 @@ const Dashboard = () => {
                       img={post.postedBy.profilePic}
                       roles={post.roles}
                       desc={post.content}
+                      deletePosts={deletePosts}
+                      _id={post._id}
                     />
                   ))}
               </div>
