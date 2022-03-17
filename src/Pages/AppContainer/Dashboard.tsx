@@ -11,45 +11,48 @@ import EditProfile from "./EditProfile";
 import Contests from "./Contests";
 import Connections from "./Connections";
 import axios from "axios";
+import Toast from "../../Components/Toast/Toast";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState<any>();
 
-  const details = [
-    {
-      userName: "Utkarsh",
-      img: "https://avatars.githubusercontent.com/u/55407062?v=4",
-      datePosted: "1 November",
-      role: ["UI-UX Designer"],
-      desc: "I need a UI-UX designed for my upcoming project who can make good looking professional UI and UX.",
-    },
-    {
-      userName: "Anurodh Dubey",
-      img: "https://avatars.githubusercontent.com/u/61279576?v=4",
-      datePosted: "5 November",
-      role: ["Frontend Developer", "Reactjs Developer"],
-      desc: "I need a reactjs developer who can build efficient frontend for my website.",
-    },
-    {
-      userName: "Rahul",
-      img: "https://avatars.githubusercontent.com/u/26406279?v=4",
-      datePosted: "30 October",
-      role: ["Android Developer"],
-      desc: "I need a Android developer for my project who can help me in making native android apps.",
-    },
-    {
-      userName: "Ashutosh",
-      img: "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png",
-      datePosted: "25 October",
-      role: ["Backend Developer "],
-      desc: "I need a Backend Developer for my current project who can make and manage databases and create endpoints for the frontend .",
-    },
-  ];
+  const [content, setContent] = useState("");
+  // const [image, setImage] = useState("");
+  const [roles, setRoles] = useState<string>("");
+
+  const [showToast, setShowToast] = useState(false);
+  const [toastmessage, setToastmessage] = useState<string>("");
+
+  const createPosts = async (e: any) => {
+    setShowToast(false);
+    let role = roles.trim().split(",");
+
+    e.preventDefault();
+    try {
+      const user = JSON.parse(localStorage.getItem("userInfo")!);
+
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+
+      const { data } = await axios.post(
+        `/api/post/create`,
+        { content, roles: role },
+        config
+      );
+
+      setToastmessage(data.message);
+    } catch (error: any) {
+      // console.log("Error Ocuuered during Post Create");
+      console.log(error.response);
+    }
+    setShowToast(true);
+    fetchPosts();
+  };
 
   const fetchPosts = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("userInfo")!);
-
       const config = {
         headers: { Authorization: `Bearer ${user.token}` },
       };
@@ -58,12 +61,31 @@ const Dashboard = () => {
 
       setPosts(data.posts);
     } catch (error: any) {
-      console.log("Error Ocuuered during Login");
+      console.log("Error Ocuuered during Post Fetch");
       console.log(error.response);
     }
   };
 
-  console.log("All Posts", posts);
+  const deletePosts = async (s: string) => {
+    setShowToast(false);
+    if (window.confirm("Are you sure ?")) {
+      try {
+        const user = JSON.parse(localStorage.getItem("userInfo")!);
+        const config = {
+          headers: { Authorization: `Bearer ${user.token}` },
+        };
+
+        const { data } = await axios.delete(`/api/post/${s}`, config);
+        console.log(data);
+        setToastmessage(data.message);
+      } catch (error: any) {
+        console.log(error.response);
+      }
+
+      setShowToast(true);
+      fetchPosts();
+    }
+  };
 
   useEffect(() => {
     <Loader />;
@@ -75,6 +97,7 @@ const Dashboard = () => {
       <>
         <Navbar />
         <Route exact path="/dashboard">
+          <Toast type="Success" show={showToast} message={toastmessage} />
           <div className=" flex bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
             {/* left profile portion */}
             <div className=" flex font-Sora bg-gray-500 flex-row6 w-full justify-center px-2 lg:space-x-10 lg:px-0">
@@ -114,6 +137,7 @@ const Dashboard = () => {
                                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                                 data-modal-toggle="authentication-modal"
                               >
+                                Close
                                 <svg
                                   className="w-5 h-5"
                                   fill="currentColor"
@@ -121,9 +145,9 @@ const Dashboard = () => {
                                   xmlns="http://www.w3.org/2000/svg"
                                 >
                                   <path
-                                    fill-rule="evenodd"
+                                    fillRule="evenodd"
                                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"
+                                    clipRule="evenodd"
                                   ></path>
                                 </svg>
                               </button>
@@ -143,8 +167,8 @@ const Dashboard = () => {
                                   alt="User"
                                 />
                                 <div>
-                                  <p>Mark bhaiya</p>
-                                  <p className="text-sm">Software developer</p>
+                                  <p>User Name</p>
+                                  <p className="text-sm">Role</p>
                                 </div>
                               </div>
                               <div>
@@ -153,6 +177,8 @@ const Dashboard = () => {
                                   placeholder="What do you want to post about?"
                                   name=""
                                   id=""
+                                  value={content}
+                                  onChange={(e) => setContent(e.target.value)}
                                 />
                               </div>
                               <div className="flex">
@@ -161,6 +187,8 @@ const Dashboard = () => {
                                   className="w-full h-10 text-sm resize-none overflow-hidden rounded "
                                   name="roles"
                                   id="roles"
+                                  value={roles}
+                                  onChange={(e) => setRoles(e.target.value)}
                                 />
                               </div>
                               <div className="flex justify-between">
@@ -183,8 +211,8 @@ const Dashboard = () => {
                                       y2="32.093"
                                       gradientUnits="userSpaceOnUse"
                                     >
-                                      <stop offset="0" stop-color="#3ccbf4" />
-                                      <stop offset="1" stop-color="#1fa0e5" />
+                                      <stop offset="0" stopColor="#3ccbf4" />
+                                      <stop offset="1" stopColor="#1fa0e5" />
                                     </linearGradient>
                                     <path
                                       fill="url(#YuumOLjCrULofRDNXgQAXa)"
@@ -204,8 +232,8 @@ const Dashboard = () => {
                                       y2="42"
                                       gradientUnits="userSpaceOnUse"
                                     >
-                                      <stop offset="0" stop-color="#28afea" />
-                                      <stop offset="1" stop-color="#0b88da" />
+                                      <stop offset="0" stopColor="#28afea" />
+                                      <stop offset="1" stopColor="#0b88da" />
                                     </linearGradient>
                                     <path
                                       fill="url(#YuumOLjCrULofRDNXgQAXb)"
@@ -213,8 +241,15 @@ const Dashboard = () => {
                                     />
                                   </svg>
                                 </label>
-                                <input className="hidden" id="images" type="file" />
-                                <button className="bg-gray-400 hover:bg-brightBlue px-3 py-1 rounded-full">
+                                <input
+                                  className="hidden"
+                                  id="images"
+                                  type="file"
+                                />
+                                <button
+                                  onClick={(e) => createPosts(e)}
+                                  className="bg-gray-400 hover:bg-brightBlue px-3 py-1 rounded-full"
+                                >
                                   Post
                                 </button>
                               </div>
@@ -225,6 +260,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
+
                 {/* <MyModal */}
 
                 {posts &&
@@ -234,8 +270,10 @@ const Dashboard = () => {
                       userName={post.postedBy.name}
                       datePosted={post.updatedAt}
                       img={post.postedBy.profilePic}
-                      // roles={post.roles}
+                      roles={post.roles}
                       desc={post.content}
+                      deletePosts={deletePosts}
+                      _id={post._id}
                     />
                   ))}
               </div>

@@ -185,6 +185,7 @@ const SignupPage = () => {
                 disabled={!isValid}
               >
                 Sign Up
+                {loading && "Wait"}
               </button>
             </div>
             <h1 className="text-base font-Sora font-semibold">

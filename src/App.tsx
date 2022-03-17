@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import Dashboard from "./Pages/AppContainer/Dashboard";
 import NotFound from "./Pages/AppContainer/NotFound";
 import Authpage from "./Pages/Auth/Authpage";
-import Loader from "./Components/Loader/Loader";
 import { useHistory } from "react-router-dom";
 
 function App() {
@@ -25,6 +24,7 @@ function App() {
     if (user) {
       history.push("/dashboard");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
   console.log("In App", user);
