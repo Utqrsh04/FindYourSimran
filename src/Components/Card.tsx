@@ -4,13 +4,13 @@ interface CardTypeProps {
   img: any;
   userName: string;
   datePosted: string;
-  // roles: string[];
+  roles: string[];
   desc: string;
 }
 
 const Card: FC<CardTypeProps> = ({
   img,
-  // roles,
+  roles,
   desc,
   userName,
   datePosted,
@@ -28,11 +28,11 @@ const Card: FC<CardTypeProps> = ({
         <div className="border-r border-b border-l w-full border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between">
           <div className="mb-8 min-w-full">
             <div className="text-gray-900 font-bold  mb-2">
-              {/* {roles.map((role, index) => (
+              {roles.map((role, index) => (
                 <span
                   key={index}
                   className={
-                    "text-sm mt-1 font-semibold inline-block py-1 px-2 uppercase rounded text-black mr-1 " +
+                    "text-xs mt-1 font-semibold inline-block py-1 px-2 uppercase rounded text-black mr-1 " +
                     "bg-" +
                     colors[getRandomNumber()] +
                     "-200"
@@ -40,9 +40,9 @@ const Card: FC<CardTypeProps> = ({
                 >
                   {role}
                 </span>
-              ))} */}
+              ))}
             </div>
-            <div className="text-gray-700 text-sm font-semibold font-Sora">
+            <div className="text-gray-700 text-lg font-semibold font-Sora">
               {desc}
             </div>
           </div>
