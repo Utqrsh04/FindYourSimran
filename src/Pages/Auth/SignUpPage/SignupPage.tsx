@@ -8,6 +8,7 @@ import Input from "../../../Components/Input";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import imgs from "../../../assets/Group 4.png";
+import loadgif from "../../../assets/output-onlinegiftools.gif";
 
 const SignupPage = () => {
   
@@ -88,7 +89,7 @@ const SignupPage = () => {
     <div>
       <div className="bgcolr flex justify-center items-center h-screen">
         <Toast type="Error" show={showToast} message={error} />
-        <div className="flex rounded-lg justify-center mx-5 md:mx-10 lg:mx-20 xl:mx-40 w-full h-4/5">
+        <div className="flex rounded-lg justify-center mx-5 md:mx-10 lg:mx-20 xl:mx-40 w-full h-5/6 md:h-1/2 lg:h-4/5">
           <div className="block rounded bg-white w-full md:w-1/2 px-5 xl:px-28 lg:px-14">
             <p className="pt-7">
               Already Have an Account?{" "}
@@ -133,13 +134,12 @@ const SignupPage = () => {
               <div className="">
                 <button
                   type="submit"
-                  className={`bg-navyblue rounded px-7 w-full py-2 font-Sora font-bold text-white  ${
+                  className={`bg-navyblue rounded px-7 w-full py-2 flex justify-center font-Sora font-bold text-white  ${
                     !isValid && "cursor-not-allowed"
                   } `}
                   disabled={!isValid}
                 >
-                  Create an Account
-                  {loading && "Wait"}
+                  {loading ? <img className="w-6 h-6 text-white" src={loadgif} alt="loadGif" />:"Create an Account"}
                 </button>
               </div>
               <div className="div-line text-gray-500">Or sign Up with</div>

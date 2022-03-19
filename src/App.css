@@ -21,8 +21,3 @@
   .div-line:not(:empty)::after {
     margin-left: 0.25em;
   }
-
-  .eye{
-      float: right;
-      
-  }
