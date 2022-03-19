@@ -8,7 +8,6 @@ import SignupPage from "./SignUpPage/SignupPage";
 
 const Authpage = () => {
 
-
   return (
     <Router>
       <Switch>

@@ -9,8 +9,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import imgs from "../../../assets/Group 4.png";
 
-const SignupPage = () => {
-  
+const Signuptest = () => {
   const [showToast, setShowToast] = useState(false);
   const [error, setError] = useState<any>("");
 
@@ -234,4 +233,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default Signuptest;

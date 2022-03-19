@@ -24,18 +24,19 @@ const Input: FC<InputPropType> = ({
     <div className="flex flex-col space-y-2 mb-2 text-left ">
       <label
         htmlFor={id}
-        className="sr-only text-gray-700 ml-1  font-bold text-xl"
+        id={id}
+        className="labels absolute text-gray-400 focus:text-navyblue bg-white ml-3 text-sm -mt-0.5"
       >
         {placeholder}
       </label>
-      <div className=" flex flex-row justify-between py-2 border-b-2 font-Sora border-purple-700 text-sm  text-black placeholder-gray-600 focus:outline-none outline-none  ">
+      <div className="flex flex-row justify-between font-Sora text-sm text-black">
         <input
           type={typePass}
           id={id}
           {...rest}
           placeholder={placeholder}
           required
-          className="focus:outline-none outline-none w-full "
+          className="rounded border-2 w-full p-1.5 focus:outline-none focus:border-navyblue"
         />
         {type === "Password" && setShowPass && (
           <FaEye
@@ -45,7 +46,7 @@ const Input: FC<InputPropType> = ({
                 ? setTypePass(" ")
                 : setTypePass("Password");
             }}
-            className="w-5 h-5"
+            className="relative z-20 -ml-10 mt-1.5 eye w-5 h-5"
           />
         )}
       </div>

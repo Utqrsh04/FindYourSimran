@@ -173,7 +173,7 @@ const Dashboard = () => {
                               </div>
                               <div>
                                 <textarea
-                                  className="resize-none text-sm w-full h-40 rounded"
+                                  className="resize-none text-sm w-full h-40 rounded border-2 p-1"
                                   placeholder="What do you want to post about?"
                                   name=""
                                   id=""
@@ -184,7 +184,7 @@ const Dashboard = () => {
                               <div className="flex">
                                 <textarea
                                   placeholder="roles"
-                                  className="w-full h-10 text-sm resize-none overflow-hidden rounded "
+                                  className="w-full h-10 text-sm resize-none overflow-hidden rounded border-2 p-1"
                                   name="roles"
                                   id="roles"
                                   value={roles}
@@ -308,3 +308,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+

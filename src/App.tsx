@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import "./App.css";
 import { useEffect, useState } from "react";
 import Dashboard from "./Pages/AppContainer/Dashboard";
 import NotFound from "./Pages/AppContainer/NotFound";

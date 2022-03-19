@@ -13,14 +13,17 @@ module.exports = {
         navbar: "#1b232e",
         darkshade: "#222d3d",
         brightBlue: "#1539c8",
+        navyblue: "#2028eb",
       },
       boxShadow: {
         "3xl": "0px 0px 3px 3px rgba(18, 22, 246, 1)",
       },
+      margin: {
+        '25': '21.2rem',
+      }
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin")],
 };

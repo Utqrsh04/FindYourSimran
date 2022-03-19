@@ -1,0 +1,28 @@
+.div-line {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* To show the lines on right 
+  and left sides of the text */
+  .div-line::after,
+  .div-line::before {
+    content: "";
+    border: 1px solid lightgray;
+    flex: 1;
+  }
+  
+  /* Space on left and right sides of text */
+  .div-line:not(:empty)::before {
+    margin-right: 0.25em;
+  }
+  
+  .div-line:not(:empty)::after {
+    margin-left: 0.25em;
+  }
+
+  .eye{
+      float: right;
+      
+  }
