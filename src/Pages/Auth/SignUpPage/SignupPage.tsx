@@ -10,30 +10,30 @@ import axios from "axios";
 import imgs from "../../../assets/Group 4.png";
 
 const SignupPage = () => {
-  
   const [showToast, setShowToast] = useState(false);
   const [error, setError] = useState<any>("");
 
-  const { errors, touched, handleReset, getFieldProps, isValid } = useFormik({
-    initialValues: { name: "", email: "", password: "" },
-    validationSchema: yup.object().shape({
-      name: yup
-        .string()
-        .required("Name is required")
-        .matches(
-          /^[aA-zZ\s]+$/,
-          "Numbers or special characters are not allowed."
-        ),
+  const { errors, touched, handleReset, getFieldProps, values, isValid } =
+    useFormik({
+      initialValues: { name: "", email: "", password: "" },
+      validationSchema: yup.object().shape({
+        name: yup
+          .string()
+          .required("Name is required")
+          .matches(
+            /^[aA-zZ\s]+$/,
+            "Numbers or special characters are not allowed."
+          ),
 
-      email: yup.string().required("email is required").email(),
+        email: yup.string().required("email is required").email(),
 
-      password: yup.string().required("password is required").max(20).min(8),
-    }),
-    onSubmit: (data) => {
-      console.log(data);
-      setShowToast(true);
-    },
-  });
+        password: yup.string().required("password is required").max(20).min(8),
+      }),
+      onSubmit: (data) => {
+        console.log(data);
+        setShowToast(true);
+      },
+    });
 
   const [loading, setLoading] = useState(false);
 
@@ -110,6 +110,7 @@ const SignupPage = () => {
                   placeholder="Full Name"
                   touched={touched.name}
                   error={errors.name}
+                  values={values.name}
                   {...getFieldProps("name")}
                 />
 
@@ -118,6 +119,7 @@ const SignupPage = () => {
                   placeholder="Email Address"
                   touched={touched.email}
                   error={errors.email}
+                  values={values.email}
                   {...getFieldProps("email")}
                 />
 
@@ -126,6 +128,7 @@ const SignupPage = () => {
                   placeholder="Password"
                   touched={touched.password}
                   error={errors.password}
+                  values={values.password}
                   type="Password"
                   {...getFieldProps("password")}
                 />
