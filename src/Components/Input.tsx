@@ -7,6 +7,7 @@ interface InputPropType extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   touched?: boolean;
   type?: "Password" | " ";
+  values: string;
 }
 
 const Input: FC<InputPropType> = ({
@@ -14,6 +15,7 @@ const Input: FC<InputPropType> = ({
   placeholder,
   error,
   touched,
+  values,
   type,
   ...rest
 }) => {
@@ -25,7 +27,9 @@ const Input: FC<InputPropType> = ({
       <label
         htmlFor={id}
         id={id}
-        className="labels absolute text-gray-400 focus:text-navyblue bg-white ml-3 text-sm -mt-0.5"
+        className={`labels  absolute ${
+          values !== "" ? " text-navyblue " : " text-gray-400  "
+        } bg-white ml-3 text-sm -mt-0.5`}
       >
         {placeholder}
       </label>

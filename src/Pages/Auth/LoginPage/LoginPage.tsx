@@ -10,15 +10,16 @@ import imgs from "../../../assets/Group 4.png";
 import loadgif from "../../../assets/output-onlinegiftools.gif";
 
 const LoginTest = () => {
-  const { errors, touched, handleReset, getFieldProps, isValid } = useFormik({
-    initialValues: { email: "", password: "" },
-    validationSchema: yup.object().shape({
-      email: yup.string().required("Email is required").email(),
+  const { errors, touched, handleReset, getFieldProps, values, isValid } =
+    useFormik({
+      initialValues: { email: "", password: "" },
+      validationSchema: yup.object().shape({
+        email: yup.string().required("Email is required").email(),
 
-      password: yup.string().required("Password is required").max(20).min(8),
-    }),
-    onSubmit: () => {},
-  });
+        password: yup.string().required("Password is required").max(20).min(8),
+      }),
+      onSubmit: () => {},
+    });
 
   const [showToast, setShowToast] = useState(false);
   const [error, setError] = useState<any>("");
@@ -96,6 +97,7 @@ const LoginTest = () => {
                   placeholder="example@mail.com"
                   touched={touched.email}
                   error={errors.email}
+                  values={values.email}
                   {...getFieldProps("email")}
                 />
 
@@ -104,6 +106,7 @@ const LoginTest = () => {
                   placeholder="8+ strong characters"
                   touched={touched.password}
                   error={errors.password}
+                  values={values.password}
                   type="Password"
                   {...getFieldProps("password")}
                 />
