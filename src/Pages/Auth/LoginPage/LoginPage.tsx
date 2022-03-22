@@ -2,11 +2,11 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import "./LoginPage.css";
 import Toast from "../../../Components/Toast/Toast";
 import Input from "../../../Components/Input";
 import axios from "axios";
 import imgs from "../../../assets/Group 4.png";
+import loadgif from "../../../assets/output-onlinegiftools.gif";
 
 const LoginTest = () => {
   const { errors, touched, handleReset, getFieldProps, values, isValid } =
@@ -21,6 +21,7 @@ const LoginTest = () => {
     });
 
   const [showToast, setShowToast] = useState(false);
+
   const [error, setError] = useState<any>("");
   const [loading, setLoading] = useState(false);
   const [toastFor, setToastFor] = useState<"Error" | "Success">("Success");
@@ -70,9 +71,9 @@ const LoginTest = () => {
   };
   return (
     <div>
-      <div className="bgcolr flex justify-center items-center h-screen">
+      <div className="bg-navbar flex justify-center items-center h-screen">
         <Toast type={toastFor} show={showToast} message={error} />
-        <div className="flex rounded-lg justify-center mx-5 md:mx-10 lg:mx-20 xl:mx-40 w-full h-4/5">
+        <div className="flex rounded-lg justify-center mx-5 md:mx-10 lg:mx-20 xl:mx-40 w-full h-5/6 md:h-1/2 lg:h-4/5">
           <div className="block rounded bg-white w-full md:w-1/2 px-5 xl:px-28 lg:px-14">
             <p className="pt-7">
               New Here?{" "}
@@ -95,7 +96,7 @@ const LoginTest = () => {
               <div className="w-full pt-4 ">
                 <Input
                   id="email"
-                  placeholder="Email Address"
+                  placeholder="example@mail.com"
                   touched={touched.email}
                   error={errors.email}
                   values={values.email}
@@ -104,7 +105,7 @@ const LoginTest = () => {
 
                 <Input
                   id="password"
-                  placeholder="Password"
+                  placeholder="8+ strong characters"
                   touched={touched.password}
                   error={errors.password}
                   values={values.password}
@@ -116,13 +117,20 @@ const LoginTest = () => {
               <div className="">
                 <button
                   type="submit"
-                  className={`bg-navyblue rounded px-7 w-full py-2 font-Sora font-bold text-white  ${
+                  className={`bg-navyblue rounded px-7 w-full py-2 font-Sora font-bold text-white flex justify-center  ${
                     !isValid && "cursor-not-allowed"
                   } `}
                   disabled={!isValid}
                 >
-                  Sign In
-                  {loading && "Wait"}
+                  {loading ? (
+                    <img
+                      className="w-6 h-6 text-white"
+                      src={loadgif}
+                      alt="loadGif"
+                    />
+                  ) : (
+                    "Sign In"
+                  )}
                 </button>
               </div>
               <div className="div-line text-gray-500">Or sign In with</div>

@@ -50,7 +50,7 @@ const Input: FC<InputPropType> = ({
                 ? setTypePass(" ")
                 : setTypePass("Password");
             }}
-            className="relative z-20 -ml-10 mt-1.5 eye w-5 h-5"
+            className="-ml-20 mt-2 eye w-4 h-4 mr-2"
           />
         )}
       </div>
