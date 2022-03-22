@@ -19,12 +19,11 @@ const Dashboard = () => {
 
   const [showToast, setShowToast] = useState(false);
   const [toastmessage, setToastmessage] = useState<string>("");
-  const [toastFor, setToastFor] = useState<string>("");
+  const [toastFor, setToastFor] = useState<"Error" | "Success">("Success");
 
   const [showCreatePost, setShowCreatePost] = useState(false);
 
   const fetchPosts = async () => {
-    setShowToast(false);
     try {
       const user = JSON.parse(localStorage.getItem("userInfo")!);
       const config = {
@@ -52,10 +51,12 @@ const Dashboard = () => {
         const { data } = await axios.delete(`/api/post/${s}`, config);
         console.log(data);
         setToastmessage(data.message);
+        setToastFor("Success");
       } catch (error: any) {
+        setToastmessage(error.response.data.message);
+        setToastFor("Error");
         console.log(error.response);
       }
-
       setShowToast(true);
       fetchPosts();
     }
@@ -71,14 +72,15 @@ const Dashboard = () => {
       <>
         <Navbar />
         <Route exact path="/dashboard">
-          <Toast type="Success" show={showToast} message={toastmessage} />
+          <Toast type={toastFor} show={showToast} message={toastmessage} />
           <CreatePost
             show={showCreatePost}
             toggle={setShowCreatePost}
             setShowToast={setShowToast}
             setToastmessage={setToastmessage}
+            setToastFor={setToastFor}
           />
-          <div className=" flex bg-gray-500 flex-row pt-20 w-full justify-center px-2 lg:space-x-10 lg:px-0">
+          <div className=" flex bg-gray-500 pt-20 flex-row w-full justify-center px-2 lg:space-x-10 lg:px-0">
             {/* left profile portion */}
             <div className=" flex font-Sora bg-gray-500 flex-row6 w-full justify-center px-2 lg:space-x-10 lg:px-0">
               <div className="sticky top-20 w-1/6 rounded-md shadow-2xl max-h-96 hidden lg:block text-white">

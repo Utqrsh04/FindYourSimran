@@ -11,7 +11,8 @@ import imgs from "../../../assets/Group 4.png";
 
 const SignupPage = () => {
   const [showToast, setShowToast] = useState(false);
-  const [error, setError] = useState<any>("");
+  const [toastMessage, setToastMessage] = useState<string>("");
+  const [toastFor, setToastFor] = useState<"Error" | "Success">("Success");
 
   const { errors, touched, handleReset, getFieldProps, values, isValid } =
     useFormik({
@@ -46,7 +47,7 @@ const SignupPage = () => {
     var { email, password, name } = event.target.elements;
 
     if (!name || !password || !email) {
-      setError("Please fill all the fields");
+      setToastMessage("Please fill all the fields");
       return;
     }
     email = email.value;
@@ -70,7 +71,8 @@ const SignupPage = () => {
       );
 
       console.log("Signup SucessFull", data);
-      setError("User Created 😀 , Login to Continue ");
+      setToastMessage("User Created 😀 , Login to Continue ");
+      setToastFor("Success");
       setShowToast(true);
       setLoading(false);
 
@@ -78,7 +80,8 @@ const SignupPage = () => {
     } catch (error: any) {
       console.log("Error Ocuuered during Signup");
       console.log(error.response);
-      setError(error.response.data.message);
+      setToastMessage(error.response.data.message);
+      setToastFor("Error");
       setLoading(false);
       setShowToast(true);
     }
@@ -87,7 +90,7 @@ const SignupPage = () => {
   return (
     <div>
       <div className="bgcolr flex justify-center items-center h-screen">
-        <Toast type="Error" show={showToast} message={error} />
+        <Toast type={toastFor} show={showToast} message={toastMessage} />
         <div className="flex rounded-lg justify-center mx-5 md:mx-10 lg:mx-20 xl:mx-40 w-full h-4/5">
           <div className="block rounded bg-white w-full md:w-1/2 px-5 xl:px-28 lg:px-14">
             <p className="pt-7">

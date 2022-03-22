@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  Fragment,
-  InputHTMLAttributes,
-  useEffect,
-  useState,
-} from "react";
+import { FC, Fragment, InputHTMLAttributes, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 
@@ -13,6 +7,7 @@ interface CreatePostPropType extends InputHTMLAttributes<HTMLInputElement> {
   toggle: any;
   setShowToast: any;
   setToastmessage: any;
+  setToastFor: any;
 }
 
 const CreatePost: FC<CreatePostPropType> = ({
@@ -20,6 +15,7 @@ const CreatePost: FC<CreatePostPropType> = ({
   toggle,
   setShowToast,
   setToastmessage,
+  setToastFor,
 }) => {
   const [open, setOpen] = useState(show);
   const [content, setContent] = useState("");
@@ -44,9 +40,14 @@ const CreatePost: FC<CreatePostPropType> = ({
       );
 
       setToastmessage(data.message);
+      setToastFor("Success");
+      setRoles("");
+      setContent("");
+      // handleClick();
     } catch (error: any) {
       console.log("Error Ocuuered during Post Create");
       setToastmessage(error.response.data.message);
+      setToastFor("Error");
       console.log(error.response);
     }
     setShowToast(true);
@@ -98,7 +99,7 @@ const CreatePost: FC<CreatePostPropType> = ({
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all mr-5 sm:mx-0 sm:my-8 sm:align-middle max-w-lg w-full">
               <div className="bg-white  px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="flex flex-col  sm:items-start w-full">
                   <Dialog.Title

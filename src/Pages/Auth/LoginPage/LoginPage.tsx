@@ -23,6 +23,7 @@ const LoginTest = () => {
   const [showToast, setShowToast] = useState(false);
   const [error, setError] = useState<any>("");
   const [loading, setLoading] = useState(false);
+  const [toastFor, setToastFor] = useState<"Error" | "Success">("Success");
 
   const handleLogin = async (event: any) => {
     event.preventDefault();
@@ -62,6 +63,7 @@ const LoginTest = () => {
 
       console.log(error.response);
       setError(error.response.data.message);
+      setToastFor("Error");
       setLoading(false);
       setShowToast(true);
     }
@@ -69,7 +71,7 @@ const LoginTest = () => {
   return (
     <div>
       <div className="bgcolr flex justify-center items-center h-screen">
-        <Toast type="Error" show={showToast} message={error} />
+        <Toast type={toastFor} show={showToast} message={error} />
         <div className="flex rounded-lg justify-center mx-5 md:mx-10 lg:mx-20 xl:mx-40 w-full h-4/5">
           <div className="block rounded bg-white w-full md:w-1/2 px-5 xl:px-28 lg:px-14">
             <p className="pt-7">
