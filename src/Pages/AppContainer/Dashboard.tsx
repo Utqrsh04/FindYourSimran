@@ -98,14 +98,14 @@ const DashBoard = () => {
         <Navbar />
         <Route exact path="/dashboard">
           <Toast type="Success" show={showToast} message={toastmessage} />
-          <div className=" flex bg-bodyColr flex-row pt-20 w-full justify-center px-2 lg:px-0">
+          <div className=" flex bg-bodyColr h-screen flex-row pt-20 w-full justify-center px-2 lg:px-0">
             {/* left profile portion */}
             <div className=" flex font-Sora bg-bodyColr flex-row6 w-full justify-evenly sm:space-x-10 lg:justify-center px-2 lg:space-x-5 lg:px-0">
               <div className="sticky top-20 lg:w-1/6 rounded-md shadow-2xl max-h-96 hidden lg:block text-white">
                 <ProfileCard />
               </div>
               {/* center post portion */}
-              <div className="lg:w-2/5 w-full rounded-md">
+              <div className="lg:w-2/5 w-2/4 rounded-md">
                 {/* create post */}
                 <div className="border-2 border-gray-200 bg-white rounded-lg mb-3 px-3">
                   <div className="flex flex-col">
@@ -278,7 +278,7 @@ const DashBoard = () => {
                   ))}
               </div>
               {/* right news portion */}
-              <div className="sticky top-20 w-full lg:w-1/5 shadow-2xl rounded-md hidden md:block text-white mb-5 h-0">
+              <div className="sticky top-20 w-1/3 lg:w-1/5 shadow-2xl rounded-md hidden md:block text-white mb-5 h-0">
                 <NewsCard />
               </div>
             </div>
