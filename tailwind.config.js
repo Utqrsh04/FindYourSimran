@@ -10,17 +10,18 @@ module.exports = {
         "gif-tick": "url('/src/assets/checked.gif')",
       }),
       colors: {
-        navbar: "#1b232e",
+        navbar: "#0e1630",
         darkshade: "#222d3d",
         brightBlue: "#1539c8",
         navyblue: "#2028eb",
+        bodyColr: "#262D44",
       },
       boxShadow: {
         "3xl": "0px 0px 3px 3px rgba(18, 22, 246, 1)",
       },
       margin: {
-        '25': '21.2rem',
-      }
+        25: "21.2rem",
+      },
     },
   },
   variants: {

@@ -1,11 +1,10 @@
-import React from "react";
-
 const ProfileCard = () => {
+
   const user = JSON.parse(localStorage.getItem("userInfo")!);
 
   return (
-    <div className="flex flex-col justify-center items-center hover:bg-gray-700 bg-darkshade pb-10 rounded-lg">
-      <div className="bg-blue-700 w-full h-24 rounded-t-lg "></div>
+    <div className="text-black flex flex-col justify-center items-center bg-white pb-10 rounded-lg">
+      <div className="bg-navbar w-full h-24 rounded-t-lg "></div>
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwZkSEm6tkwEyPiz1kmz9BMlcBsbjl8q__XQ&usqp=CAU"
         alt="Profile"
@@ -32,7 +31,7 @@ const ProfileCard = () => {
       </p>
       <button
         type="button"
-        className="font-Sora text-sm border-2 bg-gradient-to-tr from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-500 hover:border-2 mt-5 px-3.5 py-1.5 rounded-full"
+        className="font-medium font-Sora text-sm border-2 bg-gray-400 hover:bg-navyblue hover:text-white hover:border-2 mt-5 px-3.5 py-1.5 rounded-full"
       >
         View Profile
       </button>
