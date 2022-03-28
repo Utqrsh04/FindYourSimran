@@ -29,7 +29,10 @@ const DashBoard = () => {
         headers: { Authorization: `Bearer ${user.token}` },
       };
 
-      const { data } = await axios.get(`/api/post`, config);
+      const { data } = await axios.get(
+        `https://findyourdeveloper.herokuapp.com/api/post`,
+        config
+      );
 
       setPosts(data.posts);
     } catch (error: any) {
@@ -47,7 +50,10 @@ const DashBoard = () => {
           headers: { Authorization: `Bearer ${user.token}` },
         };
 
-        const { data } = await axios.delete(`/api/post/${s}`, config);
+        const { data } = await axios.delete(
+          `https://findyourdeveloper.herokuapp.com/api/post/${s}`,
+          config
+        );
         console.log(data);
         setToastmessage(data.message);
         setToastFor("Success");
@@ -71,7 +77,12 @@ const DashBoard = () => {
       <>
         <Navbar />
         <Route exact path="/dashboard">
-          <Toast type={toastFor} show={showToast} setShowToast={setShowToast} message={toastmessage} />
+          <Toast
+            type={toastFor}
+            show={showToast}
+            setShowToast={setShowToast}
+            message={toastmessage}
+          />
           <CreatePost
             show={showCreatePost}
             toggle={setShowCreatePost}

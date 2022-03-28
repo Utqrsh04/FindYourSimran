@@ -36,7 +36,7 @@ const CreatePost: FC<CreatePostPropType> = ({
       };
 
       const { data } = await axios.post(
-        `/api/post/create`,
+        `https://findyourdeveloper.herokuapp.com/api/post/create`,
         { content, roles: role },
         config
       );

@@ -1,6 +1,5 @@
 import { FC, Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-// import { useHistory } from "react-router";
 import Checked from "../../assets/checked.gif";
 import Warning from "../../assets/warning.gif";
 
@@ -24,6 +23,7 @@ const Toast: FC<ToastTypeProps> = ({ show, message, type, setShowToast }) => {
     setShowToast(false);
     // history.push("/");
   };
+
   let completeButtonRef = useRef(null);
   return (
     <Transition appear show={open}>

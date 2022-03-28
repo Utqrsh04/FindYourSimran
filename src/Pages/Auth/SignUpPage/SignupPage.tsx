@@ -65,7 +65,7 @@ const SignupPage = () => {
       console.log("Making Api CALL");
 
       const { data } = await axios.post(
-        "/api/user/signup",
+        "https://findyourdeveloper.herokuapp.com/api/user/signup",
         { email, password, name },
         config
       );

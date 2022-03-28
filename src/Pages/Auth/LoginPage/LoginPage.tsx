@@ -47,7 +47,7 @@ const LoginTest = () => {
       console.log("Making Api CALL");
 
       const { data } = await axios.post(
-        "/api/user/login",
+        "https://findyourdeveloper.herokuapp.com/api/user/login",
         { email, password },
         config
       );
@@ -72,7 +72,12 @@ const LoginTest = () => {
   return (
     <div>
       <div className="bg-navbar flex justify-center items-center h-screen">
-        <Toast type={toastFor} show={showToast} setShowToast={setShowToast} message={error} />
+        <Toast
+          type={toastFor}
+          show={showToast}
+          setShowToast={setShowToast}
+          message={error}
+        />
         <div className="flex rounded-lg justify-center mx-5 md:mx-10 lg:mx-20 xl:mx-40 w-full h-5/6 md:h-1/2 lg:h-4/5">
           <div className="block rounded bg-white w-full md:w-1/2 px-5 xl:px-28 lg:px-14">
             <p className="pt-7">
