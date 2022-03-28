@@ -8,6 +8,7 @@ interface CreatePostPropType extends InputHTMLAttributes<HTMLInputElement> {
   setShowToast: any;
   setToastmessage: any;
   setToastFor: any;
+  fetchPosts: any;
 }
 
 const CreatePost: FC<CreatePostPropType> = ({
@@ -16,15 +17,16 @@ const CreatePost: FC<CreatePostPropType> = ({
   setShowToast,
   setToastmessage,
   setToastFor,
+  fetchPosts,
 }) => {
   const [open, setOpen] = useState(show);
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState<string>();
   // const [image, setImage] = useState("");
-  const [roles, setRoles] = useState<string>("");
+  const [roles, setRoles] = useState<string>();
 
   const createPosts = async (e: any) => {
     setShowToast(false);
-    let role = roles.trim().split(",");
+    let role = roles?.trim().split(",");
     e.preventDefault();
     try {
       const user = JSON.parse(localStorage.getItem("userInfo")!);
@@ -44,6 +46,7 @@ const CreatePost: FC<CreatePostPropType> = ({
       setRoles("");
       setContent("");
       // handleClick();
+      fetchPosts();
     } catch (error: any) {
       console.log("Error Ocuuered during Post Create");
       setToastmessage(error.response.data.message);
@@ -102,14 +105,24 @@ const CreatePost: FC<CreatePostPropType> = ({
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all mr-5 sm:mx-0 sm:my-8 sm:align-middle max-w-lg w-full">
               <div className="bg-white  px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="flex flex-col  sm:items-start w-full">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg flex items-center leading-6 font-medium text-red-800"
-                  >
-                    {/* <img src={Warning} alt="" className="w-10 h-10" /> */}
-                    Create a post
-                  </Dialog.Title>
-
+                  <div className="flex w-full flex-row justify-between">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-lg flex items-center leading-6 font-medium text-red-800"
+                    >
+                      {/* <img src={Warning} alt="" className="w-10 h-10" /> */}
+                      Create a post
+                    </Dialog.Title>
+                    <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                      <button
+                        type="button"
+                        className="mt-2 w-full inline-flex justify-center rounded-md border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-200 focus:outline-none  sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                        onClick={handleClick}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
                   <div className="mt-2 w-full">
                     <form
                       className="px-6 pb-4 space-y-3 w-full bg-gray-200 "
@@ -144,6 +157,7 @@ const CreatePost: FC<CreatePostPropType> = ({
                           name="roles"
                           id="roles"
                           value={roles}
+                          required={true}
                           onChange={(e) => setRoles(e.target.value)}
                         />
                       </div>
@@ -208,15 +222,6 @@ const CreatePost: FC<CreatePostPropType> = ({
                     </form>
                   </div>
                 </div>
-              </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button
-                  type="button"
-                  className="mt-2 w-full inline-flex justify-center rounded-md border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-200 focus:outline-none  sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={handleClick}
-                >
-                  Close
-                </button>
               </div>
             </div>
           </Transition.Child>

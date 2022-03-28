@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, useState } from "react";
+import { FC, Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 // import { useHistory } from "react-router";
 import Checked from "../../assets/checked.gif";
@@ -7,10 +7,11 @@ import Warning from "../../assets/warning.gif";
 interface ToastTypeProps {
   type: "Error" | "Success";
   show: boolean;
+  setShowToast: any;
   message: string;
 }
 
-const Toast: FC<ToastTypeProps> = ({ show, message, type }) => {
+const Toast: FC<ToastTypeProps> = ({ show, message, type, setShowToast }) => {
   // const history = useHistory();
   const [open, setOpen] = useState(show);
 
@@ -20,15 +21,17 @@ const Toast: FC<ToastTypeProps> = ({ show, message, type }) => {
 
   const handleClick = () => {
     setOpen(false);
+    setShowToast(false);
     // history.push("/");
   };
-
+  let completeButtonRef = useRef(null);
   return (
-    <Transition.Root show={open}>
+    <Transition appear show={open}>
       <Dialog
+        initialFocus={completeButtonRef}
         as="div"
         className="fixed z-50 inset-0 overflow-y-auto"
-        onClose={() => {}}
+        onClose={() => handleClick()}
       >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
@@ -93,6 +96,7 @@ const Toast: FC<ToastTypeProps> = ({ show, message, type }) => {
                   type="button"
                   className="mt-2 w-full inline-flex justify-center rounded-md border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-200 focus:outline-none  sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={handleClick}
+                  ref={completeButtonRef}
                 >
                   Close
                 </button>
@@ -101,7 +105,7 @@ const Toast: FC<ToastTypeProps> = ({ show, message, type }) => {
           </Transition.Child>
         </div>
       </Dialog>
-    </Transition.Root>
+    </Transition>
   );
 };
 

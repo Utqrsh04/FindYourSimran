@@ -35,7 +35,7 @@ const Navbar: FC<NavbarPropsType> = () => {
     >
       {({ open }) => (
         <>
-          <div className="font-Sora max-w-7xl mx-auto px-2 sm:px-6 lg:mr-32">
+          <div className="font-Sora max-w-7xl mx-auto px-2 sm:px-6 ">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -51,6 +51,7 @@ const Navbar: FC<NavbarPropsType> = () => {
                   )}
                 </Disclosure.Button>
               </div>
+
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <Link to="/">
